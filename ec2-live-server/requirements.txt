@@ -1,0 +1,11 @@
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+smartapi-python==1.3.6
+pyotp==2.9.0
+python-dotenv==1.0.0
+websocket-client==1.7.0
+psycopg2-binary
+pandas
+pandas-ta
+numpy
+requests

@@ -1,0 +1,92 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - link "iStocks" [ref=e6] [cursor=pointer]:
+          - /url: /stocks
+          - img [ref=e7]
+          - generic [ref=e13]: iStocks
+        - button "New Chat" [ref=e14] [cursor=pointer]:
+          - img [ref=e15]
+          - text: New Chat
+        - button "Search stocks…" [ref=e16] [cursor=pointer]:
+          - img [ref=e17]
+          - generic [ref=e20]: Search stocks…
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - paragraph [ref=e24]: Menu
+          - navigation "Primary navigation" [ref=e25]:
+            - link "Stocks" [ref=e26] [cursor=pointer]:
+              - /url: /stocks
+              - img [ref=e27]
+              - generic [ref=e30]: Stocks
+            - link "Sangraha NEW" [ref=e31] [cursor=pointer]:
+              - /url: /sangraha
+              - img [ref=e32]
+              - generic [ref=e35]: Sangraha
+              - generic [ref=e36]: NEW
+            - link "Trading Agent" [ref=e37] [cursor=pointer]:
+              - /url: /database-chat
+              - img [ref=e38]
+              - generic [ref=e41]: Trading Agent
+            - link "Experts" [ref=e42] [cursor=pointer]:
+              - /url: /experts
+              - img [ref=e43]
+              - generic [ref=e45]: Experts
+            - link "Holding" [ref=e46] [cursor=pointer]:
+              - /url: /holdings
+              - img [ref=e47]
+              - generic [ref=e50]: Holding
+            - link "Pricing" [ref=e51] [cursor=pointer]:
+              - /url: /pricing
+              - img [ref=e52]
+              - generic [ref=e54]: Pricing
+            - link "About" [ref=e55] [cursor=pointer]:
+              - /url: /about
+              - img [ref=e56]
+              - generic [ref=e58]: About
+        - button "Account" [ref=e60] [cursor=pointer]:
+          - generic [ref=e61]:
+            - img [ref=e62]
+            - text: Account
+          - img [ref=e65]
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - img [ref=e69]
+            - text: History
+          - paragraph [ref=e74]: No chat history yet
+      - button "Open account menu" [ref=e76] [cursor=pointer]:
+        - generic [ref=e77]: U
+        - generic [ref=e78]:
+          - paragraph [ref=e79]: User
+          - paragraph [ref=e80]: Free Plan
+    - button "Collapse sidebar" [expanded] [ref=e81] [cursor=pointer]:
+      - img [ref=e82]
+    - generic [ref=e85]:
+      - generic "iStocks Trading Agent" [ref=e86]:
+        - generic [ref=e87]:
+          - img [ref=e88]
+          - generic [ref=e94]:
+            - generic [ref=e95]: iStocks
+            - generic [ref=e96]: Trading Agent
+      - generic [ref=e98]:
+        - textbox "Ask the trading agent…" [ref=e99]
+        - generic [ref=e100]:
+          - generic [ref=e101]:
+            - button "PAPER" [ref=e103] [cursor=pointer]:
+              - generic [ref=e104]: PAPER
+              - img [ref=e106]
+            - button "ZERODHA" [ref=e109] [cursor=pointer]:
+              - generic [ref=e110]: ZERODHA
+              - img [ref=e112]
+            - button "Angle 3.1" [ref=e115] [cursor=pointer]:
+              - generic [ref=e116]: Angle 3.1
+              - img [ref=e118]
+          - button [disabled] [ref=e121]:
+            - img [ref=e122]
+      - generic [ref=e125]:
+        - button "What are today's top movers?" [ref=e126] [cursor=pointer]
+        - button "Analyze WIPRO's technical indicators" [ref=e127] [cursor=pointer]
+        - button "Compare RELIANCE with TCS" [ref=e128] [cursor=pointer]
+        - button "Show stocks with RSI below 30" [ref=e129] [cursor=pointer]
+  - alert [ref=e130]

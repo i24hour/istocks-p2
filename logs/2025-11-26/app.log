@@ -1,0 +1,4 @@
+[E 251126 16:34:33 auto-fetch-stock-data:80] Error getting last date: could not translate host name "123@istocks.postgres.database.azure.com" to address: nodename nor servname provided, or not known
+    
+[E 251126 16:34:55 auto-fetch-stock-data:175] ❌ Database error: could not translate host name "123@istocks.postgres.database.azure.com" to address: nodename nor servname provided, or not known
+    

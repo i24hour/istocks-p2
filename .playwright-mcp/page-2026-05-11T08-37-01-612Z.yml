@@ -1,0 +1,630 @@
+- generic [ref=e6]:
+  - banner [ref=e7]:
+    - link "SmartAPI logo" [ref=e9] [cursor=pointer]:
+      - /url: "#"
+      - img "SmartAPI logo" [ref=e10]
+    - text: 
+    - navigation [ref=e11]:
+      - list [ref=e13]:
+        - listitem [ref=e14]:
+          - link "API Documentation" [ref=e15] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e16]:
+          - link "Enable TOTP" [ref=e17] [cursor=pointer]:
+            - /url: /enable-totp
+        - listitem [ref=e18]:
+          - link "Forum" [ref=e19] [cursor=pointer]:
+            - /url: https://smartapi.angelbroking.com/smartapi/forum
+        - listitem [ref=e20]:
+          - link "FAQ" [ref=e21] [cursor=pointer]:
+            - /url: /faq
+        - listitem [ref=e22]:
+          - link "Login" [ref=e23] [cursor=pointer]:
+            - /url: https://smartapi.angelone.in/publisher-login/v2/login
+  - generic [ref=e24]:
+    - list [ref=e26]:
+      - listitem [ref=e27]:
+        - link "API Documentation" [ref=e28] [cursor=pointer]:
+          - /url: "#"
+      - listitem [ref=e29]:
+        - link "Introduction" [ref=e30] [cursor=pointer]:
+          - /url: /docs/Introduction
+      - listitem [ref=e31]:
+        - link "Response structure" [ref=e32] [cursor=pointer]:
+          - /url: /docs/ResponseStructure
+      - listitem [ref=e33]:
+        - link "Error Codes" [ref=e34] [cursor=pointer]:
+          - /url: /docs/Exceptions
+      - listitem [ref=e35]:
+        - link "User" [ref=e36] [cursor=pointer]:
+          - /url: /docs/User
+        - list:
+          - listitem [ref=e37]:
+            - link "Login Flow" [ref=e38] [cursor=pointer]:
+              - /url: "#flow"
+          - listitem [ref=e39]:
+            - link "Authentication with Angel" [ref=e40] [cursor=pointer]:
+              - /url: "#Authenticate"
+          - listitem [ref=e41]:
+            - link "Generate Token" [ref=e42] [cursor=pointer]:
+              - /url: "#Generate"
+          - listitem [ref=e43]:
+            - link "Get Profile" [ref=e44] [cursor=pointer]:
+              - /url: "#Profile"
+          - listitem [ref=e45]:
+            - link "Funds and Margins" [ref=e46] [cursor=pointer]:
+              - /url: "#Funds"
+          - listitem [ref=e47]:
+            - link "Logout" [ref=e48] [cursor=pointer]:
+              - /url: "#logout"
+      - listitem [ref=e49]:
+        - link "GTT" [ref=e50] [cursor=pointer]:
+          - /url: /docs/Gtt
+        - list:
+          - listitem [ref=e51]:
+            - link "Create Rule" [ref=e52] [cursor=pointer]:
+              - /url: "#gttcreate"
+          - listitem [ref=e53]:
+            - link "Modify Rule" [ref=e54] [cursor=pointer]:
+              - /url: "#gttmodify"
+          - listitem [ref=e55]:
+            - link "Cancel Rule" [ref=e56] [cursor=pointer]:
+              - /url: "#gttcancel"
+          - listitem [ref=e57]:
+            - link "Rule Details" [ref=e58] [cursor=pointer]:
+              - /url: "#gttruledetails"
+          - listitem [ref=e59]:
+            - link "Rule List" [ref=e60] [cursor=pointer]:
+              - /url: "#gttrulelist"
+      - listitem [ref=e61]:
+        - link "Orders" [ref=e62] [cursor=pointer]:
+          - /url: /docs/Orders
+        - list [ref=e63]:
+          - listitem [ref=e64]:
+            - link "Place Order" [ref=e65] [cursor=pointer]:
+              - /url: "#place"
+          - listitem [ref=e66]:
+            - link "Modify Order" [ref=e67] [cursor=pointer]:
+              - /url: "#modifyorder"
+          - listitem [ref=e68]:
+            - link "Cancel Order" [ref=e69] [cursor=pointer]:
+              - /url: "#cancelorder"
+          - listitem [ref=e70]:
+            - link "Get Order Book" [ref=e71] [cursor=pointer]:
+              - /url: "#orderbook"
+          - listitem [ref=e72]:
+            - link "Get Trade Book" [ref=e73] [cursor=pointer]:
+              - /url: "#trade"
+          - listitem [ref=e74]:
+            - link "Get LTP Data" [ref=e75] [cursor=pointer]:
+              - /url: "#ltp"
+          - listitem [ref=e76]:
+            - link "Individual Order Status" [ref=e77] [cursor=pointer]:
+              - /url: "#indorder"
+      - listitem [ref=e78]:
+        - link "Brokerage Calculator API" [ref=e79] [cursor=pointer]:
+          - /url: /docs/BrokerageCalculator
+      - listitem [ref=e80]:
+        - link "Portfolio" [ref=e81] [cursor=pointer]:
+          - /url: /docs/Portfolio
+        - list:
+          - listitem [ref=e82]:
+            - link "Get Holding" [ref=e83] [cursor=pointer]:
+              - /url: "#holding"
+          - listitem [ref=e84]:
+            - link "Get All Holding" [ref=e85] [cursor=pointer]:
+              - /url: "#allholding"
+          - listitem [ref=e86]:
+            - link "Get Position" [ref=e87] [cursor=pointer]:
+              - /url: "#position"
+          - listitem [ref=e88]:
+            - link "Convert Position" [ref=e89] [cursor=pointer]:
+              - /url: "#convert"
+      - listitem [ref=e90]:
+        - link "EDIS API" [ref=e91] [cursor=pointer]:
+          - /url: /docs/Edis
+      - listitem [ref=e92]:
+        - link "Postback" [ref=e93] [cursor=pointer]:
+          - /url: /docs/Postback
+      - listitem [ref=e94]:
+        - link "Margin Calculator" [ref=e95] [cursor=pointer]:
+          - /url: /docs/MarginCalculator
+      - listitem [ref=e96]:
+        - link "Market Data API" [ref=e97] [cursor=pointer]:
+          - /url: /docs/MarketData
+      - listitem [ref=e98]:
+        - link "Option Greeks" [ref=e99] [cursor=pointer]:
+          - /url: /docs/OptionGreeks
+      - listitem [ref=e100]:
+        - link "Top Gainers / Losers" [ref=e101] [cursor=pointer]:
+          - /url: /docs/TopGainers
+      - listitem [ref=e102]:
+        - link "Historical API" [ref=e103] [cursor=pointer]:
+          - /url: /docs/Historical
+      - listitem [ref=e104]:
+        - link "WebSocket Streaming 2.0" [ref=e105] [cursor=pointer]:
+          - /url: /docs/WebSocket2
+      - listitem [ref=e106]:
+        - link "WebSocket Order Status" [ref=e107] [cursor=pointer]:
+          - /url: /docs/WebSocketOrderStatus
+      - listitem [ref=e108]:
+        - link "Instruments" [ref=e109] [cursor=pointer]:
+          - /url: /docs/Instruments
+      - listitem [ref=e110]:
+        - link "RateLimit" [ref=e111] [cursor=pointer]:
+          - /url: /docs/RateLimit
+    - generic [ref=e114]:
+      - generic [ref=e116]:
+        - heading "Orders" [level=1] [ref=e117]
+        - paragraph [ref=e118]: The order APIs allows you to place orders of different varieties like normal orders, after market orders & stoploss orders.
+        - paragraph [ref=e119]: For users utilizing the new static IP–based API key, the source IP address of Place order, Modify order, Cancel order api requests will be validated against the static IP registered by the user. The API request will be processed successfully only if the source IP matches the registered static IP.
+        - paragraph [ref=e120]: To execute cash orders for scrips under surveillance keep "scripconsent" as yes.
+        - table [ref=e122]:
+          - rowgroup [ref=e123]:
+            - row "Request Type APIs Endpoint Description" [ref=e124]:
+              - columnheader "Request Type" [ref=e125]
+              - columnheader "APIs" [ref=e126]
+              - columnheader "Endpoint" [ref=e127]
+              - columnheader "Description" [ref=e128]
+          - rowgroup [ref=e129]:
+            - row "POST Place Order https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/placeOrder To place an order" [ref=e130]:
+              - cell "POST" [ref=e131]
+              - cell "Place Order" [ref=e132]
+              - cell "https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/placeOrder" [ref=e133]
+              - cell "To place an order" [ref=e134]
+            - row "POST Modify Order https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/modifyOrder To modify an order" [ref=e135]:
+              - cell "POST" [ref=e136]
+              - cell "Modify Order" [ref=e137]
+              - cell "https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/modifyOrder" [ref=e138]
+              - cell "To modify an order" [ref=e139]
+            - row "POST Cancel Order https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/cancelOrder To cancel an order" [ref=e140]:
+              - cell "POST" [ref=e141]
+              - cell "Cancel Order" [ref=e142]
+              - cell "https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/cancelOrder" [ref=e143]
+              - cell "To cancel an order" [ref=e144]
+            - row "GET Get Order Book https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/getOrderBook To retrieve Order book" [ref=e145]:
+              - cell "GET" [ref=e146]
+              - cell "Get Order Book" [ref=e147]
+              - cell "https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/getOrderBook" [ref=e148]
+              - cell "To retrieve Order book" [ref=e149]
+            - row "GET Get Trade Book https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/getTradeBook To retrieve trade book" [ref=e150]:
+              - cell "GET" [ref=e151]
+              - cell "Get Trade Book" [ref=e152]
+              - cell "https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/getTradeBook" [ref=e153]
+              - cell "To retrieve trade book" [ref=e154]
+            - row "POST Get LTP Data https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/getLtpData To retrieve LTP data" [ref=e155]:
+              - cell "POST" [ref=e156]
+              - cell "Get LTP Data" [ref=e157]
+              - cell "https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/getLtpData" [ref=e158]
+              - cell "To retrieve LTP data" [ref=e159]
+            - 'row "GET Get Individual Order Data https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/details/{UniqueOrderID} To retrieve individual order data" [ref=e160]':
+              - cell "GET" [ref=e161]
+              - cell "Get Individual Order Data" [ref=e162]
+              - 'cell "https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/details/{UniqueOrderID}" [ref=e163]'
+              - cell "To retrieve individual order data" [ref=e164]
+        - paragraph [ref=e165]: See the list of constants in below given table.
+        - heading "Order Constants" [level=2] [ref=e166]
+        - paragraph [ref=e167]: Here are several of the constant enum values used for placing orders.
+        - table [ref=e169]:
+          - rowgroup [ref=e170]:
+            - row "Param Value Description" [ref=e171]:
+              - columnheader "Param" [ref=e172]
+              - columnheader "Value" [ref=e173]
+              - columnheader "Description" [ref=e174]
+          - rowgroup [ref=e175]:
+            - row "variety NORMAL STOPLOSS ROBO Normal Order (Regular) Stop loss order ROBO (Bracket Order)" [ref=e176]:
+              - cell "variety" [ref=e177]
+              - cell "NORMAL STOPLOSS ROBO" [ref=e178]:
+                - paragraph [ref=e179]: NORMAL
+                - paragraph [ref=e180]: STOPLOSS
+                - paragraph [ref=e181]: ROBO
+              - cell "Normal Order (Regular) Stop loss order ROBO (Bracket Order)" [ref=e182]:
+                - paragraph [ref=e183]: Normal Order (Regular)
+                - paragraph [ref=e184]: Stop loss order
+                - paragraph [ref=e185]: ROBO (Bracket Order)
+            - row "transactiontype BUY SELL Buy Sell" [ref=e186]:
+              - cell "transactiontype" [ref=e187]
+              - cell "BUY SELL" [ref=e188]:
+                - paragraph [ref=e189]: BUY
+                - paragraph [ref=e190]: SELL
+              - cell "Buy Sell" [ref=e191]:
+                - paragraph [ref=e192]: Buy
+                - paragraph [ref=e193]: Sell
+            - row "ordertype MARKET LIMIT STOPLOSS_LIMIT STOPLOSS_MARKET Market Order(MKT) Limit Order(L) Stop Loss Limit Order(SL) Stop Loss Market Order(SL-M)" [ref=e194]:
+              - cell "ordertype" [ref=e195]
+              - cell "MARKET LIMIT STOPLOSS_LIMIT STOPLOSS_MARKET" [ref=e196]:
+                - paragraph [ref=e197]: MARKET
+                - paragraph [ref=e198]: LIMIT
+                - paragraph [ref=e199]: STOPLOSS_LIMIT
+                - paragraph [ref=e200]: STOPLOSS_MARKET
+              - cell "Market Order(MKT) Limit Order(L) Stop Loss Limit Order(SL) Stop Loss Market Order(SL-M)" [ref=e201]:
+                - paragraph [ref=e202]: Market Order(MKT)
+                - paragraph [ref=e203]: Limit Order(L)
+                - paragraph [ref=e204]: Stop Loss Limit Order(SL)
+                - paragraph [ref=e205]: Stop Loss Market Order(SL-M)
+            - row "producttype DELIVERY CARRYFORWARD MARGIN INTRADAY BO Cash & Carry for equity (CNC) Normal for futures and options (NRML) Margin Delivery Margin Intraday Squareoff (MIS) Bracket Order (Only for ROBO)" [ref=e206]:
+              - cell "producttype" [ref=e207]
+              - cell "DELIVERY CARRYFORWARD MARGIN INTRADAY BO" [ref=e208]:
+                - paragraph [ref=e209]: DELIVERY
+                - paragraph [ref=e210]: CARRYFORWARD
+                - paragraph [ref=e211]: MARGIN
+                - paragraph [ref=e212]: INTRADAY
+                - paragraph [ref=e213]: BO
+              - cell "Cash & Carry for equity (CNC) Normal for futures and options (NRML) Margin Delivery Margin Intraday Squareoff (MIS) Bracket Order (Only for ROBO)" [ref=e214]:
+                - paragraph [ref=e215]: Cash & Carry for equity (CNC)
+                - paragraph [ref=e216]: Normal for futures and options (NRML)
+                - paragraph [ref=e217]: Margin Delivery
+                - paragraph [ref=e218]: Margin Intraday Squareoff (MIS)
+                - paragraph [ref=e219]: Bracket Order (Only for ROBO)
+            - row "Duration DAY IOC Regular Order Immediate or Cancel" [ref=e220]:
+              - cell "Duration" [ref=e221]
+              - cell "DAY IOC" [ref=e222]:
+                - paragraph [ref=e223]: DAY
+                - paragraph [ref=e224]: IOC
+              - cell "Regular Order Immediate or Cancel" [ref=e225]:
+                - paragraph [ref=e226]: Regular Order
+                - paragraph [ref=e227]: Immediate or Cancel
+            - row "exchange BSE NSE NFO MCX BFO BSE Equity NSE Equity NSE Future and Options MCX Commodity BSE Futures and Options" [ref=e228]:
+              - cell "exchange" [ref=e229]
+              - cell "BSE NSE NFO MCX BFO" [ref=e230]:
+                - paragraph [ref=e231]: BSE
+                - paragraph [ref=e232]: NSE
+                - paragraph [ref=e233]: NFO
+                - paragraph [ref=e234]: MCX
+                - paragraph [ref=e235]: BFO
+              - cell "BSE Equity NSE Equity NSE Future and Options MCX Commodity BSE Futures and Options" [ref=e236]:
+                - paragraph [ref=e237]: BSE Equity
+                - paragraph [ref=e238]: NSE Equity
+                - paragraph [ref=e239]: NSE Future and Options
+                - paragraph [ref=e240]: MCX Commodity
+                - paragraph [ref=e241]: BSE Futures and Options
+        - heading "Order Parameters" [level=2] [ref=e242]
+        - paragraph [ref=e243]: These parameters are common across different order varieties.
+        - table [ref=e245]:
+          - rowgroup [ref=e246]:
+            - row "Param Description" [ref=e247]:
+              - columnheader "Param" [ref=e248]
+              - columnheader "Description" [ref=e249]
+          - rowgroup [ref=e250]:
+            - row "tradingsymbol Trading Symbol of the instrument" [ref=e251]:
+              - cell "tradingsymbol" [ref=e252]
+              - cell "Trading Symbol of the instrument" [ref=e253]
+            - row "symboltoken Symbol Token is unique identifier" [ref=e254]:
+              - cell "symboltoken" [ref=e255]
+              - cell "Symbol Token is unique identifier" [ref=e256]
+            - row "Exchange Name of the exchange" [ref=e257]:
+              - cell "Exchange" [ref=e258]
+              - cell "Name of the exchange" [ref=e259]
+            - row "transactiontype BUY or SELL" [ref=e260]:
+              - cell "transactiontype" [ref=e261]
+              - cell "BUY or SELL" [ref=e262]
+            - row "ordertype Order type (MARKET, LIMIT etc.)" [ref=e263]:
+              - cell "ordertype" [ref=e264]
+              - cell "Order type (MARKET, LIMIT etc.)" [ref=e265]
+            - row "quantity Quantity to transact" [ref=e266]:
+              - cell "quantity" [ref=e267]
+              - cell "Quantity to transact" [ref=e268]
+            - row "producttype Product type (CNC,MIS)" [ref=e269]:
+              - cell "producttype" [ref=e270]
+              - cell "Product type (CNC,MIS)" [ref=e271]
+            - row "price The min or max price to execute the order at (for LIMIT orders)" [ref=e272]:
+              - cell "price" [ref=e273]
+              - cell "The min or max price to execute the order at (for LIMIT orders)" [ref=e274]
+            - row "triggerprice The price at which an order should be triggered (SL, SL-M)" [ref=e275]:
+              - cell "triggerprice" [ref=e276]
+              - cell "The price at which an order should be triggered (SL, SL-M)" [ref=e277]
+            - row "squareoff Only For ROBO (Bracket Order)" [ref=e278]:
+              - cell "squareoff" [ref=e279]
+              - cell "Only For ROBO (Bracket Order)" [ref=e280]
+            - row "stoploss Only For ROBO (Bracket Order)" [ref=e281]:
+              - cell "stoploss" [ref=e282]
+              - cell "Only For ROBO (Bracket Order)" [ref=e283]
+            - row "trailingStopLoss Only For ROBO (Bracket Order)" [ref=e284]:
+              - cell "trailingStopLoss" [ref=e285]
+              - cell "Only For ROBO (Bracket Order)" [ref=e286]
+            - row "disclosedquantity Quantity to disclose publicly (for equity trades)" [ref=e287]:
+              - cell "disclosedquantity" [ref=e288]
+              - cell "Quantity to disclose publicly (for equity trades)" [ref=e289]
+            - row "duration Order duration (DAY,IOC)" [ref=e290]:
+              - cell "duration" [ref=e291]
+              - cell "Order duration (DAY,IOC)" [ref=e292]
+            - row "ordertag It is optional to apply to an order to identify. The length of the tag should be less than 20 characters." [ref=e293]:
+              - cell "ordertag" [ref=e294]
+              - cell "It is optional to apply to an order to identify. The length of the tag should be less than 20 characters." [ref=e295]
+            - row "scripconsent To execute cash orders for scrips under surveillance keep \"scripconsent\" as yes." [ref=e296]:
+              - cell "scripconsent" [ref=e297]
+              - cell "To execute cash orders for scrips under surveillance keep \"scripconsent\" as yes." [ref=e298]
+      - generic [ref=e300]:
+        - generic [ref=e301]:
+          - heading "Place Orders" [level=2] [ref=e302]
+          - paragraph [ref=e303]: When an order is successfully placed, the API returns an order_id. The status of the order is not known at the moment of placing because of the aforementioned reasons.
+          - paragraph [ref=e304]: All the orders placed after market hours will be treated as AMO orders.
+          - paragraph [ref=e305]:
+            - text: All the market orders will be converted into limit orders by AngelOne as per the MPP limits specified
+            - link "here" [ref=e306] [cursor=pointer]:
+              - /url: https://www.angelone.in/news/product-updates/market-price-protection-mpp-on-angel-one-safeguarding-your-orders
+            - text: .
+          - paragraph [ref=e307]: IOC orders are not allowed for commodities segment.
+          - heading "All requests and its response structure is as below." [level=4] [ref=e308]
+          - heading "Place Order Request" [level=4] [ref=e309]
+          - generic [ref=e310]:
+            - text: "{"
+            - text: "\"variety\":\"NORMAL\","
+            - text: "\"tradingsymbol\":\"SBIN-EQ\","
+            - text: "\"symboltoken\":\"3045\","
+            - text: "\"transactiontype\":\"BUY\","
+            - text: "\"exchange\":\"NSE\","
+            - text: "\"ordertype\":\"MARKET\","
+            - text: "\"producttype\":\"INTRADAY\","
+            - text: "\"duration\":\"DAY\","
+            - text: "\"price\":\"194.50\","
+            - text: "\"squareoff\":\"0\","
+            - text: "\"stoploss\":\"0\","
+            - text: "\"quantity\":\"1\","
+            - text: "\"scripconsent\":\"yes\""
+            - text: "}"
+          - heading "Place Order Response" [level=4] [ref=e311]
+          - generic [ref=e312]:
+            - text: "{"
+            - text: "\"status\":true,"
+            - text: "\"message\":\"SUCCESS\","
+            - text: "\"errorcode\":\"\","
+            - text: "\"data\":{"
+            - text: "\"script\":\"SBIN-EQ\","
+            - text: "\"orderid\":\"200910000000111\""
+            - text: "\"uniqueorderid\":\"34reqfachdfih\""
+            - text: "}"
+            - text: "}"
+        - code [ref=e316]: "var axios = require('axios'); var data = JSON.stringify({ \"exchange\":\"NSE\", \"tradingsymbol\":\"INFY-EQ\", \"quantity\":5, \"disclosedquantity\":3, \"transactiontype\":\"BUY\", \"ordertype\":\"MARKET\", \"variety\":\"NORMAL\", \"producttype\":\"INTRADAY\", \"scripconsent\": \"yes\" }); var config = { method: 'post', url: 'https://apiconnect.angelone.in/ rest/secure/angelbroking/order/ v1/placeOrder', headers: { 'Authorization': 'Bearer AUTHORIZATION_TOKEN', 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-UserType': 'USER', 'X-SourceID': 'WEB', 'X-ClientLocalIP': 'CLIENT_LOCAL_IP', 'X-ClientPublicIP': 'CLIENT_PUBLIC_IP', 'X-MACAddress': 'MAC_ADDRESS', 'X-PrivateKey': 'API_KEY' }, data : data }; axios(config) .then(function (response) { console.log(JSON.stringify(response.data)); }) .catch(function (error) { console.log(error); });"
+      - generic [ref=e317]:
+        - generic [ref=e318]:
+          - heading "Modify Order" [level=2] [ref=e319]
+          - paragraph [ref=e320]: As long as on order is open or pending in the system, certain attributes of it may be modified. It is important to sent the right value for :variety in the URL.
+          - heading "Modify Order Request" [level=4] [ref=e321]
+          - generic [ref=e322]:
+            - text: "{"
+            - text: "\"variety\":\"NORMAL\","
+            - text: "\"orderid\":\"201020000000080\","
+            - text: "\"ordertype\":\"LIMIT\","
+            - text: "\"producttype\":\"INTRADAY\","
+            - text: "\"duration\":\"DAY\","
+            - text: "\"price\":\"194.00\","
+            - text: "\"quantity\":\"1\","
+            - text: "\"tradingsymbol\":\"SBIN-EQ\","
+            - text: "\"symboltoken\":\"3045\","
+            - text: "\"exchange\":\"NSE\""
+            - text: "}"
+          - heading "Modify Order Response" [level=4] [ref=e323]
+          - generic [ref=e324]:
+            - text: "{"
+            - text: "\"status\":true,"
+            - text: "\"message\":\"SUCCESS\","
+            - text: "\"errorcode\":\"\","
+            - text: "\"data\":{"
+            - text: "\"orderid\":\"201020000000080\""
+            - text: "\"uniqueorderid\":\"34reqfachdfih\""
+            - text: "}"
+            - text: "}"
+        - code [ref=e328]: "var axios = require('axios'); var data = JSON.stringify({ \"variety\":\"NORMAL\", \"orderid\":\"201020000000080\", \"ordertype\":\"LIMIT\", \"producttype\":\"INTRADAY\", \"duration\":\"DAY\", \"price\":\"194.00\", \"quantity\":\"1\" }); var config = { method: 'post', url: 'https://apiconnect.angelone.in/ rest/secure/angelbroking/order/ v1/modifyOrder', headers: { 'Authorization': 'Bearer AUTHORIZATION_TOKEN', 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-UserType': 'USER', 'X-SourceID': 'WEB', 'X-ClientLocalIP': 'CLIENT_LOCAL_IP', 'X-ClientPublicIP': 'CLIENT_PUBLIC_IP', 'X-MACAddress': 'MAC_ADDRESS', 'X-PrivateKey': 'API_KEY' }, data : data }; axios(config) .then(function (response) { console.log(JSON.stringify(response.data)); }) .catch(function (error) { console.log(error); });"
+      - generic [ref=e329]:
+        - generic [ref=e330]:
+          - heading "Cancel Order" [level=2] [ref=e331]
+          - paragraph [ref=e332]: As long as on order is open or pending in the system, it can be cancelled.
+          - heading "Cancel Order Request" [level=4] [ref=e333]
+          - generic [ref=e334]:
+            - text: "{"
+            - text: "\"variety\":\"NORMAL\","
+            - text: "\"orderid\":\"201020000000080\","
+            - text: "}"
+          - heading "Cancel Order Response" [level=4] [ref=e335]
+          - generic [ref=e336]:
+            - text: "{"
+            - text: "\"status\":true,"
+            - text: "\"message\":\"SUCCESS\","
+            - text: "\"errorcode\":\"\","
+            - text: "\"data\":{"
+            - text: "\"orderid\":\"201020000000080\""
+            - text: "\"uniqueorderid\":\"34reqfachdfih\""
+            - text: "}"
+            - text: "}"
+        - code [ref=e340]: "var axios = require('axios'); var data = JSON.stringify({ \"variety\":\"NORMAL\", \"orderid\":\"201020000000080\" }); var config = { method: 'post', url: 'https://apiconnect.angelone.in/ rest/secure/angelbroking/order/ v1/cancelOrder', headers: { 'Authorization': 'Bearer AUTHORIZATION_TOKEN', 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-UserType': 'USER', 'X-SourceID': 'WEB', 'X-ClientLocalIP': 'CLIENT_LOCAL_IP', 'X-ClientPublicIP': 'CLIENT_PUBLIC_IP', 'X-MACAddress': 'MAC_ADDRESS', 'X-PrivateKey': 'API_KEY' }, data : data }; axios(config) .then(function (response) { console.log(JSON.stringify(response.data)); }) .catch(function (error) { console.log(error); });"
+      - generic [ref=e341]:
+        - generic [ref=e342]:
+          - heading "Get Order Book" [level=2] [ref=e343]
+          - heading "Get Order Status Response" [level=4] [ref=e344]
+          - generic [ref=e345]:
+            - text: "{"
+            - text: "\"status\":true,"
+            - text: "\"message\":\"SUCCESS\","
+            - text: "\"errorcode\":\"\","
+            - text: "\"data\":[{"
+            - text: "\"variety\":NORMAL,"
+            - text: "\"ordertype\":LIMIT,"
+            - text: "\"producttype\":INTRADAY,"
+            - text: "\"duration\":DAY,"
+            - text: "\"price\":\"194.00\","
+            - text: "\"triggerprice\":\"0\","
+            - text: "\"quantity\":\"1\","
+            - text: "\"disclosedquantity\":\"0\","
+            - text: "\"squareoff\":\"0\","
+            - text: "\"stoploss\":\"0\","
+            - text: "\"trailingstoploss\":\"0\","
+            - text: "\"tradingsymbol\":\"SBIN-EQ\","
+            - text: "\"transactiontype\":BUY,"
+            - text: "\"exchange\":NSE,"
+            - text: "\"symboltoken\":null,"
+            - text: "\"instrumenttype\":\"\","
+            - text: "\"strikeprice\":\"-1\","
+            - text: "\"optiontype\":\"\","
+            - text: "\"expirydate\":\"\","
+            - text: "\"lotsize\":\"1\","
+            - text: "\"cancelsize\":\"1\","
+            - text: "\"averageprice\":\"0\","
+            - text: "\"filledshares\":\"0\","
+            - text: "\"unfilledshares\":\"1\","
+            - text: "\"orderid\":201020000000080,"
+            - text: "\"text\":\"\","
+            - text: "\"status\":\"cancelled\","
+            - text: "\"orderstatus\":\"cancelled\","
+            - text: "\"updatetime\":\"20-Oct-2020 13:10:59\","
+            - text: "\"exchtime\":\"20-Oct-2020 13:10:59\","
+            - text: "\"exchorderupdatetime\":\"20-Oct-2020 13:10:59\","
+            - text: "\"fillid\":\"\","
+            - text: "\"filltime\":\"\","
+            - text: "\"parentorderid\":\"\","
+            - text: "\"uniqueorderid\":\"34reqfachdfih\","
+            - text: "\"exchangeorderid\":\"1100000000048358\""
+            - text: "}]"
+            - text: "}"
+        - code [ref=e349]: "var axios = require('axios'); var data = ''; var config = { method: 'get', url: 'https://apiconnect.angelone.in /rest/secure/angelbroking/order/ v1/getOrderBook', headers: { 'Authorization': 'Bearer AUTHORIZATION_TOKEN', 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-UserType': 'USER', 'X-SourceID': 'WEB', 'X-ClientLocalIP': 'CLIENT_LOCAL_IP', 'X-ClientPublicIP': 'CLIENT_PUBLIC_IP', 'X-MACAddress': 'MAC_ADDRESS', 'X-PrivateKey': 'API_KEY' }, data : data }; axios(config) .then(function (response) { console.log(JSON.stringify(response.data)); }) .catch(function (error) { console.log(error); });"
+      - generic [ref=e350]:
+        - generic [ref=e351]:
+          - heading "Get Trade Book" [level=2] [ref=e352]
+          - paragraph [ref=e353]: It provides the trades for the current day
+          - heading "Get Trade Book Response" [level=4] [ref=e354]
+          - generic [ref=e355]:
+            - text: "{"
+            - text: "\"status\":true,"
+            - text: "\"message\":\"SUCCESS\","
+            - text: "\"errorcode\":\"\","
+            - text: "\"data\":[{"
+            - text: "\"exchange\":NSE,"
+            - text: "\"producttype\":DELIVERY,"
+            - text: "\"tradingsymbol\":\"ITC-EQ\","
+            - text: "\"instrumenttype\":\"\","
+            - text: "\"symbolgroup\":\"EQ\","
+            - text: "\"strikeprice\":\"-1\","
+            - text: "\"optiontype\":\"\","
+            - text: "\"expirydate\":\"\","
+            - text: "\"marketlot\":\"1\","
+            - text: "\"precision\":\"2\","
+            - text: "\"multiplier\":\"-1\","
+            - text: "\"tradevalue\":\"175.00\","
+            - text: "\"transactiontype\":\"BUY\","
+            - text: "\"fillprice\":\"175.00\","
+            - text: "\"fillsize\":\"1\","
+            - text: "\"orderid\":\"201020000000095\","
+            - text: "\"fillid\":\"50005750\","
+            - text: "\"filltime\":\"13:27:53\","
+            - text: "}]"
+            - text: "}"
+        - generic [ref=e356]:
+          - list [ref=e358]:
+            - listitem [ref=e359]:
+              - button "Python" [ref=e360] [cursor=pointer]
+            - listitem [ref=e361]:
+              - button "NodeJs" [ref=e362] [cursor=pointer]
+            - listitem [ref=e363]:
+              - button "Java" [ref=e364] [cursor=pointer]
+            - listitem [ref=e365]:
+              - button "R" [ref=e366] [cursor=pointer]
+            - listitem [ref=e367]:
+              - button "GO" [ref=e368] [cursor=pointer]
+          - code [ref=e371]: "var axios = require('axios'); var data = ''; var config = { method: 'get', url: 'https://apiconnect.angelone.in/ rest/secure/angelbroking/order/ v1/getTradeBook', headers: { 'Authorization': 'Bearer AUTHORIZATION_TOKEN', 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-UserType': 'USER', 'X-SourceID': 'WEB', 'X-ClientLocalIP': 'CLIENT_LOCAL_IP', 'X-ClientPublicIP': 'CLIENT_PUBLIC_IP', 'X-MACAddress': 'MAC_ADDRESS', 'X-PrivateKey': 'API_KEY' }, data : data }; axios(config) .then(function (response) { console.log(JSON.stringify(response.data)); }) .catch(function (error) { console.log(error); });"
+      - generic [ref=e372]:
+        - generic [ref=e373]:
+          - heading "Get LTP Data" [level=2] [ref=e374]
+          - heading "Get LTP Data Request" [level=4] [ref=e375]
+          - generic [ref=e376]:
+            - text: "{"
+            - text: "\"exchange\":\"NSE\","
+            - text: "\"tradingsymbol\":\"SBIN-EQ\""
+            - text: "\"symboltoken\":\"3045\""
+            - text: "}"
+          - heading "Get LTP Data Response" [level=4] [ref=e377]
+          - generic [ref=e378]:
+            - text: "{"
+            - text: "\"status\":true,"
+            - text: "\"message\":\"SUCCESS\","
+            - text: "\"errorcode\":\"\","
+            - text: "\"data\":{"
+            - text: "\"exchange\":\"NSE\","
+            - text: "\"tradingsymbol\":\"SBIN-EQ\","
+            - text: "\"symboltoken\":\"3045\","
+            - text: "\"open\":\"186\","
+            - text: "\"high\":\"191.25\","
+            - text: "\"low\":\"185\","
+            - text: "\"close\":\"187.80\","
+            - text: "\"ltp\":\"191\","
+            - text: "}"
+            - text: "}"
+        - code [ref=e382]: "var axios = require('axios'); var data = JSON.stringify({ \"exchange\":\"NSE\", \"tradingsymbol\":\"SBIN-EQ\", \"symboltoken\":\"3045\" }); var config = { method: 'post', url: 'https://apiconnect.angelone.in/ rest/secure/angelbroking/order/ v1/getLtpData', headers: { 'Authorization': 'Bearer AUTHORIZATION_TOKEN', 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-UserType': 'USER', 'X-SourceID': 'WEB', 'X-ClientLocalIP': 'CLIENT_LOCAL_IP', 'X-ClientPublicIP': 'CLIENT_PUBLIC_IP', 'X-MACAddress': 'MAC_ADDRESS', 'X-PrivateKey': 'API_KEY' }, data : data }; axios(config) .then(function (response) { console.log(JSON.stringify(response.data)); }) .catch(function (error) { console.log(error); });"
+      - generic [ref=e383]:
+        - generic [ref=e384]:
+          - heading "Individual Order Status" [level=2] [ref=e385]
+          - paragraph [ref=e386]: This API allows you to retrieve the status of individual orders using the "uniqueorderid" you receive in the response when placing, modifying, or canceling orders.
+          - heading "Individual Order Status Request" [level=4] [ref=e387]
+          - code [ref=e389]: https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/details/05ebf91b-bea4-4a1d-b0f2-4259606570e3
+          - heading "Individual Order Status Response" [level=4] [ref=e390]
+          - generic [ref=e391]:
+            - text: "{"
+            - text: "\"status\":true,"
+            - text: "\"message\":\"SUCCESS\","
+            - text: "\"errorcode\":\"\","
+            - text: "\"data\":{"
+            - text: "\"variety\":\"NORMAL\","
+            - text: "\"ordertype\":\"LIMIT\","
+            - text: "\"producttype\":\"DELIVERY\","
+            - text: "\"duration\":\"DAY\","
+            - text: "\"price\":2298.25,"
+            - text: "\"triggerprice\":0,"
+            - text: "\"quantity\":\"1\","
+            - text: "\"disclosedquantity\":\"0\","
+            - text: "\"squareoff\":0,"
+            - text: "\"stoploss\":0,"
+            - text: "\"trailingstoploss\":0,"
+            - text: "\"tradingsymbol\":\"RELIANCE-EQ\","
+            - text: "\"transactiontype\":\"BUY\","
+            - text: "\"exchange\":\"NSE\","
+            - text: "\"symboltoken\":\"2885\","
+            - text: "\"instrumenttype\":\"\","
+            - text: "\"strikeprice\":-1,"
+            - text: "\"optiontype\":\"\","
+            - text: "\"expirydate\":\"\","
+            - text: "\"lotsize\":\"1\","
+            - text: "\"cancelsize\":\"0\","
+            - text: "\"averageprice\":0,"
+            - text: "\"filledshares\":\"0\","
+            - text: "\"unfilledshares\":\"1\","
+            - text: "\"orderid\":\"231010000000970\","
+            - text: "\"text\":\"Your order has been rejected due to Insufficient Funds. Available funds - Rs. 937.00 . You require Rs. 2298.25 funds to execute this order.\","
+            - text: "\"status\":\"rejected\","
+            - text: "\"orderstatus\":\"rejected\","
+            - text: "\"updatetime\":\"10-Oct-2023 09:00:16\","
+            - text: "\"exchtime\":\"\","
+            - text: "\"exchorderupdatetime\":\"\","
+            - text: "\"fillid\":\"\","
+            - text: "\"filltime\":\"\","
+            - text: "\"parentorderid\":\"\","
+            - text: "\"ordertag\":\"\","
+            - text: "\"uniqueorderid\":\"05ebf91b-bea4-4a1d-b0f2-4259606570e3\""
+            - text: "}"
+            - text: "}"
+          - paragraph [ref=e392]:
+            - strong [ref=e393]: "NOTE:"
+            - list [ref=e394]:
+              - listitem [ref=e395]:
+                - strong [ref=e396]: Unique Order ID -
+                - text: This identifier will be included in the response every time you interact with our APIs, whether you're placing an order, modifying it, canceling it, or checking your order book. This unique identifier simplifies the process of tracking and managing your orders with precision.
+          - generic:
+            - generic "Previous" [ref=e397] [cursor=pointer]: 
+            - generic "Next" [ref=e398] [cursor=pointer]: 
+        - generic [ref=e399]:
+          - list [ref=e401]:
+            - listitem [ref=e402]:
+              - button "Python" [ref=e403] [cursor=pointer]
+            - listitem [ref=e404]:
+              - button "NodeJs" [ref=e405] [cursor=pointer]
+            - listitem [ref=e406]:
+              - button "Java" [ref=e407] [cursor=pointer]
+            - listitem [ref=e408]:
+              - button "R" [ref=e409] [cursor=pointer]
+            - listitem [ref=e410]:
+              - button "GO" [ref=e411] [cursor=pointer]
+          - code [ref=e414]: "var axios = require('axios'); var config = { method: 'get', url: \"https://apiconnect.angelone.in/rest /secure/angelbroking/order/v1/details/05ebf91b-bea4-4a1d-b0f2-4259606570e3\", headers: { 'X-PrivateKey': 'API_KEY', 'Accept': 'application/json, application/json', 'X-SourceID': 'WEB, WEB', 'X-ClientLocalIP': 'CLIENT_LOCAL_IP', 'X-ClientPublicIP': 'CLIENT_PUBLIC_IP', 'X-MACAddress': 'MAC_ADDRESS', 'X-UserType': 'USER', 'Authorization': 'Bearer AUTHORIZATION_TOKEN', 'Content-Type': 'application/json' }, }; axios(config) .then(function (response) { console.log(JSON.stringify(response.data)); }) .catch(function (error) { console.log(error); });"
+  - contentinfo [ref=e415]:
+    - generic [ref=e416]:
+      - generic [ref=e417]:
+        - generic [ref=e418]: Powered By
+        - img "AngelOne" [ref=e419]
+      - generic [ref=e421]: Copyright @ 2026-2027

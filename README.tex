@@ -1,0 +1,153 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{float}
+
+\geometry{margin=1in}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{\textbf{iStocks: AI-Powered Stock Analysis Platform}}
+\author{Priyanshu}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\section{Introduction}
+\textbf{iStocks} is a cutting-edge financial platform that combines real-time stock data with advanced Artificial Intelligence to provide actionable insights. Built for both novice traders and experienced investors, iStocks offers a suite of tools including AI-driven analysis, natural language database querying, and paper trading capabilities.
+
+\section{Key Features}
+
+\subsection{1. AI Stock Analysis}
+Leveraging Google's \textbf{Gemini 2.5 Pro} model, iStocks analyzes stock performance, technical indicators (RSI, MACD, SMA), and market sentiment to generate comprehensive reports.
+\begin{itemize}
+    \item \textbf{Real-time Insights:} Get up-to-the-minute analysis on any stock.
+    \item \textbf{Technical \& Fundamental Breakdowns:} Understand the \textit{why} behind the price movements.
+    \item \textbf{Buy/Sell/Hold Recommendations:} AI-generated ratings based on multiple data points.
+\end{itemize}
+
+\subsection{2. Natural Language Database Chat}
+Interact with our extensive financial database using plain English. No SQL knowledge required.
+\begin{itemize}
+    \item \textbf{Ask Questions:} "Show me companies with PE ratio less than 20 and revenue growth over 15\%."
+    \item \textbf{Comparisons:} "Compare HDFCBANK and ICICIBANK profitability."
+    \item \textbf{Context Aware:} The AI remembers your conversation history for follow-up questions.
+\end{itemize}
+
+\subsection{3. Real-Time Data Streaming}
+Access live stock prices via our high-performance WebSocket architecture hosted on AWS EC2.
+\begin{itemize}
+    \item \textbf{Low Latency:} Millisecond-level updates for tracked stocks.
+    \item \textbf{Market Breadth:} Covers major indices (NIFTY 50) and top traded stocks.
+\end{itemize}
+
+\subsection{4. Sangraha (Collections)}
+Curated lists of stocks based on specific themes or strategies.
+\begin{itemize}
+    \item \textbf{Theme-based investing:} Find stocks in sectors like EV, Green Energy, AI, etc.
+    \item \textbf{Expert Picks:} Collections managed by financial experts.
+\end{itemize}
+
+\section{Getting Started}
+
+\subsection{Prerequisites}
+\begin{itemize}
+    \item Node.js (v18 or higher)
+    \item Python (v3.10 or higher)
+    \item PostgreSQL Database
+    \item API Keys: Angel One (for data), Google Gemini (for AI)
+\end{itemize}
+
+\subsection{Installation}
+
+1. \textbf{Clone the Repository}
+\begin{lstlisting}[language=bash]
+git clone https://github.com/yourusername/istocks-p.git
+cd stocks-p
+\end{lstlisting}
+
+2. \textbf{Install Dependencies}
+\begin{lstlisting}[language=bash]
+# Frontend
+npm install
+
+# Backend Scripts
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+\end{lstlisting}
+
+3. \textbf{Configure Environment}
+Create a `.env` file in the root directory:
+\begin{lstlisting}
+DATABASE_URL = os.getenv("DATABASE_URL")
+GEMINI_API_KEY="your_api_key"
+ANGELONE_API_KEY="your_angel_key"
+\end{lstlisting}
+
+4. \textbf{Run the Application}
+\begin{lstlisting}[language=bash]
+npm run dev
+\end{lstlisting}
+Access the platform at \texttt{http://localhost:3000}.
+
+\section{Usage Guide}
+
+\subsection{analyzing a Stock}
+Navigate to the dashboard and search for a stock symbol (e.g., "RELIANCE"). Click on the stock card to view the detailed analysis page. The AI report will generate automatically.
+
+\subsection{Using Database Chat}
+Go to the "Database Chat" page. Type your query in the input box. For example:
+\begin{quote}
+    "List top 5 IT companies by market cap."
+\end{quote}
+The system will generate the SQL query, fetch the data, and present it in a readable table or chart.
+
+\section{Technical Architecture}
+\begin{itemize}
+    \item \textbf{Frontend:} Next.js 14 (App Router), Tailwind CSS, Framer Motion
+    \item \textbf{Backend:} Next.js API Routes, Python (Data Fetching)
+    \item \textbf{Database:} PostgreSQL (Azure) with Prisma ORM
+    \item \textbf{Live Server:} Python FastAPI + WebSockets (hosted on AWS EC2)
+    \item \textbf{AI Engine:} Google Gemini 2.5 Pro via Vercel AI SDK
+\end{itemize}
+
+\section{License}
+Distributed under the MIT License. See \texttt{LICENSE} for more information.
+
+\end{document}

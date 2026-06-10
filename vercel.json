@@ -1,0 +1,25 @@
+{
+    "buildCommand": "npm run build",
+    "installCommand": "npm ci",
+    "framework": "nextjs",
+    "crons": [
+        {
+            "path": "/api/cron/update-stocks",
+            "schedule": "5 10 * * 1-5"
+        },
+        {
+            "path": "/api/cron/generate-daily-stock-selection",
+            "schedule": "30 10 * * 1-5"
+        },
+        {
+            "path": "/api/cron/process-pending-trades",
+            "schedule": "5 9 * * 1-5"
+        }
+    ],
+    "rewrites": [
+        {
+            "source": "/auth/signin",
+            "destination": "/login"
+        }
+    ]
+}

@@ -1,0 +1,168 @@
+- generic [ref=e6]:
+  - banner [ref=e7]:
+    - link "SmartAPI logo" [ref=e9] [cursor=pointer]:
+      - /url: "#"
+      - img "SmartAPI logo" [ref=e10]
+    - text: 
+    - navigation [ref=e11]:
+      - list [ref=e13]:
+        - listitem [ref=e14]:
+          - link "API Documentation" [ref=e15] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e16]:
+          - link "Enable TOTP" [ref=e17] [cursor=pointer]:
+            - /url: /enable-totp
+        - listitem [ref=e18]:
+          - link "Forum" [ref=e19] [cursor=pointer]:
+            - /url: https://smartapi.angelbroking.com/smartapi/forum
+        - listitem [ref=e20]:
+          - link "FAQ" [ref=e21] [cursor=pointer]:
+            - /url: /faq
+        - listitem [ref=e22]:
+          - link "Login" [ref=e23] [cursor=pointer]:
+            - /url: https://smartapi.angelone.in/publisher-login/v2/login
+  - generic [ref=e24]:
+    - list [ref=e26]:
+      - listitem [ref=e27]:
+        - link "API Documentation" [ref=e28] [cursor=pointer]:
+          - /url: "#"
+      - listitem [ref=e29]:
+        - link "Introduction" [ref=e30] [cursor=pointer]:
+          - /url: /docs/Introduction
+      - listitem [ref=e31]:
+        - link "Response structure" [ref=e32] [cursor=pointer]:
+          - /url: /docs/ResponseStructure
+      - listitem [ref=e33]:
+        - link "Error Codes" [ref=e34] [cursor=pointer]:
+          - /url: /docs/Exceptions
+      - listitem [ref=e35]:
+        - link "User" [ref=e36] [cursor=pointer]:
+          - /url: /docs/User
+        - list:
+          - listitem [ref=e37]:
+            - link "Login Flow" [ref=e38] [cursor=pointer]:
+              - /url: "#flow"
+          - listitem [ref=e39]:
+            - link "Authentication with Angel" [ref=e40] [cursor=pointer]:
+              - /url: "#Authenticate"
+          - listitem [ref=e41]:
+            - link "Generate Token" [ref=e42] [cursor=pointer]:
+              - /url: "#Generate"
+          - listitem [ref=e43]:
+            - link "Get Profile" [ref=e44] [cursor=pointer]:
+              - /url: "#Profile"
+          - listitem [ref=e45]:
+            - link "Funds and Margins" [ref=e46] [cursor=pointer]:
+              - /url: "#Funds"
+          - listitem [ref=e47]:
+            - link "Logout" [ref=e48] [cursor=pointer]:
+              - /url: "#logout"
+      - listitem [ref=e49]:
+        - link "GTT" [ref=e50] [cursor=pointer]:
+          - /url: /docs/Gtt
+        - list:
+          - listitem [ref=e51]:
+            - link "Create Rule" [ref=e52] [cursor=pointer]:
+              - /url: "#gttcreate"
+          - listitem [ref=e53]:
+            - link "Modify Rule" [ref=e54] [cursor=pointer]:
+              - /url: "#gttmodify"
+          - listitem [ref=e55]:
+            - link "Cancel Rule" [ref=e56] [cursor=pointer]:
+              - /url: "#gttcancel"
+          - listitem [ref=e57]:
+            - link "Rule Details" [ref=e58] [cursor=pointer]:
+              - /url: "#gttruledetails"
+          - listitem [ref=e59]:
+            - link "Rule List" [ref=e60] [cursor=pointer]:
+              - /url: "#gttrulelist"
+      - listitem [ref=e61]:
+        - link "Orders" [ref=e62] [cursor=pointer]:
+          - /url: /docs/Orders
+        - list:
+          - listitem [ref=e63]:
+            - link "Place Order" [ref=e64] [cursor=pointer]:
+              - /url: "#place"
+          - listitem [ref=e65]:
+            - link "Modify Order" [ref=e66] [cursor=pointer]:
+              - /url: "#modifyorder"
+          - listitem [ref=e67]:
+            - link "Cancel Order" [ref=e68] [cursor=pointer]:
+              - /url: "#cancelorder"
+          - listitem [ref=e69]:
+            - link "Get Order Book" [ref=e70] [cursor=pointer]:
+              - /url: "#orderbook"
+          - listitem [ref=e71]:
+            - link "Get Trade Book" [ref=e72] [cursor=pointer]:
+              - /url: "#trade"
+          - listitem [ref=e73]:
+            - link "Get LTP Data" [ref=e74] [cursor=pointer]:
+              - /url: "#ltp"
+          - listitem [ref=e75]:
+            - link "Individual Order Status" [ref=e76] [cursor=pointer]:
+              - /url: "#indorder"
+      - listitem [ref=e77]:
+        - link "Brokerage Calculator API" [ref=e78] [cursor=pointer]:
+          - /url: /docs/BrokerageCalculator
+      - listitem [ref=e79]:
+        - link "Portfolio" [ref=e80] [cursor=pointer]:
+          - /url: /docs/Portfolio
+        - list:
+          - listitem [ref=e81]:
+            - link "Get Holding" [ref=e82] [cursor=pointer]:
+              - /url: "#holding"
+          - listitem [ref=e83]:
+            - link "Get All Holding" [ref=e84] [cursor=pointer]:
+              - /url: "#allholding"
+          - listitem [ref=e85]:
+            - link "Get Position" [ref=e86] [cursor=pointer]:
+              - /url: "#position"
+          - listitem [ref=e87]:
+            - link "Convert Position" [ref=e88] [cursor=pointer]:
+              - /url: "#convert"
+      - listitem [ref=e89]:
+        - link "EDIS API" [ref=e90] [cursor=pointer]:
+          - /url: /docs/Edis
+      - listitem [ref=e91]:
+        - link "Postback" [ref=e92] [cursor=pointer]:
+          - /url: /docs/Postback
+      - listitem [ref=e93]:
+        - link "Margin Calculator" [ref=e94] [cursor=pointer]:
+          - /url: /docs/MarginCalculator
+      - listitem [ref=e95]:
+        - link "Market Data API" [ref=e96] [cursor=pointer]:
+          - /url: /docs/MarketData
+      - listitem [ref=e97]:
+        - link "Option Greeks" [ref=e98] [cursor=pointer]:
+          - /url: /docs/OptionGreeks
+      - listitem [ref=e99]:
+        - link "Top Gainers / Losers" [ref=e100] [cursor=pointer]:
+          - /url: /docs/TopGainers
+      - listitem [ref=e101]:
+        - link "Historical API" [ref=e102] [cursor=pointer]:
+          - /url: /docs/Historical
+      - listitem [ref=e103]:
+        - link "WebSocket Streaming 2.0" [ref=e104] [cursor=pointer]:
+          - /url: /docs/WebSocket2
+      - listitem [ref=e105]:
+        - link "WebSocket Order Status" [ref=e106] [cursor=pointer]:
+          - /url: /docs/WebSocketOrderStatus
+      - listitem [ref=e107]:
+        - link "Instruments" [ref=e108] [cursor=pointer]:
+          - /url: /docs/Instruments
+      - listitem [ref=e109]:
+        - link "RateLimit" [ref=e110] [cursor=pointer]:
+          - /url: /docs/RateLimit
+    - generic [ref=e116]:
+      - heading "Introduction" [level=1] [ref=e117]
+      - paragraph [ref=e118]: SmartAPI is an API which provides a set of REST-like HTTP APIs that provide several required capabilities to build a trading algo. It allows you execute orders in real time (equities, commodities), manage user portfolios, stream live market data over WebSockets, and more.
+      - paragraph [ref=e119]: All inputs request and response are in JSON format. Standard HTTP codes are used to indicate success and error states accompanied with JSON data. The API endpoints are cross site request enabled, hence can be called directly from browsers.
+      - heading "Root API endpoint" [level=3] [ref=e120]
+      - generic [ref=e121]: https://apiconnect.angelone.in
+      - generic "Next" [ref=e122] [cursor=pointer]: 
+  - contentinfo [ref=e123]:
+    - generic [ref=e124]:
+      - generic [ref=e125]:
+        - generic [ref=e126]: Powered By
+        - img "AngelOne" [ref=e127]
+      - generic [ref=e129]: Copyright @ 2026-2027

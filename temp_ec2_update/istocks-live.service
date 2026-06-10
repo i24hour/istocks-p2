@@ -1,0 +1,19 @@
+[Unit]
+Description=iStocks Live Price Server
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/istocks-live
+ExecStart=/home/ubuntu/istocks-live/venv/bin/python main.py
+Restart=always
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+
+# Logging
+StandardOutput=append:/var/log/istocks-live.log
+StandardError=append:/var/log/istocks-live.log
+
+[Install]
+WantedBy=multi-user.target

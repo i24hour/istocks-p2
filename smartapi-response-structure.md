@@ -1,0 +1,230 @@
+- generic [ref=e6]:
+  - banner [ref=e7]:
+    - link "SmartAPI logo" [ref=e9] [cursor=pointer]:
+      - /url: "#"
+      - img "SmartAPI logo" [ref=e10]
+    - text: 
+    - navigation [ref=e11]:
+      - list [ref=e13]:
+        - listitem [ref=e14]:
+          - link "API Documentation" [ref=e15] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e16]:
+          - link "Enable TOTP" [ref=e17] [cursor=pointer]:
+            - /url: /enable-totp
+        - listitem [ref=e18]:
+          - link "Forum" [ref=e19] [cursor=pointer]:
+            - /url: https://smartapi.angelbroking.com/smartapi/forum
+        - listitem [ref=e20]:
+          - link "FAQ" [ref=e21] [cursor=pointer]:
+            - /url: /faq
+        - listitem [ref=e22]:
+          - link "Login" [ref=e23] [cursor=pointer]:
+            - /url: https://smartapi.angelone.in/publisher-login/v2/login
+  - generic [ref=e24]:
+    - list [ref=e26]:
+      - listitem [ref=e27]:
+        - link "API Documentation" [ref=e28] [cursor=pointer]:
+          - /url: "#"
+      - listitem [ref=e29]:
+        - link "Introduction" [ref=e30] [cursor=pointer]:
+          - /url: /docs/Introduction
+      - listitem [ref=e31]:
+        - link "Response structure" [ref=e32] [cursor=pointer]:
+          - /url: /docs/ResponseStructure
+      - listitem [ref=e33]:
+        - link "Error Codes" [ref=e34] [cursor=pointer]:
+          - /url: /docs/Exceptions
+      - listitem [ref=e35]:
+        - link "User" [ref=e36] [cursor=pointer]:
+          - /url: /docs/User
+        - list:
+          - listitem [ref=e37]:
+            - link "Login Flow" [ref=e38] [cursor=pointer]:
+              - /url: "#flow"
+          - listitem [ref=e39]:
+            - link "Authentication with Angel" [ref=e40] [cursor=pointer]:
+              - /url: "#Authenticate"
+          - listitem [ref=e41]:
+            - link "Generate Token" [ref=e42] [cursor=pointer]:
+              - /url: "#Generate"
+          - listitem [ref=e43]:
+            - link "Get Profile" [ref=e44] [cursor=pointer]:
+              - /url: "#Profile"
+          - listitem [ref=e45]:
+            - link "Funds and Margins" [ref=e46] [cursor=pointer]:
+              - /url: "#Funds"
+          - listitem [ref=e47]:
+            - link "Logout" [ref=e48] [cursor=pointer]:
+              - /url: "#logout"
+      - listitem [ref=e49]:
+        - link "GTT" [ref=e50] [cursor=pointer]:
+          - /url: /docs/Gtt
+        - list:
+          - listitem [ref=e51]:
+            - link "Create Rule" [ref=e52] [cursor=pointer]:
+              - /url: "#gttcreate"
+          - listitem [ref=e53]:
+            - link "Modify Rule" [ref=e54] [cursor=pointer]:
+              - /url: "#gttmodify"
+          - listitem [ref=e55]:
+            - link "Cancel Rule" [ref=e56] [cursor=pointer]:
+              - /url: "#gttcancel"
+          - listitem [ref=e57]:
+            - link "Rule Details" [ref=e58] [cursor=pointer]:
+              - /url: "#gttruledetails"
+          - listitem [ref=e59]:
+            - link "Rule List" [ref=e60] [cursor=pointer]:
+              - /url: "#gttrulelist"
+      - listitem [ref=e61]:
+        - link "Orders" [ref=e62] [cursor=pointer]:
+          - /url: /docs/Orders
+        - list:
+          - listitem [ref=e63]:
+            - link "Place Order" [ref=e64] [cursor=pointer]:
+              - /url: "#place"
+          - listitem [ref=e65]:
+            - link "Modify Order" [ref=e66] [cursor=pointer]:
+              - /url: "#modifyorder"
+          - listitem [ref=e67]:
+            - link "Cancel Order" [ref=e68] [cursor=pointer]:
+              - /url: "#cancelorder"
+          - listitem [ref=e69]:
+            - link "Get Order Book" [ref=e70] [cursor=pointer]:
+              - /url: "#orderbook"
+          - listitem [ref=e71]:
+            - link "Get Trade Book" [ref=e72] [cursor=pointer]:
+              - /url: "#trade"
+          - listitem [ref=e73]:
+            - link "Get LTP Data" [ref=e74] [cursor=pointer]:
+              - /url: "#ltp"
+          - listitem [ref=e75]:
+            - link "Individual Order Status" [ref=e76] [cursor=pointer]:
+              - /url: "#indorder"
+      - listitem [ref=e77]:
+        - link "Brokerage Calculator API" [ref=e78] [cursor=pointer]:
+          - /url: /docs/BrokerageCalculator
+      - listitem [ref=e79]:
+        - link "Portfolio" [ref=e80] [cursor=pointer]:
+          - /url: /docs/Portfolio
+        - list:
+          - listitem [ref=e81]:
+            - link "Get Holding" [ref=e82] [cursor=pointer]:
+              - /url: "#holding"
+          - listitem [ref=e83]:
+            - link "Get All Holding" [ref=e84] [cursor=pointer]:
+              - /url: "#allholding"
+          - listitem [ref=e85]:
+            - link "Get Position" [ref=e86] [cursor=pointer]:
+              - /url: "#position"
+          - listitem [ref=e87]:
+            - link "Convert Position" [ref=e88] [cursor=pointer]:
+              - /url: "#convert"
+      - listitem [ref=e89]:
+        - link "EDIS API" [ref=e90] [cursor=pointer]:
+          - /url: /docs/Edis
+      - listitem [ref=e91]:
+        - link "Postback" [ref=e92] [cursor=pointer]:
+          - /url: /docs/Postback
+      - listitem [ref=e93]:
+        - link "Margin Calculator" [ref=e94] [cursor=pointer]:
+          - /url: /docs/MarginCalculator
+      - listitem [ref=e95]:
+        - link "Market Data API" [ref=e96] [cursor=pointer]:
+          - /url: /docs/MarketData
+      - listitem [ref=e97]:
+        - link "Option Greeks" [ref=e98] [cursor=pointer]:
+          - /url: /docs/OptionGreeks
+      - listitem [ref=e99]:
+        - link "Top Gainers / Losers" [ref=e100] [cursor=pointer]:
+          - /url: /docs/TopGainers
+      - listitem [ref=e101]:
+        - link "Historical API" [ref=e102] [cursor=pointer]:
+          - /url: /docs/Historical
+      - listitem [ref=e103]:
+        - link "WebSocket Streaming 2.0" [ref=e104] [cursor=pointer]:
+          - /url: /docs/WebSocket2
+      - listitem [ref=e105]:
+        - link "WebSocket Order Status" [ref=e106] [cursor=pointer]:
+          - /url: /docs/WebSocketOrderStatus
+      - listitem [ref=e107]:
+        - link "Instruments" [ref=e108] [cursor=pointer]:
+          - /url: /docs/Instruments
+      - listitem [ref=e109]:
+        - link "RateLimit" [ref=e110] [cursor=pointer]:
+          - /url: /docs/RateLimit
+    - generic [ref=e115]:
+      - heading "Response structure" [level=1] [ref=e116]
+      - paragraph [ref=e117]: All POST request parameters as application/json parameters, responses from the API are always JSON.
+      - heading "Successful response" [level=4] [ref=e118]
+      - generic [ref=e119]:
+        - text: "{"
+        - text: "\"status\":true,"
+        - text: "\"message\":\"SUCCESS\","
+        - text: "\"errorcode\":\"\","
+        - text: "\"data\":{}"
+        - text: "}"
+      - paragraph [ref=e120]: All responses from the API server are JSON with the content-type application/json unless explicitly stated otherwise. A successful 200 OK response always has a JSON response body with a status key with the value success. The data key contains the full response payload.
+      - heading "Failed response" [level=4] [ref=e121]
+      - generic [ref=e122]:
+        - text: "{"
+        - text: "\"status\":\"false\","
+        - text: "\"message\":\"Login Id or password is invalid\","
+        - text: "\"errorcode\":\"AB1007\","
+        - text: "\"data\":\"null\""
+        - text: "}"
+      - paragraph [ref=e123]: The status key in the response envelope contains the value false. The errorcode contains the error-code of the error or exception and message key contains a textual description of the error.
+      - heading "Header Parameters" [level=2] [ref=e124]
+      - paragraph [ref=e125]: Each and every post method must contain the headers as below table.
+      - table [ref=e127]:
+        - rowgroup [ref=e128]:
+          - row "Param Value Description" [ref=e129]:
+            - columnheader "Param" [ref=e130]
+            - columnheader "Value" [ref=e131]
+            - columnheader "Description" [ref=e132]
+        - rowgroup [ref=e133]:
+          - row "Content -Type application/json application/json" [ref=e134]:
+            - cell "Content -Type" [ref=e135]
+            - cell "application/json" [ref=e136]
+            - cell "application/json" [ref=e137]
+          - row "X-ClientLocalI P CLIENT_LOCAL_IP System Local IP Address" [ref=e138]:
+            - cell "X-ClientLocalI P" [ref=e139]
+            - cell "CLIENT_LOCAL_IP" [ref=e140]
+            - cell "System Local IP Address" [ref=e141]
+          - row "X-ClientPublic IP CLIENT_PUBLIC_IP Public IP Address" [ref=e142]:
+            - cell "X-ClientPublic IP" [ref=e143]
+            - cell "CLIENT_PUBLIC_IP" [ref=e144]
+            - cell "Public IP Address" [ref=e145]
+          - row "X-MACAddress MAC_ADDRESS System Mac Address" [ref=e146]:
+            - cell "X-MACAddress" [ref=e147]
+            - cell "MAC_ADDRESS" [ref=e148]
+            - cell "System Mac Address" [ref=e149]
+          - row "Accept application/json application/json" [ref=e150]:
+            - cell "Accept" [ref=e151]
+            - cell "application/json" [ref=e152]
+            - cell "application/json" [ref=e153]
+          - row "X-PrivateKey api_key API KEY generated by SmartAPI app" [ref=e154]:
+            - cell "X-PrivateKey" [ref=e155]
+            - cell "api_key" [ref=e156]
+            - cell "API KEY generated by SmartAPI app" [ref=e157]
+          - row "X-UserType USER Must be USER" [ref=e158]:
+            - cell "X-UserType" [ref=e159]
+            - cell "USER" [ref=e160]
+            - cell "Must be USER" [ref=e161]
+          - row "X-SourceID WEB Must be WEB" [ref=e162]:
+            - cell "X-SourceID" [ref=e163]
+            - cell "WEB" [ref=e164]
+            - cell "Must be WEB" [ref=e165]
+          - row "Authorization Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2... It is used in all API’s excluding loginByPassword API. It is JWT token always start with “Bearer ”" [ref=e166]:
+            - cell "Authorization" [ref=e167]
+            - cell "Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2..." [ref=e168]
+            - cell "It is used in all API’s excluding loginByPassword API. It is JWT token always start with “Bearer ”" [ref=e169]
+      - generic:
+        - generic "Previous" [ref=e170] [cursor=pointer]: 
+        - generic "Next" [ref=e171] [cursor=pointer]: 
+  - contentinfo [ref=e172]:
+    - generic [ref=e173]:
+      - generic [ref=e174]:
+        - generic [ref=e175]: Powered By
+        - img "AngelOne" [ref=e176]
+      - generic [ref=e178]: Copyright @ 2026-2027

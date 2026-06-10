@@ -1,0 +1,32 @@
+[dotenv@17.2.3] injecting env (8) from .env.local -- tip: 🔄 add secrets lifecycle management: https://dotenvx.com/ops
+🚀 Starting database export...
+
+📊 Exporting Stocks table...
+✅ Exported 1 stocks to exports/stocks.csv
+
+🔗 Exporting WIPRO price data with all indicators...
+⏳ This will take a few minutes for 840K records...
+📊 Total records in database: 840,163
+❌ Error exporting database: PrismaClientKnownRequestError: 
+Invalid `prisma.stockPrice.findMany()` invocation in
+/Users/priyanshu/Desktop/Desktop/Github/istocks-p/scripts/export-to-csv.js:84:55
+
+  81 const totalPrices = await prisma.stockPrice.count()
+  82 console.log(`📊 Total records in database: ${totalPrices.toLocaleString()}`)
+  83 
+→ 84 const pricesWithSymbols = await prisma.stockPrice.findMany(
+Failed to convert rust `String` into napi `string`
+    at $n.handleRequestError (/Users/priyanshu/Desktop/Desktop/Github/istocks-p/node_modules/@prisma/client/runtime/library.js:121:7315)
+    at $n.handleAndLogRequestError (/Users/priyanshu/Desktop/Desktop/Github/istocks-p/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/priyanshu/Desktop/Desktop/Github/istocks-p/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/priyanshu/Desktop/Desktop/Github/istocks-p/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async exportDatabase (/Users/priyanshu/Desktop/Desktop/Github/istocks-p/scripts/export-to-csv.js:84:31) {
+  code: 'GenericFailure',
+  clientVersion: '5.22.0',
+  meta: { modelName: 'StockPrice' }
+}
+
+❌ Export script failed: [Error: Failed to convert rust `String` into napi `string`] {
+  code: 'GenericFailure',
+  clientVersion: '5.22.0'
+}

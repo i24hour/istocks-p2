@@ -1,0 +1,358 @@
+- generic [ref=e6]:
+  - banner [ref=e7]:
+    - link "SmartAPI logo" [ref=e9] [cursor=pointer]:
+      - /url: "#"
+      - img "SmartAPI logo" [ref=e10]
+    - text: 
+    - navigation [ref=e11]:
+      - list [ref=e13]:
+        - listitem [ref=e14]:
+          - link "API Documentation" [ref=e15] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e16]:
+          - link "Enable TOTP" [ref=e17] [cursor=pointer]:
+            - /url: /enable-totp
+        - listitem [ref=e18]:
+          - link "Forum" [ref=e19] [cursor=pointer]:
+            - /url: https://smartapi.angelbroking.com/smartapi/forum
+        - listitem [ref=e20]:
+          - link "FAQ" [ref=e21] [cursor=pointer]:
+            - /url: /faq
+        - listitem [ref=e22]:
+          - link "Login" [ref=e23] [cursor=pointer]:
+            - /url: https://smartapi.angelone.in/publisher-login/v2/login
+  - generic [ref=e24]:
+    - list [ref=e26]:
+      - listitem [ref=e27]:
+        - link "API Documentation" [ref=e28] [cursor=pointer]:
+          - /url: "#"
+      - listitem [ref=e29]:
+        - link "Introduction" [ref=e30] [cursor=pointer]:
+          - /url: /docs/Introduction
+      - listitem [ref=e31]:
+        - link "Response structure" [ref=e32] [cursor=pointer]:
+          - /url: /docs/ResponseStructure
+      - listitem [ref=e33]:
+        - link "Error Codes" [ref=e34] [cursor=pointer]:
+          - /url: /docs/Exceptions
+      - listitem [ref=e35]:
+        - link "User" [ref=e36] [cursor=pointer]:
+          - /url: /docs/User
+        - list [ref=e37]:
+          - listitem [ref=e38]:
+            - link "Login Flow" [ref=e39] [cursor=pointer]:
+              - /url: "#flow"
+          - listitem [ref=e40]:
+            - link "Authentication with Angel" [ref=e41] [cursor=pointer]:
+              - /url: "#Authenticate"
+          - listitem [ref=e42]:
+            - link "Generate Token" [ref=e43] [cursor=pointer]:
+              - /url: "#Generate"
+          - listitem [ref=e44]:
+            - link "Get Profile" [ref=e45] [cursor=pointer]:
+              - /url: "#Profile"
+          - listitem [ref=e46]:
+            - link "Funds and Margins" [ref=e47] [cursor=pointer]:
+              - /url: "#Funds"
+          - listitem [ref=e48]:
+            - link "Logout" [ref=e49] [cursor=pointer]:
+              - /url: "#logout"
+      - listitem [ref=e50]:
+        - link "GTT" [ref=e51] [cursor=pointer]:
+          - /url: /docs/Gtt
+        - list:
+          - listitem [ref=e52]:
+            - link "Create Rule" [ref=e53] [cursor=pointer]:
+              - /url: "#gttcreate"
+          - listitem [ref=e54]:
+            - link "Modify Rule" [ref=e55] [cursor=pointer]:
+              - /url: "#gttmodify"
+          - listitem [ref=e56]:
+            - link "Cancel Rule" [ref=e57] [cursor=pointer]:
+              - /url: "#gttcancel"
+          - listitem [ref=e58]:
+            - link "Rule Details" [ref=e59] [cursor=pointer]:
+              - /url: "#gttruledetails"
+          - listitem [ref=e60]:
+            - link "Rule List" [ref=e61] [cursor=pointer]:
+              - /url: "#gttrulelist"
+      - listitem [ref=e62]:
+        - link "Orders" [ref=e63] [cursor=pointer]:
+          - /url: /docs/Orders
+        - list:
+          - listitem [ref=e64]:
+            - link "Place Order" [ref=e65] [cursor=pointer]:
+              - /url: "#place"
+          - listitem [ref=e66]:
+            - link "Modify Order" [ref=e67] [cursor=pointer]:
+              - /url: "#modifyorder"
+          - listitem [ref=e68]:
+            - link "Cancel Order" [ref=e69] [cursor=pointer]:
+              - /url: "#cancelorder"
+          - listitem [ref=e70]:
+            - link "Get Order Book" [ref=e71] [cursor=pointer]:
+              - /url: "#orderbook"
+          - listitem [ref=e72]:
+            - link "Get Trade Book" [ref=e73] [cursor=pointer]:
+              - /url: "#trade"
+          - listitem [ref=e74]:
+            - link "Get LTP Data" [ref=e75] [cursor=pointer]:
+              - /url: "#ltp"
+          - listitem [ref=e76]:
+            - link "Individual Order Status" [ref=e77] [cursor=pointer]:
+              - /url: "#indorder"
+      - listitem [ref=e78]:
+        - link "Brokerage Calculator API" [ref=e79] [cursor=pointer]:
+          - /url: /docs/BrokerageCalculator
+      - listitem [ref=e80]:
+        - link "Portfolio" [ref=e81] [cursor=pointer]:
+          - /url: /docs/Portfolio
+        - list:
+          - listitem [ref=e82]:
+            - link "Get Holding" [ref=e83] [cursor=pointer]:
+              - /url: "#holding"
+          - listitem [ref=e84]:
+            - link "Get All Holding" [ref=e85] [cursor=pointer]:
+              - /url: "#allholding"
+          - listitem [ref=e86]:
+            - link "Get Position" [ref=e87] [cursor=pointer]:
+              - /url: "#position"
+          - listitem [ref=e88]:
+            - link "Convert Position" [ref=e89] [cursor=pointer]:
+              - /url: "#convert"
+      - listitem [ref=e90]:
+        - link "EDIS API" [ref=e91] [cursor=pointer]:
+          - /url: /docs/Edis
+      - listitem [ref=e92]:
+        - link "Postback" [ref=e93] [cursor=pointer]:
+          - /url: /docs/Postback
+      - listitem [ref=e94]:
+        - link "Margin Calculator" [ref=e95] [cursor=pointer]:
+          - /url: /docs/MarginCalculator
+      - listitem [ref=e96]:
+        - link "Market Data API" [ref=e97] [cursor=pointer]:
+          - /url: /docs/MarketData
+      - listitem [ref=e98]:
+        - link "Option Greeks" [ref=e99] [cursor=pointer]:
+          - /url: /docs/OptionGreeks
+      - listitem [ref=e100]:
+        - link "Top Gainers / Losers" [ref=e101] [cursor=pointer]:
+          - /url: /docs/TopGainers
+      - listitem [ref=e102]:
+        - link "Historical API" [ref=e103] [cursor=pointer]:
+          - /url: /docs/Historical
+      - listitem [ref=e104]:
+        - link "WebSocket Streaming 2.0" [ref=e105] [cursor=pointer]:
+          - /url: /docs/WebSocket2
+      - listitem [ref=e106]:
+        - link "WebSocket Order Status" [ref=e107] [cursor=pointer]:
+          - /url: /docs/WebSocketOrderStatus
+      - listitem [ref=e108]:
+        - link "Instruments" [ref=e109] [cursor=pointer]:
+          - /url: /docs/Instruments
+      - listitem [ref=e110]:
+        - link "RateLimit" [ref=e111] [cursor=pointer]:
+          - /url: /docs/RateLimit
+    - generic [ref=e114]:
+      - generic [ref=e116]:
+        - heading "User" [level=1] [ref=e117]
+        - heading "Login Flow" [level=2] [ref=e118]
+        - paragraph [ref=e119]: "The login flow starts by navigating to the public SmartAPI login endpoint:"
+        - generic [ref=e120]: https://smartapi.angelone.in/publisher-login?api_key=xxx&redirect_url=yyy&state=statevariable
+        - paragraph [ref=e121]: After successful login, user gets redirected to the URL specified under MyApps. With the URL we pass auth_token & feed_token as query parameters.
+        - table [ref=e123]:
+          - rowgroup [ref=e124]:
+            - row "Request Type APIs Endpoint Description" [ref=e125]:
+              - columnheader "Request Type" [ref=e126]
+              - columnheader "APIs" [ref=e127]
+              - columnheader "Endpoint" [ref=e128]
+              - columnheader "Description" [ref=e129]
+          - rowgroup [ref=e130]:
+            - row "POST Authenticate with Angel https://apiconnect.angelone.in/rest/auth/angelbroking/user/v1/loginByPassword Authenticate with Angel Login Credential" [ref=e131]:
+              - cell "POST" [ref=e132]
+              - cell "Authenticate with Angel" [ref=e133]
+              - cell "https://apiconnect.angelone.in/rest/auth/angelbroking/user/v1/loginByPassword" [ref=e134]
+              - cell "Authenticate with Angel Login Credential" [ref=e135]
+            - row "POST Generate Token https://apiconnect.angelone.in/rest/auth/angelbroking/jwt/v1/generateTokens Generate jwt token on expire" [ref=e136]:
+              - cell "POST" [ref=e137]
+              - cell "Generate Token" [ref=e138]
+              - cell "https://apiconnect.angelone.in/rest/auth/angelbroking/jwt/v1/generateTokens" [ref=e139]
+              - cell "Generate jwt token on expire" [ref=e140]
+            - row "GET Get Profile https://apiconnect.angelone.in/rest/secure/angelbroking/user/v1/getProfile Retrieve the user profile" [ref=e141]:
+              - cell "GET" [ref=e142]
+              - cell "Get Profile" [ref=e143]
+              - cell "https://apiconnect.angelone.in/rest/secure/angelbroking/user/v1/getProfile" [ref=e144]
+              - cell "Retrieve the user profile" [ref=e145]
+      - generic [ref=e147]:
+        - generic [ref=e148]:
+          - heading "Authentication with Angel (Login Services)" [level=2] [ref=e149]
+          - paragraph [ref=e150]: You can authenticate to get APIs trading access using AngelOne Ltd. Account Id. In order to login, you need a client code, valid pin and TOTP. The session established via SmartAPI remains active till 12 midnight, unless the user chooses to log out.
+          - heading "Login Request" [level=3] [ref=e151]
+          - generic [ref=e152]:
+            - text: "{"
+            - text: "\"clientcode\":\"Your_client_code\","
+            - text: "\"password\":\"Your_pin\","
+            - text: "\"totp\":\"enter_the_code_displayed_on_your_authenticator_app\","
+            - text: "\"state\":\"state_or_environment_variable\""
+            - text: "}"
+          - paragraph [ref=e153]: "Note: State variable is an optional parameter that is used in specific use cases. It is either passed in the request body of the login API as a key value pair or as a query parameter in the publisher login URL. It accepts a string and returns the same string in response."
+          - heading "Login Response" [level=3] [ref=e154]
+          - generic [ref=e155]:
+            - text: "{"
+            - text: "\"status\":true,"
+            - text: "\"message\":\"SUCCESS\","
+            - text: "\"errorcode\":\"\","
+            - text: "\"data\":"
+            - generic [ref=e156]:
+              - text: "{"
+              - text: "\"jwtToken\":\"eyJhbGciOiJIUzUxMiJ9.eyJzdWI...\","
+              - text: "\"refreshToken\":\"eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE1OTk0ODkwMz...\","
+              - text: "\"feedToken\":\"eyJhbGciOiJIUzUxMiJ9.eyJ1c2Vy…\""
+              - text: "\"state\":\"live\""
+              - text: "}"
+            - text: "}"
+          - heading "Note:- As a best practice we suggest the user to logout everyday after their activity." [level=4] [ref=e157]
+        - code [ref=e161]: "var axios = require('axios'); var data = JSON.stringify({ \"clientcode\":\"CLIENT_ID\", \"password\":\"CLIENT_PIN\", \"totp\":\"TOTP_CODE\", \"state\":\"STATE_VARIABLE\" }); var config = { method: 'post', url: 'https://apiconnect.angelone.in/ /rest/auth/angelbroking/user/ v1/loginByPassword', headers : { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-UserType': 'USER', 'X-SourceID': 'WEB', 'X-ClientLocalIP': 'CLIENT_LOCAL_IP', 'X-ClientPublicIP': 'CLIENT_PUBLIC_IP', 'X-MACAddress': 'MAC_ADDRESS', 'X-PrivateKey': 'API_KEY' } data : data }; axios(config) .then(function (response) { console.log(JSON.stringify(response.data)); }) .catch(function (error) { console.log(error); });"
+      - generic [ref=e162]:
+        - generic [ref=e163]:
+          - heading "Generate Token" [level=2] [ref=e164]
+          - paragraph [ref=e165]: Generate token helps to obtain the token after the login flow. After successful login, you get a JWT token and a Refresh token. You can use JWT token to make any transaction.
+          - heading "Generate Token Request" [level=4] [ref=e166]
+          - generic [ref=e167]:
+            - text: "{"
+            - text: "\"refreshToken\":\"eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE1OTk0OD...\""
+            - text: "}"
+          - heading "Generate Token Response" [level=4] [ref=e168]
+          - generic [ref=e169]:
+            - text: "{"
+            - text: "\"status\":true,"
+            - text: "\"message\":\"SUCCESS\","
+            - text: "\"errorcode\":\"\","
+            - text: "\"data\":"
+            - generic [ref=e170]:
+              - text: "{"
+              - text: "\"jwtToken\":\"eyJhbGciOiJIUzUxMiJ9.eyJzdWIi...\","
+              - text: "\"refreshToken\":\"eyJhbGciOiJIUzUxMiJ9.e...\","
+              - text: "\"feedToken\":\"eyJhbGciOiJIUzUxMiJ9.eyJ1c2Vy…\""
+              - text: "}"
+            - text: "}"
+        - code [ref=e174]: "var axios = require('axios'); var data = JSON.stringify({ \"refreshToken\":\"REFRESH_TOKEN\" }); var config = { method: 'post', url: 'https://apiconnect.angelone.in/ rest/auth/angelbroking/jwt/ v1/generateTokens', headers: { 'Authorization': 'Bearer AUTHORIZATION_TOKEN', 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-UserType': 'USER', 'X-SourceID': 'WEB', 'X-ClientLocalIP': 'CLIENT_LOCAL_IP', 'X-ClientPublicIP': 'CLIENT_PUBLIC_IP', 'X-MACAddress': 'MAC_ADDRESS', 'X-PrivateKey': 'API_KEY' } data : data }; axios(config) .then(function (response) { console.log(JSON.stringify(response.data)); }) .catch(function (error) { console.log(error); });"
+      - generic [ref=e175]:
+        - generic [ref=e176]:
+          - heading "Get Profile" [level=2] [ref=e177]
+          - paragraph [ref=e178]: This allows to fetch the complete information of the user who is logged in.
+          - heading "Get Profile Response" [level=4] [ref=e179]
+          - generic [ref=e180]:
+            - text: "{"
+            - text: "\"status\":true,"
+            - text: "\"message\":\"SUCCESS\","
+            - text: "\"errorcode\":\"\","
+            - text: "\"data\":"
+            - generic [ref=e181]:
+              - text: "{"
+              - text: "\"clientcode\":\"YOUR_CLIENT_CODE\","
+              - text: "\"name\":\"YOUR_NAME\","
+              - text: "\"email\":\"\","
+              - text: "\"mobileno\":\"\","
+              - text: "\"exchanges\":\"[ \"NSE\", \"BSE\", \"MCX\", \"CDS\", \"NCDEX\", \"NFO\" ]\","
+              - text: "\"products\":\"[ \"DELIVERY\", \"INTRADAY\", \"MARGIN\"]\","
+              - text: "\"lastlogintime\":\"\","
+              - text: "\"brokerid\":\"B2C\","
+              - text: "}"
+            - text: "}"
+        - code [ref=e185]: "var axios = require('axios'); var config = { method: 'get', url: 'https://apiconnect.angelone.in/ rest/secure/angelbroking/user/ v1/getProfile', headers : { 'Authorization': 'Bearer AUTHORIZATION_TOKEN', 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-UserType': 'USER', 'X-SourceID': 'WEB', 'X-ClientLocalIP': 'CLIENT_LOCAL_IP', 'X-ClientPublicIP': 'CLIENT_PUBLIC_IP', 'X-MACAddress': 'MAC_ADDRESS', 'X-PrivateKey': 'API_KEY' } }; axios(config) .then(function (response) { console.log(JSON.stringify(response.data)); }) .catch(function (error) { console.log(error); });"
+      - generic [ref=e186]:
+        - generic [ref=e187]:
+          - heading "Funds and Margins" [level=2] [ref=e188]
+          - paragraph [ref=e189]: The GET Request to RMS returns fund, cash and margin information of the user for equity and commodity segments.
+          - table [ref=e191]:
+            - rowgroup [ref=e192]:
+              - row "Request Type APIs Endpoint Description" [ref=e193]:
+                - columnheader "Request Type" [ref=e194]
+                - columnheader "APIs" [ref=e195]
+                - columnheader "Endpoint" [ref=e196]
+                - columnheader "Description" [ref=e197]
+            - rowgroup [ref=e198]:
+              - row "GET Get RMS Limit https://apiconnect.angelone.in/rest/secure/angelbroking/user/v1/getRMS To retrieve RMS limit" [ref=e199]:
+                - cell "GET" [ref=e200]
+                - cell "Get RMS Limit" [ref=e201]
+                - cell "https://apiconnect.angelone.in/rest/secure/angelbroking/user/v1/getRMS" [ref=e202]
+                - cell "To retrieve RMS limit" [ref=e203]
+          - heading "RMS (Risk Management System)" [level=3] [ref=e204]
+          - paragraph [ref=e205]: The RMS Limit defines margin rules to ensure that traders don't default on payments & delivery of their orders.
+          - heading "Get RMS Limit Response" [level=4] [ref=e206]
+          - generic [ref=e207]:
+            - text: "{"
+            - text: "\"status\":true,"
+            - text: "\"message\":\"SUCCESS\","
+            - text: "\"errorcode\":\"\","
+            - text: "\"data\":{"
+            - text: "\"net\":\"9999999999999\","
+            - text: "\"availablecash\":\"9999999999999\","
+            - text: "\"availableintradaypayin\":\"0\","
+            - text: "\"availablelimitmargin\":\"0\","
+            - text: "\"collateral\":\"0\","
+            - text: "\"m2munrealized\":\"0\","
+            - text: "\"m2mrealized\":\"0\","
+            - text: "\"utiliseddebits\":\"0\","
+            - text: "\"utilisedspan\":\"0\","
+            - text: "\"utilisedoptionpremium\":\"0\","
+            - text: "\"utilisedholdingsales\":\"0\","
+            - text: "\"utilisedexposure\":\"0\","
+            - text: "\"utilisedturnover\":\"0\","
+            - text: "\"utilisedpayout\":\"0\","
+            - text: "}"
+            - text: "}"
+        - code [ref=e211]: "var axios = require('axios'); var config = { method: 'get', url: 'https://apiconnect.angelone.in/ rest/secure/angelbroking/user/ v1/getRMS', headers : { 'Authorization': 'Bearer AUTHORIZATION_TOKEN', 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-UserType': 'USER', 'X-SourceID': 'WEB', 'X-ClientLocalIP': 'CLIENT_LOCAL_IP', 'X-ClientPublicIP': 'CLIENT_PUBLIC_IP', 'X-MACAddress': 'MAC_ADDRESS', 'X-PrivateKey': 'API_KEY' } }; axios(config) .then(function (response) { console.log(JSON.stringify(response.data)); }) .catch(function (error) { console.log(error); });"
+      - generic [ref=e212]:
+        - generic [ref=e213]:
+          - heading "Logout" [level=2] [ref=e214]
+          - paragraph [ref=e215]: The API session is destroyed by this call and it invalidates the access_token. The user will be sent through a new login flow after this. User is not logged out of the official SmartAPI web.
+          - table [ref=e217]:
+            - rowgroup [ref=e218]:
+              - row "Request Type APIs Endpoint Description" [ref=e219]:
+                - columnheader "Request Type" [ref=e220]
+                - columnheader "APIs" [ref=e221]
+                - columnheader "Endpoint" [ref=e222]
+                - columnheader "Description" [ref=e223]
+            - rowgroup [ref=e224]:
+              - row "POST Logout https://apiconnect.angelone.in/rest/secure/angelbroking/user/v1/logout To logout" [ref=e225]:
+                - cell "POST" [ref=e226]
+                - cell "Logout" [ref=e227]
+                - cell "https://apiconnect.angelone.in/rest/secure/angelbroking/user/v1/logout" [ref=e228]
+                - cell "To logout" [ref=e229]
+          - heading "Logout Request" [level=4] [ref=e230]
+          - generic [ref=e231]:
+            - text: "{"
+            - text: "\"clientcode\":\"CLIENT_CODE\","
+            - text: "}"
+          - heading "Logout Response" [level=4] [ref=e232]
+          - generic [ref=e233]:
+            - text: "{"
+            - text: "\"status\":true,"
+            - text: "\"message\":\"SUCCESS\","
+            - text: "\"errorcode\":\"\","
+            - text: "\"data\":\"\","
+            - text: "}"
+          - generic:
+            - generic "Previous" [ref=e234] [cursor=pointer]: 
+            - generic "Next" [ref=e235] [cursor=pointer]: 
+        - generic [ref=e236]:
+          - list [ref=e238]:
+            - listitem [ref=e239]:
+              - button "Python" [ref=e240] [cursor=pointer]
+            - listitem [ref=e241]:
+              - button "NodeJs" [ref=e242] [cursor=pointer]
+            - listitem [ref=e243]:
+              - button "Java" [ref=e244] [cursor=pointer]
+            - listitem [ref=e245]:
+              - button "R" [ref=e246] [cursor=pointer]
+            - listitem [ref=e247]:
+              - button "GO" [ref=e248] [cursor=pointer]
+          - code [ref=e251]: "var axios = require('axios'); var data = JSON.stringify({ \"clientcode\":\"CLIENT_CODE\" }); var config = { method: 'post', url: 'https://apiconnect.angelone.in/ rest/secure/angelbroking/user/ v1/logout', headers : { 'Authorization': 'Bearer AUTHORIZATION_TOKEN', 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-UserType': 'USER', 'X-SourceID': 'WEB', 'X-ClientLocalIP': 'CLIENT_LOCAL_IP', 'X-ClientPublicIP': 'CLIENT_PUBLIC_IP', 'X-MACAddress': 'MAC_ADDRESS', 'X-PrivateKey': 'API_KEY' }, data : data }; axios(config) .then(function (response) { console.log(JSON.stringify(response.data)); }) .catch(function (error) { console.log(error); });"
+  - contentinfo [ref=e252]:
+    - generic [ref=e253]:
+      - generic [ref=e254]:
+        - generic [ref=e255]: Powered By
+        - img "AngelOne" [ref=e256]
+      - generic [ref=e258]: Copyright @ 2026-2027

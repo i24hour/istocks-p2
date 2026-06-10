@@ -1,0 +1,636 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Stock {
+  id                   String         @id @default(cuid())
+  symbol               String         @unique
+  name                 String
+  sector               String? // Stock sector (e.g., "IT", "Financial Services", "Metals & Mining", etc.)
+  exchange             String         @default("NSE")
+  angelToken           String? // Angel One scrip token for WebSocket/API lookups
+  dhanSecurityId       String?
+  zerodhaTradingSymbol String?
+  zerodhaExchange      String?
+  createdAt            DateTime       @default(now())
+  updatedAt            DateTime       @updatedAt
+  insights             StockInsight[]
+  priceData            StockPrice[]
+  chatSessions         ChatSession[]
+  dailySelectionResults DailyStockSelectionResult[]
+
+  @@index([symbol])
+  @@index([angelToken])
+}
+
+model DailyStockSelectionRun {
+  id              String                      @id @default(cuid())
+  selectionDate   DateTime                    @unique
+  generatedAt     DateTime                    @default(now())
+  universeCount   Int
+  eligibleCount   Int
+  shortlistCount  Int
+  technicalWeight Float
+  webWeight       Float
+  status          String                      @default("COMPLETED")
+  notes           String?
+  results         DailyStockSelectionResult[]
+
+  @@index([generatedAt(sort: Desc)])
+}
+
+model DailyStockSelectionResult {
+  id                String                 @id @default(cuid())
+  runId             String
+  stockId           String
+  rank              Int
+  symbol            String
+  name              String
+  exchange          String
+  latestTimestamp   DateTime
+  close             Float
+  rsi               Float
+  sma50             Float
+  avgTradedValue20d Float
+  candles20d        Int
+  trendGapPct       Float
+  trendScore        Float
+  rsiScore          Float
+  technicalScore    Float
+  webScore          Float
+  finalScore        Float
+  sentimentLabel    String
+  sentimentSummary  String
+  sourceCount       Int
+  topHeadlines      Json?
+  createdAt         DateTime               @default(now())
+  run               DailyStockSelectionRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+  stock             Stock                  @relation(fields: [stockId], references: [id], onDelete: Cascade)
+
+  @@unique([runId, rank])
+  @@index([stockId])
+  @@index([symbol])
+  @@index([finalScore(sort: Desc)])
+}
+
+// Chat history models for persistent memory
+model ChatSession {
+  id        String        @id @default(cuid())
+  stockId   String? // Optional — null for general Trading Agent chat
+  userId    String?
+  title     String? // Auto-generated from first message
+  shareId   String?       @unique // Public share token (null = not shared)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  messages  ChatMessage[]
+  stock     Stock?        @relation(fields: [stockId], references: [id], onDelete: Cascade)
+  user      User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([stockId])
+  @@index([userId])
+  @@index([createdAt(sort: Desc)])
+}
+
+model ChatMessage {
+  id        String      @id @default(cuid())
+  sessionId String
+  role      String // 'user' | 'assistant'
+  content   String
+  sql       String? // SQL query used (if any)
+  createdAt DateTime    @default(now())
+  session   ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId, createdAt])
+}
+
+model StockPrice {
+  id                  String   @id @default(cuid())
+  stockId             String
+  name                String?
+  sector              String? // Stock sector (e.g., "IT", "Finance", "Logistics & Food", etc.)
+  timestamp           DateTime
+  open                Float
+  high                Float
+  low                 Float
+  close               Float
+  volume              BigInt
+  sma20               Float?
+  sma50               Float?
+  sma200              Float?
+  ema12               Float?
+  ema26               Float?
+  macd                Float?
+  macdSignal          Float?
+  macdHistogram       Float?
+  adx                 Float?
+  plusDI              Float?
+  minusDI             Float?
+  rsi                 Float?
+  stochK              Float?
+  stochD              Float?
+  cci                 Float?
+  williamsR           Float?
+  roc                 Float?
+  bbUpper             Float?
+  bbMiddle            Float?
+  bbLower             Float?
+  atr                 Float?
+  obv                 BigInt?
+  vwap                Float?
+  forceIndex          Float?
+  adLine              Float?
+  supertrend          Float? // Supertrend indicator value (support/resistance line)
+  supertrendDirection Int? // 1 = GREEN (bullish), -1 = RED (bearish)
+
+  // ── Moving Averages (extra) ─────────────────────
+  wma20  Float? // Weighted MA 20
+  dema20 Float? // Double EMA 20
+  tema20 Float? // Triple EMA 20
+  hma20  Float? // Hull MA 20
+  vwma20 Float? // Volume-Weighted MA 20
+
+  // ── Trend ───────────────────────────────────────
+  trix            Float? // TRIX 15
+  kst             Float? // Know Sure Thing
+  kstSignal       Float? // KST Signal
+  aroonUp         Float? // Aroon Up (25)
+  aroonDown       Float? // Aroon Down (25)
+  aroonOsc        Float? // Aroon Oscillator
+  psar            Float? // Parabolic SAR value
+  psarSignal      Int? // 1 = above price (bearish), -1 = below price (bullish)
+  ichimokuConv    Float? // Ichimoku Tenkan-sen (9)
+  ichimokuBase    Float? // Ichimoku Kijun-sen (26)
+  ichimokuLeadA   Float? // Ichimoku Senkou Span A
+  ichimokuLeadB   Float? // Ichimoku Senkou Span B
+  ichimokuLagging Float? // Ichimoku Chikou Span
+
+  // ── Volume ──────────────────────────────────────
+  mfi Float? // Money Flow Index 14
+  cmf Float? // Chaikin Money Flow 20
+  pvt Float? // Price Volume Trend
+  eom Float? // Ease of Movement
+
+  // ── Oscillators ─────────────────────────────────
+  ao  Float? // Awesome Oscillator
+  uo  Float? // Ultimate Oscillator
+  cmo Float? // Chande Momentum Oscillator
+  tsi Float? // True Strength Index
+  ppo Float? // Percentage Price Oscillator
+  dpo Float? // Detrended Price Oscillator
+
+  // ── Volatility / Channels ───────────────────────
+  kcUpper  Float? // Keltner Channel Upper
+  kcMiddle Float? // Keltner Channel Middle
+  kcLower  Float? // Keltner Channel Lower
+  dcUpper  Float? // Donchian Channel Upper
+  dcMiddle Float? // Donchian Channel Middle
+  dcLower  Float? // Donchian Channel Lower
+  stdDev20 Float? // Standard Deviation (20-period close)
+
+  createdAt DateTime @default(now())
+  stock     Stock    @relation(fields: [stockId], references: [id], onDelete: Cascade)
+
+  @@unique([stockId, timestamp])
+  @@index([stockId, timestamp(sort: Desc)])
+  @@index([timestamp])
+}
+
+model StockInsight {
+  id              String   @id @default(cuid())
+  stockId         String
+  timeframe       String
+  trend           String
+  trendStrength   Float
+  momentum        String
+  volatility      String
+  volumeAnalysis  String
+  supportLevel    Float?
+  resistanceLevel Float?
+  summary         String
+  generatedAt     DateTime @default(now())
+  stock           Stock    @relation(fields: [stockId], references: [id], onDelete: Cascade)
+
+  @@unique([stockId, timeframe])
+  @@index([stockId])
+}
+
+// ==========================================
+// AUTHENTICATION MODELS (NextAuth)
+// ==========================================
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  phone         String?   // 10 digits; payment prefill / UPI
+  emailVerified DateTime?
+  password      String? // Hashed password for credentials login
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Prompt & token usage tracking
+  promptCount        Int      @default(0)   // lifetime requests
+  totalTokensIn      Int      @default(0)   // total prompt tokens consumed
+  totalTokensOut     Int      @default(0)   // total completion tokens generated
+  lastResetDate      DateTime @default(now()) // kept for backwards-compat
+  dailyPromptCount   Int      @default(0)   // resets at midnight IST each day
+  dailyPromptResetAt DateTime @default(now()) // timestamp of last daily reset
+
+  // Experts (Compute 1.0) monthly usage — resets on 1st of each month IST
+  monthlyExpertCount   Int      @default(0)
+  monthlyExpertResetAt DateTime @default(now())
+
+  // File attachments (Excel/PDF/image) — Pro only, 5/month, resets 1st IST
+  monthlyAttachCount   Int      @default(0)
+  monthlyAttachResetAt DateTime @default(now())
+
+  // Custom LLM settings (user-supplied API key)
+  llmProvider String? // "gemini" | "openai" | "openrouter" | "groq" | "anthropic" | "custom"
+  llmApiKey   String? // stored server-side only, never sent to client
+  llmModel    String? // e.g. "gpt-4o", "claude-3-5-sonnet-20241022", "gemini-2.5-pro"
+  llmBaseUrl  String? // only for "custom" OpenAI-compatible endpoints
+
+  // Telegram bot linking
+  telegramId       BigInt?   @unique // Telegram chat ID once linked
+  telegramLinkedAt DateTime? // When they linked their Telegram
+
+  accounts          Account[]
+  sessions          Session[]
+  strategies        Strategy[]
+  backtests         Backtest[]
+  chatSessions      ChatSession[]
+  expertsSessions   ExpertsSession[]
+  tradingOrders     TradingOrder[]
+  brokerConnections BrokerConnection[]
+  tradingPreference UserTradingPreference?
+  brokerAuthStates  BrokerAuthState[]
+  subscriptions     Subscription[]
+  payments          Payment[]
+}
+
+// ── Payments / Subscriptions ─────────────────────────────────────────────────
+
+model Subscription {
+  id              String             @id @default(cuid())
+  userId          String
+  plan            String             @default("free")   // "free" | "pro"
+  status          SubscriptionStatus @default(ACTIVE)
+  startedAt       DateTime           @default(now())
+  expiresAt       DateTime?
+  paymentOrderId String?            @unique // active gateway order id
+  billingMode    String             @default("one_time") // "autopay" | "one_time"
+  /// Pro billing period usage (resets on each new subscription row)
+  periodExpertCount Int              @default(0)
+  periodAttachCount Int              @default(0)
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Payment {
+  id                  String        @id @default(cuid())
+  userId              String
+  paymentOrderId      String        @unique // active gateway order id
+  paymentId           String?       // gateway payment id after success
+  amount              Float
+  currency            String        @default("INR")
+  status              PaymentStatus @default(PENDING)
+  plan                String
+  userEmail           String?       // snapshot of user email at payment time
+  userName            String?       // snapshot of user name at payment time
+  rawResponse         Json?
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  EXPIRED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+  REFUNDED
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ==========================================
+// SANGRAHA MODELS (Strategy Repository)
+// ==========================================
+
+model Strategy {
+  id          String  @id @default(cuid())
+  name        String
+  description String?
+  readme      String  @db.Text // Full markdown documentation
+
+  // Strategy definition
+  naturalInput String  @db.Text // Original user query
+  strategyCode Json // Structured DSL (conditions, logic)
+  sqlQuery     String? @db.Text // Generated SQL for backtesting
+
+  // Metadata
+  stockSymbol  String? // Primary stock (if applicable)
+  strategyType String // "probability" | "entry_exit" | "pattern" | "indicator"
+  tags         String[] // Array of tags
+  visibility   String   @default("private") // "public" | "private"
+
+  // Social features
+  stars        Int        @default(0)
+  forks        Int        @default(0)
+  forkedFromId String? // If forked from another strategy
+  forkedFrom   Strategy?  @relation("StrategyForks", fields: [forkedFromId], references: [id], onDelete: SetNull)
+  forkChildren Strategy[] @relation("StrategyForks")
+
+  // Author
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  // Relations
+  backtests Backtest[]
+  starredBy StrategyStar[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([visibility, createdAt(sort: Desc)])
+  @@index([authorId])
+  @@index([stockSymbol])
+  @@index([strategyType])
+}
+
+model StrategyStar {
+  id         String   @id @default(cuid())
+  strategyId String
+  userId     String
+  createdAt  DateTime @default(now())
+
+  strategy Strategy @relation(fields: [strategyId], references: [id], onDelete: Cascade)
+
+  @@unique([strategyId, userId])
+  @@index([userId])
+}
+
+model Backtest {
+  id         String   @id @default(cuid())
+  strategyId String
+  strategy   Strategy @relation(fields: [strategyId], references: [id], onDelete: Cascade)
+
+  // Who ran the backtest
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Backtest parameters
+  stockSymbol String
+  startDate   DateTime
+  endDate     DateTime
+
+  // Results
+  totalTrades    Int    @default(0)
+  winningTrades  Int    @default(0)
+  losingTrades   Int    @default(0)
+  winRate        Float  @default(0)
+  totalPnL       Float  @default(0)
+  maxDrawdown    Float  @default(0)
+  avgTradeReturn Float?
+  sharpeRatio    Float?
+
+  // Detailed data
+  tradeLog    Json? // Array of individual trades
+  equityCurve Json? // For charting
+
+  status       String  @default("pending") // "pending" | "running" | "completed" | "failed"
+  errorMessage String?
+
+  createdAt   DateTime  @default(now())
+  completedAt DateTime?
+
+  @@index([strategyId, createdAt(sort: Desc)])
+  @@index([userId])
+}
+
+// ==========================================
+// PAPER TRADING
+// ==========================================
+
+model TradingOrder {
+  id                String    @id @default(cuid())
+  userId            String
+  symbol            String
+  orderType         String // 'BUY' | 'SELL'
+  productType       String    @default("INTRADAY") // 'INTRADAY' | 'DELIVERY'
+  quantity          Int
+  status            String    @default("PENDING") // 'PENDING' | 'EXECUTED' | 'CANCELLED'
+  tradingMode       String    @default("PAPER") // 'PAPER' | 'LIVE'
+  brokerName        String? // 'ZERODHA' | 'DHAN' | etc
+  brokerOrderId     String?
+  brokerStatus      String?
+  executionError    String?
+  rawBrokerResponse Json?
+  idempotencyKey    String?
+  entryPrice        Float?
+  stopLoss          Float?
+  takeProfit        Float?
+  trailingStopPct   Float?
+  expiresAt         DateTime?
+  expiryDate        DateTime?
+  strikePrice       Float?
+  optionType        String?
+  executedPrice     Float?
+  executedAt        DateTime?
+  positionValue     Float     @default(0)
+  entryCondition    Json? // stores conditions + sessionId for watch orders
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([idempotencyKey])
+  @@index([userId, createdAt(sort: Desc)])
+  @@index([userId, status, tradingMode])
+  @@index([symbol])
+  @@index([status])
+  @@index([brokerName])
+}
+
+model BrokerConnection {
+  id              String    @id @default(cuid())
+  userId          String
+  brokerName      String // 'ZERODHA' | 'DHAN'
+  apiKeyEnc       String?
+  apiSecretEnc    String?
+  clientIdEnc     String?
+  accessTokenEnc  String?
+  tokenExpiresAt  DateTime?
+  isConnected     Boolean   @default(false)
+  lastValidatedAt DateTime?
+  metaJson        Json?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, brokerName])
+  @@index([brokerName])
+  @@index([updatedAt(sort: Desc)])
+}
+
+model UserTradingPreference {
+  userId              String   @id
+  tradingMode         String   @default("PAPER") // 'PAPER' | 'LIVE'
+  preferredLiveBroker String? // 'ZERODHA' | 'DHAN'
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model BrokerAuthState {
+  id           String    @id @default(cuid())
+  userId       String
+  brokerName   String // 'ZERODHA' | 'DHAN'
+  state        String    @unique
+  consentId    String?
+  codeVerifier String?
+  expiresAt    DateTime
+  usedAt       DateTime?
+  createdAt    DateTime  @default(now())
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, brokerName, expiresAt])
+}
+
+// ==========================================
+// TELEGRAM BOT AUTH
+// ==========================================
+
+// One-time magic link tokens for linking a Telegram chat to an istocks account.
+model TelegramLinkToken {
+  id        String    @id @default(cuid())
+  token     String    @unique @default(cuid())
+  chatId    BigInt // Telegram chat ID waiting to be linked
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([token])
+  @@index([chatId])
+}
+
+// ==========================================
+// TELEGRAM BOT SESSION
+// ==========================================
+
+// Stores per-chat conversation history for the Telegram bot.
+// Required because Vercel serverless workers don't share in-memory state.
+model TelegramSession {
+  id        String   @id @default(cuid())
+  chatId    BigInt   @unique // Telegram chat ID
+  history   Json     @default("[]") // Array of {role, content} turns
+  updatedAt DateTime @updatedAt
+
+  @@index([chatId])
+}
+
+// ==========================================
+// EXPERTS — PROBABILITY ANALYSIS AGENTS
+// ==========================================
+
+model ExpertsSession {
+  id        String            @id @default(cuid())
+  userId    String?
+  title     String
+  query     String            @db.Text
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+  analyses  ExpertsAnalysis[]
+  user      User?             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt(sort: Desc)])
+}
+
+model ExpertsAnalysis {
+  id               String          @id @default(cuid())
+  sessionId        String
+  query            String          @db.Text
+  krishnaReport    Json
+  chanakyaReport   Json
+  aryabhataReport  Json
+  discussionLog    Json
+  finalProbability Float
+  finalConfidence  String
+  finalReasoning   String          @db.Text
+  createdAt        DateTime        @default(now())
+  session          ExpertsSession  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+}
+
+// ==========================================
+// OBSERVABILITY / MODEL FEEDBACK
+// ==========================================
+
+// Stores SQL failures so the model can learn from past mistakes and avoid repeating them.
+model SqlErrorLog {
+  id           String   @id @default(cuid())
+  fingerprint  String // normalized signature of the error (e.g., error code + snippet)
+  sql          String   @db.Text
+  errorMessage String   @db.Text
+  errorCode    String?
+  modelName    String?
+  stockSymbol  String?
+  timeframe    String?
+  retries      Int      @default(0)
+  resolved     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  lastSeenAt   DateTime @updatedAt
+
+  @@index([fingerprint, lastSeenAt(sort: Desc)])
+  @@index([createdAt])
+}

@@ -1,0 +1,455 @@
+I want to build a stock analysis platform similar to Groww with AI-powered technical analysis. Here are the complete requirements:
+
+## PROJECT OVERVIEW
+Create a full-stack stock analysis application that:
+1. Fetches real-time stock data from Angel One API every minute during market hours (9:15 AM - 3:30 PM IST)
+2. Stores data in PostgreSQL with TimescaleDB extension for time-series optimization
+3. Automatically calculates 40+ technical indicators for every data point
+4. Provides an AI chatbot using Google Gemini API for intelligent stock analysis
+5. Uses RAG (Retrieval Augmented Generation) approach - NO caching of analysis, always fresh data
+6. Initially supports only WIPRO stock (expandable later)
+
+## TECH STACK (FINAL SELECTION)
+
+### Backend & Frontend
+- **Framework**: Next.js 14+ with App Router and TypeScript
+- **Database**: PostgreSQL 14+ with TimescaleDB extension
+- **ORM**: Prisma for type-safe database queries
+- **Styling**: Tailwind CSS
+- **Charts**: Recharts for stock price visualization
+- **Icons**: Lucide React
+
+### APIs & Libraries
+- **Stock Data**: Angel One SmartAPI (smartapi-javascript package)
+- **AI Analysis**: Google Gemini API (@google/generative-ai)
+- **Technical Indicators**: technicalindicators npm package (40+ indicators)
+- **Scheduling**: node-cron for data fetching every minute
+- **Validation**: Zod for request validation
+
+### Environment
+- Node.js 18+
+- Local development first
+- Production-ready architecture
+
+## DATABASE SCHEMA
+
+Create this exact PostgreSQL schema with TimescaleDB:
+```sql
+-- Enable TimescaleDB extension
+CREATE EXTENSION IF NOT EXISTS timescaledb;
+
+-- Stocks master table
+CREATE TABLE stocks (
+    id SERIAL PRIMARY KEY,
+    symbol VARCHAR(20) UNIQUE NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    exchange VARCHAR(10) NOT NULL,
+    token VARCHAR(50) NOT NULL,
+    is_active BOOLEAN DEFAULT true,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Insert Wipro initially
+INSERT INTO stocks (symbol, name, exchange, token) 
+VALUES ('WIPRO', 'Wipro Limited', 'NSE', '526777');
+
+-- Stock prices with ALL indicators (TimescaleDB hypertable)
+CREATE TABLE stock_prices (
+    id SERIAL PRIMARY KEY,
+    stock_id INTEGER NOT NULL REFERENCES stocks(id) ON DELETE CASCADE,
+    timestamp TIMESTAMPTZ NOT NULL,
+    
+    -- OHLCV Data
+    open DECIMAL(10,2) NOT NULL,
+    high DECIMAL(10,2) NOT NULL,
+    low DECIMAL(10,2) NOT NULL,
+    close DECIMAL(10,2) NOT NULL,
+    volume BIGINT NOT NULL,
+    
+    -- Trend Indicators
+    sma_20 DECIMAL(10,2),
+    sma_50 DECIMAL(10,2),
+    sma_200 DECIMAL(10,2),
+    ema_12 DECIMAL(10,2),
+    ema_26 DECIMAL(10,2),
+    ema_50 DECIMAL(10,2),
+    macd DECIMAL(10,4),
+    macd_signal DECIMAL(10,4),
+    macd_histogram DECIMAL(10,4),
+    adx DECIMAL(5,2),
+    psar DECIMAL(10,2),
+    
+    -- Momentum Indicators
+    rsi_9 DECIMAL(5,2),
+    rsi_14 DECIMAL(5,2),
+    stochastic_k DECIMAL(5,2),
+    stochastic_d DECIMAL(5,2),
+    williams_r DECIMAL(5,2),
+    cci DECIMAL(6,2),
+    mfi DECIMAL(5,2),
+    roc DECIMAL(6,2),
+    
+    -- Volatility Indicators
+    bb_upper DECIMAL(10,2),
+    bb_middle DECIMAL(10,2),
+    bb_lower DECIMAL(10,2),
+    atr DECIMAL(10,4),
+    std_dev DECIMAL(10,4),
+    
+    -- Volume Indicators
+    obv BIGINT,
+    vwap DECIMAL(10,2),
+    force_index DECIMAL(12,2),
+    ad_line BIGINT,
+    
+    -- Candlestick Patterns (boolean flags)
+    pattern_hammer BOOLEAN DEFAULT false,
+    pattern_doji BOOLEAN DEFAULT false,
+    pattern_engulfing_bullish BOOLEAN DEFAULT false,
+    pattern_engulfing_bearish BOOLEAN DEFAULT false,
+    pattern_shooting_star BOOLEAN DEFAULT false,
+    pattern_three_white_soldiers BOOLEAN DEFAULT false,
+    pattern_three_black_crows BOOLEAN DEFAULT false,
+    
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    
+    UNIQUE(stock_id, timestamp)
+);
+
+-- Convert to TimescaleDB hypertable (CRITICAL for performance)
+SELECT create_hypertable('stock_prices', 'timestamp', 
+    chunk_time_interval => INTERVAL '1 day',
+    if_not_exists => TRUE
+);
+
+-- Create indexes for optimal query performance
+CREATE INDEX idx_stock_prices_stock_id_timestamp ON stock_prices(stock_id, timestamp DESC);
+CREATE INDEX idx_stock_prices_close ON stock_prices(stock_id, close);
+CREATE INDEX idx_stock_prices_rsi ON stock_prices(stock_id, rsi_14) WHERE rsi_14 IS NOT NULL;
+
+-- Data retention policy (keep 6 months of minute data)
+SELECT add_retention_policy('stock_prices', INTERVAL '6 months');
+```
+
+## PROJECT STRUCTURE
+
+Create this exact folder structure:
+stock-analysis-platform/
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx                      # Root layout
+│   │   ├── page.tsx                        # Home page (stock list)
+│   │   ├── stock/
+│   │   │   └── [symbol]/
+│   │   │       └── page.tsx                # Stock detail page (/stock/WIPRO)
+│   │   ├── api/
+│   │   │   ├── stocks/
+│   │   │   │   ├── route.ts                # GET all stocks
+│   │   │   │   └── [symbol]/
+│   │   │   │       ├── data/route.ts       # GET stock OHLCV data
+│   │   │   │       ├── insights/route.ts   # GET pre-calculated insights
+│   │   │   │       └── analyze/route.ts    # POST AI analysis (RAG)
+│   │   │   ├── indicators/route.ts         # GET available indicators list
+│   │   │   └── health/route.ts             # Health check endpoint
+│   │   └── globals.css                     # Global styles + Tailwind
+│   │
+│   ├── components/
+│   │   ├── StockChart.tsx                  # Price chart with Recharts
+│   │   ├── InsightsPanel.tsx               # Quick insights display
+│   │   ├── AIChat.tsx                      # Chat interface with Gemini
+│   │   ├── TechnicalIndicatorsList.tsx     # Display all indicators
+│   │   └── LoadingSpinner.tsx              # Loading states
+│   │
+│   ├── lib/
+│   │   ├── prisma.ts                       # Prisma client singleton
+│   │   └── utils.ts                        # Helper functions
+│   │
+│   ├── services/
+│   │   ├── data-fetcher.service.ts         # Fetch from Angel One API
+│   │   ├── technical-indicators.service.ts # Calculate all 40+ indicators
+│   │   ├── enhanced-rag.service.ts         # RAG implementation (CRITICAL)
+│   │   ├── insights-generator.service.ts   # Generate insights from indicators
+│   │   └── scheduler.service.ts            # Cron job for data fetching
+│   │
+│   ├── types/
+│   │   └── stock.types.ts                  # TypeScript types
+│   │
+│   └── constants/
+│       └── indicators.ts                   # Indicator definitions
+│
+├── prisma/
+│   ├── schema.prisma                       # Prisma schema
+│   └── seed.ts                             # Seed Wipro data
+│
+├── .env.local                              # Environment variables (create from .env.example)
+├── .env.example                            # Environment template
+├── next.config.js
+├── tailwind.config.js
+├── tsconfig.json
+├── package.json
+└── README.md
+
+## CORE FEATURES TO IMPLEMENT
+
+### 1. DATA FETCHING SERVICE (Highest Priority)
+
+Create a service that:
+- Runs every minute using node-cron
+- ONLY runs during market hours: 9:15 AM - 3:30 PM IST, Monday-Friday
+- Fetches OHLCV data from Angel One API for WIPRO (token: 526777)
+- Fetches last 200 data points to calculate indicators properly
+- Calculates ALL 40+ technical indicators using 'technicalindicators' package
+- Stores everything in database with one INSERT per minute
+
+**Technical Indicators to Calculate:**
+- **Trend**: SMA (20, 50, 200), EMA (12, 26, 50), MACD (with signal & histogram), ADX, PSAR
+- **Momentum**: RSI (9, 14), Stochastic (K, D), Williams %R, CCI, MFI, ROC
+- **Volatility**: Bollinger Bands (upper, middle, lower), ATR, Standard Deviation
+- **Volume**: OBV, VWAP, Force Index, A/D Line
+- **Patterns**: Hammer, Doji, Bullish/Bearish Engulfing, Shooting Star, Three White Soldiers, Three Black Crows
+
+### 2. RAG (RETRIEVAL AUGMENTED GENERATION) SYSTEM (MOST CRITICAL)
+
+This is the CORE intelligence of the system. Implement exactly this flow:
+
+**Step 1: RETRIEVAL** - Fetch data from PostgreSQL database based on user query and timeframe
+
+**Step 2: AUGMENTATION** - Generate comprehensive context including:
+- Stock basic info (current price, change %, etc.)
+- ALL historical price data with indicators for the timeframe
+- Pre-calculated insights (trend, momentum, volatility, volume analysis)
+- Detected patterns (crossovers, support/resistance, RSI events, MACD signals)
+- Statistical analysis (avg return, volatility, max drawdown)
+- Indicator explanations (so AI understands what each means)
+
+**Step 3: GENERATION** - Send complete context to Gemini API with structured prompt
+
+**CRITICAL RULES FOR RAG:**
+- NEVER cache AI responses - each query gets fresh data
+- NEVER let AI query database directly - always provide data in context
+- AI must ONLY use provided data - no hallucinations
+- Include specific dates, prices, and indicator values in context
+- Pre-calculate common patterns before sending to AI
+
+### 3. FRONTEND - STOCK DETAIL PAGE
+
+Create a page at `/stock/WIPRO` with this exact layout:
+┌─────────────────────────────────────────┐
+│  Header: WIPRO - ₹244.37 (-0.39%)      │
+└─────────────────────────────────────────┘
+┌─────────────────────────────────────────┐
+│         Price Chart (Recharts)          │
+│    Timeframes: 1D | 1W | 1M | 3M | 6M   │
+└─────────────────────────────────────────┘
+┌─────────────────────────────────────────┐
+│         Quick Insights Panel            │
+│  Trend | Momentum | Volatility | Volume │
+│        Active Trading Signals            │
+└─────────────────────────────────────────┘
+┌─────────────────────────────────────────┐
+│      AI Stock Analysis Chat             │
+│  - Chat messages (user + assistant)     │
+│  - Suggested queries (6 examples)       │
+│  - Input box + "Ask AI" button          │
+└─────────────────────────────────────────┘
+┌─────────────────────────────────────────┐
+│     Technical Indicators Display        │
+│  Show all 40+ indicators with values    │
+└─────────────────────────────────────────┘
+
+### 4. AI CHAT COMPONENT (Main Feature)
+
+Implement chat interface where users can ask:
+- "What's the current trend based on technical indicators?"
+- "Is the stock oversold or overbought right now?"
+- "How many times did RSI drop below 30 in the last month?"
+- "Show me all MACD crossovers in the past 30 days"
+- "Analyze volatility and Bollinger Band patterns"
+- "Find times when price crossed above SMA20 with high volume"
+
+The AI should provide accurate, data-driven answers with specific dates and values.
+
+## API ENDPOINTS TO CREATE
+
+1. **GET /api/stocks** - List all tracked stocks
+2. **GET /api/stocks/[symbol]/data?timeframe=1m** - Get stock OHLCV + indicators
+3. **GET /api/stocks/[symbol]/insights** - Get pre-calculated insights (fast endpoint)
+4. **POST /api/stocks/[symbol]/analyze** - AI analysis using RAG (body: {query, timeframe})
+5. **GET /api/indicators** - Get list of all 40+ available indicators
+6. **GET /api/health** - Health check
+
+## ENVIRONMENT VARIABLES
+
+Create `.env.example` with:
+```env
+DATABASE_URL = os.getenv("DATABASE_URL")
+ANGELONE_API_KEY="your_angel_one_api_key"
+ANGELONE_CLIENT_ID="your_client_id"
+ANGELONE_PASSWORD="your_password"
+ANGELONE_TOTP_SECRET="your_totp_secret"
+GEMINI_API_KEY="your_gemini_api_key"
+NODE_ENV="development"
+NEXT_PUBLIC_API_URL="http://localhost:3000"
+TZ="Asia/Kolkata"
+```
+
+## PACKAGE.JSON DEPENDENCIES
+
+Include these exact packages:
+```json
+{
+  "dependencies": {
+    "next": "^14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "@prisma/client": "^5.11.0",
+    "@google/generative-ai": "^0.2.0",
+    "technicalindicators": "^3.1.0",
+    "smartapi-javascript": "^1.3.0",
+    "node-cron": "^3.0.3",
+    "recharts": "^2.12.0",
+    "lucide-react": "^0.344.0",
+    "tailwindcss": "^3.4.0",
+    "zod": "^3.22.0",
+    "date-fns": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.2.0",
+    "@types/node-cron": "^3.0.11",
+    "typescript": "^5.3.0",
+    "prisma": "^5.11.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0"
+  }
+}
+```
+
+## CRITICAL IMPLEMENTATION REQUIREMENTS
+
+1. **Market Hours Check**: Data fetching MUST only run 9:15 AM - 3:30 PM IST, Monday-Friday
+2. **Indicator Calculation**: Need 200+ historical data points for SMA200, handle edge cases
+3. **RAG System**: Always provide complete context to Gemini, never let it query database
+4. **No Caching**: Never cache AI analysis or indicator values - always fresh
+5. **Error Handling**: Try-catch blocks everywhere, retry logic for API failures
+6. **Performance**: Use TimescaleDB indexes, optimize queries
+7. **Type Safety**: Full TypeScript, Prisma for type-safe queries
+
+## PRISMA SCHEMA
+
+Create `prisma/schema.prisma`:
+```prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Stock {
+  id        Int      @id @default(autoincrement())
+  symbol    String   @unique @db.VarChar(20)
+  name      String   @db.VarChar(100)
+  exchange  String   @db.VarChar(10)
+  token     String   @db.VarChar(50)
+  isActive  Boolean  @default(true) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  
+  prices StockPrice[]
+
+  @@map("stocks")
+}
+
+model StockPrice {
+  id        Int      @id @default(autoincrement())
+  stockId   Int      @map("stock_id")
+  timestamp DateTime @db.Timestamptz(6)
+  
+  open      Decimal  @db.Decimal(10, 2)
+  high      Decimal  @db.Decimal(10, 2)
+  low       Decimal  @db.Decimal(10, 2)
+  close     Decimal  @db.Decimal(10, 2)
+  volume    BigInt
+  
+  sma20           Decimal? @map("sma_20") @db.Decimal(10, 2)
+  sma50           Decimal? @map("sma_50") @db.Decimal(10, 2)
+  sma200          Decimal? @map("sma_200") @db.Decimal(10, 2)
+  ema12           Decimal? @map("ema_12") @db.Decimal(10, 2)
+  ema26           Decimal? @map("ema_26") @db.Decimal(10, 2)
+  ema50           Decimal? @map("ema_50") @db.Decimal(10, 2)
+  macd            Decimal? @db.Decimal(10, 4)
+  macdSignal      Decimal? @map("macd_signal") @db.Decimal(10, 4)
+  macdHistogram   Decimal? @map("macd_histogram") @db.Decimal(10, 4)
+  adx             Decimal? @db.Decimal(5, 2)
+  psar            Decimal? @db.Decimal(10, 2)
+  rsi9            Decimal? @map("rsi_9") @db.Decimal(5, 2)
+  rsi14           Decimal? @map("rsi_14") @db.Decimal(5, 2)
+  stochasticK     Decimal? @map("stochastic_k") @db.Decimal(5, 2)
+  stochasticD     Decimal? @map("stochastic_d") @db.Decimal(5, 2)
+  williamsR       Decimal? @map("williams_r") @db.Decimal(5, 2)
+  cci             Decimal? @db.Decimal(6, 2)
+  mfi             Decimal? @db.Decimal(5, 2)
+  roc             Decimal? @db.Decimal(6, 2)
+  bbUpper         Decimal? @map("bb_upper") @db.Decimal(10, 2)
+  bbMiddle        Decimal? @map("bb_middle") @db.Decimal(10, 2)
+  bbLower         Decimal? @map("bb_lower") @db.Decimal(10, 2)
+  atr             Decimal? @db.Decimal(10, 4)
+  stdDev          Decimal? @map("std_dev") @db.Decimal(10, 4)
+  obv             BigInt?
+  vwap            Decimal? @db.Decimal(10, 2)
+  forceIndex      Decimal? @map("force_index") @db.Decimal(12, 2)
+  adLine          BigInt?  @map("ad_line")
+  
+  patternHammer                 Boolean @default(false) @map("pattern_hammer")
+  patternDoji                   Boolean @default(false) @map("pattern_doji")
+  patternEngulfingBullish       Boolean @default(false) @map("pattern_engulfing_bullish")
+  patternEngulfingBearish       Boolean @default(false) @map("pattern_engulfing_bearish")
+  patternShootingStar           Boolean @default(false) @map("pattern_shooting_star")
+  patternThreeWhiteSoldiers     Boolean @default(false) @map("pattern_three_white_soldiers")
+  patternThreeBlackCrows        Boolean @default(false) @map("pattern_three_black_crows")
+  
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  
+  stock Stock @relation(fields: [stockId], references: [id], onDelete: Cascade)
+  
+  @@unique([stockId, timestamp])
+  @@index([stockId, timestamp(sort: Desc)])
+  @@map("stock_prices")
+}
+```
+
+## DEVELOPMENT WORKFLOW
+
+1. **Setup database**: Install PostgreSQL + TimescaleDB, create database
+2. **Run Prisma**: `npx prisma db push` to create tables
+3. **Implement services**: Start with data-fetcher, then technical-indicators, then RAG
+4. **Create API routes**: Implement all 6 endpoints
+5. **Build frontend**: Stock detail page with chart, insights, and AI chat
+6. **Test**: Test with sample data before running live scheduler
+7. **Run scheduler**: Start cron job for live data fetching
+
+## SUCCESS CRITERIA
+
+The application is complete when:
+- ✅ Data fetches every minute during market hours
+- ✅ All 40+ indicators calculate correctly
+- ✅ Database stores data with proper indexes
+- ✅ AI chat answers complex queries accurately
+- ✅ UI shows real-time chart and insights
+- ✅ No caching - always fresh analysis
+- ✅ Error handling works properly
+
+## NOTES
+
+- Focus on accuracy over speed (but optimize where possible)
+- RAG is CRITICAL - AI must receive actual data, not query database
+- Make code modular and maintainable
+- Add comments explaining complex logic
+- Use TypeScript for type safety
+- Follow Next.js 14 best practices
+
+Create this complete application with all components, services, API routes, and frontend. Ensure the RAG system properly retrieves data, augments with insights, and generates accurate AI responses without hallucination.

@@ -1,0 +1,92 @@
+
+> istocks-platform@1.0.0 db:import
+> tsx scripts/import-wipro-json.ts
+
+🚀 Starting Wipro data import from JSON...
+📁 Reading from: /Users/priyanshu/Desktop/Desktop/Github/istocks-p/wipro_1min_data.json
+✅ Loaded 6810 records from JSON
+✅ Wipro stock created/found: cmi2cmbzn0000ne9p2v0g98ry
+📊 Data range: 10/17/2025, 9:15:00 AM to 11/14/2025, 3:29:00 PM
+🔢 Calculating technical indicators...
+🗑️  Deleting existing Wipro data...
+💾 Inserting data into database...
+📊 Total records to insert: 6810
+  Inserted 100/6810 records (1.5%)
+  Inserted 200/6810 records (2.9%)
+  Inserted 300/6810 records (4.4%)
+  Inserted 400/6810 records (5.9%)
+  Inserted 500/6810 records (7.3%)
+  Inserted 600/6810 records (8.8%)
+  Inserted 700/6810 records (10.3%)
+  Inserted 800/6810 records (11.7%)
+  Inserted 900/6810 records (13.2%)
+  Inserted 1000/6810 records (14.7%)
+  Inserted 1100/6810 records (16.2%)
+  Inserted 1200/6810 records (17.6%)
+  Inserted 1300/6810 records (19.1%)
+  Inserted 1400/6810 records (20.6%)
+  Inserted 1500/6810 records (22.0%)
+  Inserted 1600/6810 records (23.5%)
+  Inserted 1700/6810 records (25.0%)
+  Inserted 1800/6810 records (26.4%)
+  Inserted 1900/6810 records (27.9%)
+  Inserted 2000/6810 records (29.4%)
+  Inserted 2100/6810 records (30.8%)
+  Inserted 2200/6810 records (32.3%)
+  Inserted 2300/6810 records (33.8%)
+  Inserted 2400/6810 records (35.2%)
+  Inserted 2500/6810 records (36.7%)
+  Inserted 2600/6810 records (38.2%)
+  Inserted 2700/6810 records (39.6%)
+  Inserted 2800/6810 records (41.1%)
+  Inserted 2900/6810 records (42.6%)
+  Inserted 3000/6810 records (44.1%)
+  Inserted 3100/6810 records (45.5%)
+  Inserted 3200/6810 records (47.0%)
+  Inserted 3300/6810 records (48.5%)
+  Inserted 3400/6810 records (49.9%)
+  Inserted 3500/6810 records (51.4%)
+  Inserted 3600/6810 records (52.9%)
+  Inserted 3700/6810 records (54.3%)
+  Inserted 3800/6810 records (55.8%)
+  Inserted 3900/6810 records (57.3%)
+  Inserted 4000/6810 records (58.7%)
+  Inserted 4100/6810 records (60.2%)
+  Inserted 4200/6810 records (61.7%)
+  Inserted 4300/6810 records (63.1%)
+  Inserted 4400/6810 records (64.6%)
+  Inserted 4500/6810 records (66.1%)
+  Inserted 4600/6810 records (67.5%)
+  Inserted 4700/6810 records (69.0%)
+  Inserted 4800/6810 records (70.5%)
+  Inserted 4900/6810 records (72.0%)
+  Inserted 5000/6810 records (73.4%)
+  Inserted 5100/6810 records (74.9%)
+  Inserted 5200/6810 records (76.4%)
+  Inserted 5300/6810 records (77.8%)
+  Inserted 5400/6810 records (79.3%)
+  Inserted 5500/6810 records (80.8%)
+  Inserted 5600/6810 records (82.2%)
+  Inserted 5700/6810 records (83.7%)
+  Inserted 5800/6810 records (85.2%)
+  Inserted 5900/6810 records (86.6%)
+  Inserted 6000/6810 records (88.1%)
+  Inserted 6100/6810 records (89.6%)
+  Inserted 6200/6810 records (91.0%)
+  Inserted 6300/6810 records (92.5%)
+  Inserted 6400/6810 records (94.0%)
+  Inserted 6500/6810 records (95.4%)
+  Inserted 6600/6810 records (96.9%)
+  Inserted 6700/6810 records (98.4%)
+  Inserted 6800/6810 records (99.9%)
+  Inserted 6810/6810 records (100.0%)
+
+✅ Successfully inserted 6810 records
+📈 Data range: 10/17/2025, 9:15:00 AM to 11/14/2025, 3:29:00 PM
+🎉 Wipro 1-minute data import completed!
+
+📊 Database Statistics:
+   Total records: 6810
+   Date range: 10/17/2025, 9:15:00 AM to 11/14/2025, 3:29:00 PM
+   Price range: ₹236.08 to ₹247.63
+   Average price: ₹241.87

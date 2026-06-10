@@ -1,0 +1,6 @@
+[E 251127 19:41:45 fetch-multi-stock-data:103] ❌ Error creating stock record: could not translate host name "123@istocks.postgres.database.azure.com" to address: nodename nor servname provided, or not known
+    
+[E 251127 19:41:45 fetch-multi-stock-data:245] Failed to create stock record for VEDL
+[E 251127 19:41:45 fetch-multi-stock-data:103] ❌ Error creating stock record: could not translate host name "123@istocks.postgres.database.azure.com" to address: nodename nor servname provided, or not known
+    
+[E 251127 19:41:45 fetch-multi-stock-data:245] Failed to create stock record for ADANIPOWER

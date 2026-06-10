@@ -1,0 +1,279 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[landscape,margin=0.6in]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{setspace}
+\usepackage{helvet}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tikz}
+\usepackage{multicol}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+% Define colors - Consistent Dark Blue Theme
+\definecolor{headerblue}{RGB}{41, 65, 114}
+\definecolor{lightblue}{RGB}{230, 236, 245}
+\definecolor{lightgray}{RGB}{245, 245, 245}
+
+\title{\vspace{-2cm}\textbf{\Huge Competitive Landscape Analysis}}
+\author{\Large\textcolor{headerblue}{\textbf{istocks}} -- India's First NLP-Based Algo Trading Platform}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-1.5em}
+
+\begin{center}
+\begin{tikzpicture}
+\fill[headerblue, rounded corners=6pt] (0,0) rectangle (20,-0.8);
+\node[white] at (10,-0.4) {\large\textbf{First NLP-Based Algo Trading Platform | Available in All Regional Languages}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.8em}
+
+\section*{\centering Market Positioning Overview}
+
+\renewcommand{\arraystretch}{1.5}
+\small
+
+\begin{longtable}{%
+    >{\raggedright\arraybackslash}p{2.8cm}
+    >{\raggedright\arraybackslash}p{2.5cm}
+    >{\raggedright\arraybackslash}p{2.2cm}
+    >{\raggedright\arraybackslash}p{2cm}
+    >{\raggedright\arraybackslash}p{3.5cm}
+    >{\raggedright\arraybackslash}p{5.5cm}
+}
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{\textbf{Player}} &
+\textcolor{white}{\textbf{Revenue (FY24)}} &
+\textcolor{white}{\textbf{Business Model}} &
+\textcolor{white}{\textbf{Users}} &
+\textcolor{white}{\textbf{Key Strengths}} &
+\textcolor{white}{\textbf{Opportunity for istocks}} \\
+\midrule
+\endfirsthead
+
+\rowcolor{lightgray}
+\textbf{Zerodha} &
+Rs 8,320 Cr &
+Discount brokerage &
+7M+ active &
+Low fees, strong brand, large ecosystem &
+No NLP, AI Agents, or automated bot creation/deployment \\
+
+\textbf{Groww} &
+Rs 3,145 Cr &
+Brokerage + wealth &
+12M+ users &
+Excellent UX, mobile-first & No AI agents, stock repo, or automated bot deployment \\
+
+\rowcolor{lightgray}
+\textbf{Upstox} &
+Rs 1,200 Cr &
+Discount brokerage &
+5M+ active &
+Fast execution, competitive pricing &
+No bot creation, deployment, or AI agent capabilities \\
+
+\textbf{Angel One} &
+Rs 4,275 Cr &
+Full-service + API &
+6M+ active &
+Strong APIs, infrastructure &
+Lacks NLP support, AI agents, and bot strategy repo \\
+
+\rowcolor{lightgray}
+\textbf{TradingView} &
+\$250M (Global) &
+Charting SaaS &
+60M+ global &
+Best charts, community ideas &
+No AI agents, NLP trading, or direct bot deployment \\
+
+\textbf{Streak, Tradetron, AlgoTest} &
+Rs 50-100 Cr combined &
+Tool-based SaaS &
+500K+ users &
+Strategy builders for derivatives &
+No NLP bot creation, AI agents, or public stock repo \\
+
+\bottomrule
+\end{longtable}
+
+\vspace{0.8em}
+
+%==============================================================================
+% MARKET OPPORTUNITY
+%==============================================================================
+
+\section*{\centering Market Opportunity for istocks}
+
+\begin{center}
+\begin{tikzpicture}
+% Main container
+\fill[lightblue, rounded corners=10pt] (0,0) rectangle (26,-4.5);
+
+% Three boxes
+\fill[headerblue, rounded corners=8pt] (0.5,-0.5) rectangle (8.2,-4);
+\node[anchor=north, text width=7cm, align=center, white] at (4.35,-0.8) {
+    \textbf{\large Total Addressable Market}\\[0.6em]
+    \normalsize Indian Retail Trading Market\\[0.3em]
+    \Large\textbf{Rs 80,000+ Crore}\\[0.3em]
+    \small by 2027 (20\% CAGR)
+};
+
+\fill[headerblue, rounded corners=8pt] (8.9,-0.5) rectangle (16.6,-4);
+\node[anchor=north, text width=7cm, align=center, white] at (12.75,-0.8) {
+    \textbf{\large Active Demat Accounts}\\[0.6em]
+    \normalsize Growing Rapidly\\[0.3em]
+    \Large\textbf{15 Crore+}\\[0.3em]
+    \small (3x growth in 5 years)
+};
+
+\fill[headerblue, rounded corners=8pt] (17.3,-0.5) rectangle (25,-4);
+\node[anchor=north, text width=7cm, align=center, white] at (21.15,-0.8) {
+    \textbf{\large Algo Trading Penetration}\\[0.6em]
+    \normalsize Currently Low in Retail\\[0.3em]
+    \Large\textbf{Only 5\%}\\[0.3em]
+    \small vs 70\% in US (huge gap)
+};
+
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.8em}
+
+%==============================================================================
+% UNIQUE VALUE PROPOSITIONS
+%==============================================================================
+
+\section*{\centering Unique Value Propositions -- What Makes istocks Different}
+
+\begin{center}
+\begin{tikzpicture}
+% Main container
+\fill[lightblue, rounded corners=10pt] (0,0) rectangle (26,-5.5);
+
+% Four columns
+\fill[white, rounded corners=8pt] (0.4,-0.4) rectangle (6.2,-5.1);
+\node[anchor=north, text width=5.3cm, align=center] at (3.3,-0.6) {
+    \textcolor{headerblue}{\textbf{\large Bot Marketplace}}\\[0.6em]
+    \textcolor{headerblue}{\small\textbf{Create -- Deploy -- Earn}}\\[0.6em]
+    \footnotesize
+    - No-Code Bot Builder\\[0.2em]
+    - One-Click Deployment\\[0.2em]
+    - Monetize Your Strategy\\[0.2em]
+    - Live P\&L Tracking
+};
+
+\fill[white, rounded corners=8pt] (6.7,-0.4) rectangle (12.5,-5.1);
+\node[anchor=north, text width=5.3cm, align=center] at (9.6,-0.6) {
+    \textcolor{headerblue}{\textbf{\large Expert Network}}\\[0.6em]
+    \textcolor{headerblue}{\small\textbf{Let Pros Trade For You}}\\[0.6em]
+    \footnotesize
+    - Verified CAs \& Traders\\[0.2em]
+    - P\&L \& Trade Count Rankings\\[0.2em]
+    - Profit Sharing Model\\[0.2em]
+    - Risk Control Settings
+};
+
+\fill[white, rounded corners=8pt] (13,-0.4) rectangle (18.8,-5.1);
+\node[anchor=north, text width=5.3cm, align=center] at (15.9,-0.6) {
+    \textcolor{headerblue}{\textbf{\large Social Trading}}\\[0.6em]
+    \textcolor{headerblue}{\small\textbf{Build Your Reputation}}\\[0.6em]
+    \footnotesize
+    - Public Trader Profiles\\[0.2em]
+    - Verified Performance\\[0.2em]
+    - Follower System\\[0.2em]
+    - Become an Influencer
+};
+
+\fill[white, rounded corners=8pt] (19.3,-0.4) rectangle (25.1,-5.1);
+\node[anchor=north, text width=5.3cm, align=center] at (22.2,-0.6) {
+    \textcolor{headerblue}{\textbf{\large NLP Intelligence}}\\[0.6em]
+    \textcolor{headerblue}{\small\textbf{All Regional Languages}}\\[0.6em]
+    \footnotesize
+    - Hindi, Tamil, Telugu, etc.\\[0.2em]
+    - 20+ Technical Indicators\\[0.2em]
+    - AI Entry/Exit Signals\\[0.2em]
+    - Real-Time NSE/BSE Data
+};
+
+\end{tikzpicture}
+\end{center}
+
+\newpage
+
+%==============================================================================
+% STRATEGIC DIFFERENTIATION
+%==============================================================================
+
+\section*{\centering Strategic Differentiation}
+
+\vspace{0.5em}
+
+\begin{center}
+\begin{tikzpicture}
+\fill[headerblue, rounded corners=8pt] (0,0) rectangle (24,-2.2);
+\node[text width=23cm, align=center, white] at (12,-1.1) {
+    \Large\textbf{istocks = NLP Trading Intelligence + Bot Marketplace + Expert Network + Social Trading}\\[0.3em]
+    \normalsize A complete ecosystem for learning, automation, delegation, and earning -- in your own language.
+};
+\end{tikzpicture}
+\end{center}
+
+\vspace{1em}
+
+
+%==============================================================================
+% WHY NOW
+%==============================================================================
+
+\section*{\centering Why Now? -- Market Tailwinds}
+
+\begin{center}
+\begin{tikzpicture}
+\fill[lightblue, rounded corners=10pt] (0,0) rectangle (24,-3.5);
+
+\fill[headerblue, rounded corners=6pt] (0.5,-0.5) rectangle (7.5,-3);
+\node[anchor=north, text width=6.5cm, align=center, white] at (4,-0.7) {
+    \textbf{Retail Trading Boom}\\[0.4em]
+    \small 15 Cr+ demat accounts\\
+    3x growth in 5 years\\
+    Young, mobile-first audience
+};
+
+\fill[headerblue, rounded corners=6pt] (8,-0.5) rectangle (15,-3);
+\node[anchor=north, text width=6.5cm, align=center, white] at (11.5,-0.7) {
+    \textbf{Low Algo Penetration}\\[0.4em]
+    \small Only 5\% retail uses algo\\
+    vs 70\% in US markets\\
+    Massive untapped opportunity
+};
+
+\fill[headerblue, rounded corners=6pt] (15.5,-0.5) rectangle (22.5,-3);
+\node[anchor=north, text width=6.5cm, align=center, white] at (19,-0.7) {
+    \textbf{Regional Language Gap}\\[0.4em]
+    \small 90\% Indians prefer local language\\
+    No trading platform offers NLP\\
+    istocks fills this void
+};
+
+\end{tikzpicture}
+\end{center}
+
+\vspace{1.5em}
+
+\noindent\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}{
+\centering
+\large\textit{This positions \textbf{istocks} as \textbf{India's first AI-native trading ecosystem}, not just a brokerage, but a complete platform for learning, automation, expert delegation, and social trading, accessible to every Indian in their preferred language.}
+}}
+
+\end{document}

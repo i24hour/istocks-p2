@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iStocks – AI-Native Investment Platform for Bharat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { width: 100%; height: 100%; overflow: hidden; font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; }
+        
+        /* ===== SLIDE ENGINE ===== */
+        .deck { width: 100vw; height: 100vh; position: relative; }
+        .slide { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px 80px; opacity: 0; pointer-events: none; transition: opacity 0.6s ease, transform 0.6s ease; transform: translateY(30px); }
+        .slide.active { opacity: 1; pointer-events: auto; transform: translateY(0); }
+        .slide::before { content: ''; position: absolute; inset: 0; z-index: 0; }
+        .slide > * { position: relative; z-index: 1; }
+        
+        /* ===== BACKGROUNDS ===== */
+        .bg-hero { background: radial-gradient(ellipse at 30% 50%, rgba(16,185,129,0.15) 0%, transparent 60%), radial-gradient(ellipse at 70% 20%, rgba(59,130,246,0.1) 0%, transparent 50%), #0a0a0a; }
+        .bg-dark { background: radial-gradient(ellipse at 50% 0%, rgba(16,185,129,0.08) 0%, transparent 50%), #0a0a0a; }
+        .bg-gradient { background: linear-gradient(135deg, #0a0a0a 0%, #0d1117 50%, #0a0a0a 100%); }
+        .bg-problem { background: radial-gradient(ellipse at 20% 80%, rgba(239,68,68,0.1) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(251,191,36,0.08) 0%, transparent 50%), #0a0a0a; }
+        .bg-moat { background: radial-gradient(ellipse at 50% 50%, rgba(139,92,246,0.1) 0%, transparent 60%), #0a0a0a; }
+        .bg-money { background: radial-gradient(ellipse at 60% 40%, rgba(16,185,129,0.12) 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, rgba(251,191,36,0.08) 0%, transparent 40%), #0a0a0a; }
+        
+        /* ===== TYPOGRAPHY ===== */
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
+        .hero-title { font-size: 4.5rem; font-weight: 800; line-height: 1.1; letter-spacing: -2px; }
+        .hero-title .accent { color: #10b981; }
+        .section-title { font-size: 3rem; font-weight: 700; letter-spacing: -1.5px; margin-bottom: 40px; text-align: center; }
+        .section-title .accent { color: #10b981; }
+        .subtitle { font-size: 1.35rem; color: #9ca3af; font-weight: 400; line-height: 1.6; max-width: 700px; }
+        
+        /* ===== COMPONENTS ===== */
+        .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); color: #10b981; padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: 500; margin-bottom: 24px; }
+        .badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #10b981; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        
+        .logo-mark { width: 60px; height: 60px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 900; color: #fff; margin-bottom: 16px; font-family: 'Space Grotesk', sans-serif; }
+        
+        .card-grid { display: grid; gap: 24px; width: 100%; max-width: 1200px; }
+        .card-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .card-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+        .card-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+        
+        .card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px; transition: all 0.3s ease; }
+        .card:hover { background: rgba(255,255,255,0.07); border-color: rgba(16,185,129,0.3); transform: translateY(-2px); }
+        .card .card-icon { font-size: 2rem; margin-bottom: 12px; }
+        .card .card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+        .card .card-desc { font-size: 0.9rem; color: #9ca3af; line-height: 1.5; }
+        
+        .stat-card { text-align: center; padding: 32px 20px; }
+        .stat-card .stat-value { font-size: 2.8rem; font-weight: 800; font-family: 'Space Grotesk', sans-serif; background: linear-gradient(135deg, #10b981, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+        .stat-card .stat-label { font-size: 0.95rem; color: #9ca3af; font-weight: 400; }
+        
+        .screenshot-container { display: flex; gap: 20px; max-width: 1200px; width: 100%; justify-content: center; margin-top: 20px; }
+        .screenshot { border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); max-height: 340px; flex: 1; }
+        .screenshot img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+        
+        /* ===== TABLE ===== */
+        .comp-table { width: 100%; max-width: 1200px; border-collapse: collapse; font-size: 0.8rem; }
+        .comp-table th { background: rgba(16,185,129,0.15); color: #10b981; padding: 12px 14px; text-align: left; font-weight: 600; border-bottom: 2px solid rgba(16,185,129,0.3); font-size: 0.8rem; }
+        .comp-table td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); color: #d1d5db; vertical-align: top; }
+        .comp-table tr:hover td { background: rgba(255,255,255,0.03); }
+        .comp-table .tag-yes { color: #10b981; font-weight: 600; }
+        .comp-table .tag-no { color: #ef4444; font-weight: 600; }
+        .comp-table .highlight-row { background: rgba(16,185,129,0.06); }
+        .comp-table .highlight-row td { color: #fff; font-weight: 500; }
+        
+        /* ===== TAM FUNNEL ===== */
+        .tam-visual { display: flex; gap: 32px; align-items: center; max-width: 1100px; width: 100%; }
+        .tam-funnel { display: flex; flex-direction: column; gap: 12px; flex: 1; }
+        .tam-bar { border-radius: 12px; padding: 20px 28px; display: flex; justify-content: space-between; align-items: center; }
+        .tam-bar.tam { background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.05)); border: 1px solid rgba(16,185,129,0.3); width: 100%; }
+        .tam-bar.sam { background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(59,130,246,0.05)); border: 1px solid rgba(59,130,246,0.3); width: 85%; }
+        .tam-bar.som { background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(139,92,246,0.05)); border: 1px solid rgba(139,92,246,0.3); width: 65%; }
+        .tam-label { font-size: 0.9rem; font-weight: 500; }
+        .tam-value { font-size: 1.3rem; font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
+        .tam-bar.tam .tam-value { color: #10b981; }
+        .tam-bar.sam .tam-value { color: #3b82f6; }
+        .tam-bar.som .tam-value { color: #8b5cf6; }
+        
+        .tam-stats { display: grid; gap: 16px; flex: 1; }
+        .tam-stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px 20px; }
+        .tam-stat .label { font-size: 0.8rem; color: #9ca3af; margin-bottom: 4px; }
+        .tam-stat .value { font-size: 1.5rem; font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
+        .tam-stat .value.green { color: #10b981; }
+        .tam-stat .value.blue { color: #3b82f6; }
+        .tam-stat .value.yellow { color: #fbbf24; }
+        
+        /* ===== MOAT PILLARS ===== */
+        .moat-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; max-width: 1200px; width: 100%; }
+        .moat-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px 16px; text-align: center; transition: all 0.3s; }
+        .moat-card:hover { border-color: rgba(139,92,246,0.4); transform: translateY(-4px); }
+        .moat-card .moat-num { font-size: 2rem; font-weight: 800; font-family: 'Space Grotesk', sans-serif; background: linear-gradient(135deg, #8b5cf6, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+        .moat-card .moat-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
+        .moat-card .moat-desc { font-size: 0.8rem; color: #9ca3af; line-height: 1.4; }
+        
+        /* ===== MONETIZATION ===== */
+        .money-flow { display: flex; gap: 24px; max-width: 1100px; width: 100%; justify-content: center; }
+        .money-card { flex: 1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px; text-align: center; }
+        .money-card.primary { border-color: rgba(16,185,129,0.4); background: rgba(16,185,129,0.06); }
+        .money-card .money-icon { font-size: 2.5rem; margin-bottom: 12px; }
+        .money-card .money-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+        .money-card .money-desc { font-size: 0.85rem; color: #9ca3af; line-height: 1.5; }
+        .money-card .money-price { font-size: 1.4rem; font-weight: 800; color: #10b981; margin-top: 12px; font-family: 'Space Grotesk', sans-serif; }
+        
+        /* ===== RISK ===== */
+        .risk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; width: 100%; }
+        .risk-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; }
+        .risk-card .risk-title { font-size: 1rem; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .risk-card .risk-threat { font-size: 0.85rem; color: #ef4444; margin-bottom: 12px; padding: 8px 12px; background: rgba(239,68,68,0.1); border-radius: 8px; }
+        .risk-card .risk-fix { font-size: 0.85rem; color: #10b981; padding: 8px 12px; background: rgba(16,185,129,0.1); border-radius: 8px; }
+        
+        /* ===== ADOPTION ===== */
+        .adoption-pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1100px; width: 100%; }
+        .adoption-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; text-align: center; }
+        .adoption-card .adoption-icon { font-size: 2.2rem; margin-bottom: 10px; }
+        .adoption-card .adoption-title { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+        .adoption-card .adoption-desc { font-size: 0.82rem; color: #9ca3af; line-height: 1.5; }
+        
+        /* ===== REFERENCES ===== */
+        .ref-list { max-width: 900px; width: 100%; }
+        .ref-item { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; gap: 12px; }
+        .ref-num { color: #10b981; font-weight: 700; font-family: 'Space Grotesk', sans-serif; min-width: 30px; }
+        .ref-text { font-size: 0.9rem; color: #d1d5db; line-height: 1.5; }
+        
+        /* ===== NAV ===== */
+        .slide-nav { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 100; background: rgba(0,0,0,0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 50px; padding: 8px 16px; }
+        .slide-nav .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); cursor: pointer; transition: all 0.3s; }
+        .slide-nav .dot.active { background: #10b981; width: 24px; border-radius: 4px; }
+        
+        .slide-counter { position: fixed; bottom: 28px; right: 40px; font-size: 0.85rem; color: #6b7280; z-index: 100; font-family: 'Space Grotesk', sans-serif; }
+        
+        .nav-arrows { position: fixed; top: 50%; z-index: 100; }
+        .nav-arrows.left { left: 20px; transform: translateY(-50%); }
+        .nav-arrows.right { right: 20px; transform: translateY(-50%); }
+        .nav-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); color: #9ca3af; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+        .nav-btn:hover { border-color: rgba(16,185,129,0.4); color: #10b981; }
+        
+        /* ===== UTILITIES ===== */
+        .text-center { text-align: center; }
+        .mb-8 { margin-bottom: 8px; }
+        .mb-16 { margin-bottom: 16px; }
+        .mb-24 { margin-bottom: 24px; }
+        .mb-40 { margin-bottom: 40px; }
+        .mt-20 { margin-top: 20px; }
+        .flex-center { display: flex; align-items: center; justify-content: center; }
+        .gap-12 { gap: 12px; }
+        .gap-40 { gap: 40px; }
+        .w-full { width: 100%; max-width: 1200px; }
+        
+        .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #10b981, #059669); border-radius: 2px; margin: 0 auto 32px; }
+        
+        .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1100px; width: 100%; align-items: center; }
+        .who-left { display: flex; flex-direction: column; gap: 16px; }
+        .who-stat { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; }
+        .who-stat .who-icon { font-size: 1.6rem; }
+        .who-stat .who-label { font-size: 0.85rem; color: #9ca3af; }
+        .who-stat .who-value { font-size: 1.1rem; font-weight: 600; }
+        
+        .who-right { display: flex; flex-direction: column; gap: 12px; }
+        .persona-card { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; }
+        .persona-card .persona-emoji { font-size: 2rem; }
+        .persona-card .persona-name { font-weight: 600; font-size: 0.95rem; }
+        .persona-card .persona-desc { font-size: 0.8rem; color: #9ca3af; }
+
+        /* ===== FLOATING PARTICLES ===== */
+        .particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+        .particle { position: absolute; width: 4px; height: 4px; background: rgba(16,185,129,0.3); border-radius: 50%; animation: float 15s infinite linear; }
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="deck" id="deck">
+    
+    <!-- ===== SLIDE 1: TITLE ===== -->
+    <div class="slide bg-hero active" data-slide="0">
+        <div class="particles">
+            <div class="particle" style="left:10%; animation-delay:0s;"></div>
+            <div class="particle" style="left:25%; animation-delay:3s;"></div>
+            <div class="particle" style="left:50%; animation-delay:6s;"></div>
+            <div class="particle" style="left:75%; animation-delay:9s;"></div>
+            <div class="particle" style="left:90%; animation-delay:12s;"></div>
+        </div>
+        <div class="logo-mark font-display">iS</div>
+        <div class="badge"><span class="dot"></span> Live at istocks.codes</div>
+        <h1 class="hero-title font-display text-center">
+            <span class="accent">AI-Native</span> Investment<br>Platform for <span class="accent">Bharat</span>
+        </h1>
+        <p class="subtitle text-center mt-20" style="max-width:600px;">
+            Empowering 100M+ Indians to invest smarter with conversational AI, real-time analytics, and algo-trading — in their own language.
+        </p>
+        <div style="margin-top:32px; display:flex; gap:16px; align-items:center;">
+            <span style="padding:10px 24px; background:linear-gradient(135deg,#10b981,#059669); border-radius:50px; font-weight:600; font-size:0.9rem;">🌐 Web — istocks.codes</span>
+            <span style="padding:10px 24px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:50px; font-weight:500; font-size:0.9rem;">📱 Android APK</span>
+        </div>
+        <p style="margin-top:40px; color:#6b7280; font-size:0.8rem;">Press → or click to navigate &nbsp;|&nbsp; By Priyanshu</p>
+    </div>
+
+    <!-- ===== SLIDE 2: THE PROBLEM ===== -->
+    <div class="slide bg-problem" data-slide="1">
+        <p class="badge" style="background:rgba(239,68,68,0.15); border-color:rgba(239,68,68,0.3); color:#ef4444;"><span class="dot" style="background:#ef4444;"></span> The Problem</p>
+        <h2 class="section-title font-display">India's Investors Are <span style="color:#ef4444;">Underserved</span></h2>
+        <div class="card-grid cols-3">
+            <div class="card">
+                <div class="card-icon">🔒</div>
+                <div class="card-title">Information Asymmetry</div>
+                <div class="card-desc">Institutional investors have Bloomberg terminals, quant teams & algo infra. Retail investors get static charts and news headlines.</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌐</div>
+                <div class="card-title">English-Only Platforms</div>
+                <div class="card-desc">90% of Indians prefer their regional language. Zero trading platforms offer NLP-based analysis in Hindi, Tamil, Telugu, etc.</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚙️</div>
+                <div class="card-title">Algo Trading Gap</div>
+                <div class="card-desc">Algo trading is 70% of US volume but only 5% of Indian retail. Existing tools are too technical and code-heavy for mass adoption.</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <div class="card-title">Complexity Kills Adoption</div>
+                <div class="card-desc">Candlestick charts, RSI, MACD — new investors don't understand technical analysis. They need plain-language guidance.</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">💸</div>
+                <div class="card-title">Expensive Advisory</div>
+                <div class="card-desc">SEBI-registered advisors charge ₹10,000–₹50,000/year. Most new investors in Tier 2/3 cities can't afford professional advice.</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🧠</div>
+                <div class="card-title">Emotional Trading</div>
+                <div class="card-desc">80% of retail traders lose money due to emotional decisions. They need AI-driven, data-backed confidence — not panic selling.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 3: THE PRODUCT ===== -->
+    <div class="slide bg-dark" data-slide="2">
+        <p class="badge"><span class="dot"></span> The Product</p>
+        <h2 class="section-title font-display">Meet <span class="accent">iStocks</span></h2>
+        <p class="subtitle text-center mb-40">India's first AI-native trading intelligence platform. Ask questions in natural language, get institutional-grade analysis, build & deploy algo strategies — all without writing a single line of code.</p>
+        <div class="card-grid cols-4">
+            <div class="card" style="text-align:center;">
+                <div class="card-icon">🤖</div>
+                <div class="card-title">AI Stock Analyst</div>
+                <div class="card-desc">Ask "How is Reliance performing?" — get detailed technical + fundamental analysis powered by Gemini 2.5 Pro</div>
+            </div>
+            <div class="card" style="text-align:center;">
+                <div class="card-icon">📈</div>
+                <div class="card-title">20+ Indicators</div>
+                <div class="card-desc">RSI, MACD, Bollinger Bands, EMA, SMA, ADX, OBV and more — computed in real-time on live NSE/BSE data</div>
+            </div>
+            <div class="card" style="text-align:center;">
+                <div class="card-icon">🧪</div>
+                <div class="card-title">Sangraha</div>
+                <div class="card-desc">Strategy repository — create, backtest, fork & share trading strategies. Community-driven algo marketplace.</div>
+            </div>
+            <div class="card" style="text-align:center;">
+                <div class="card-icon">🗄️</div>
+                <div class="card-title">AI Database Chat</div>
+                <div class="card-desc">Query stock data in plain English — auto-translated to SQL. "Show RSI below 30 stocks" just works.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 4: PRODUCT SCREENSHOTS ===== -->
+    <div class="slide bg-gradient" data-slide="3">
+        <p class="badge"><span class="dot"></span> Live Product</p>
+        <h2 class="section-title font-display" style="font-size:2.4rem;">Built & Deployed at <span class="accent">istocks.codes</span></h2>
+        <div class="screenshot-container">
+            <div class="screenshot">
+                <img src="assets/Dashboard.png" alt="Stock Dashboard" />
+            </div>
+            <div class="screenshot">
+                <img src="assets/Stock_analysis.png" alt="AI Stock Analysis" />
+            </div>
+            <div class="screenshot">
+                <img src="assets/Database_analysis.png" alt="AI Database Chat" />
+            </div>
+        </div>
+        <div style="display:flex; gap:60px; margin-top:28px; color:#9ca3af; font-size:0.85rem;">
+            <span>📊 Real-Time Dashboard</span>
+            <span>🤖 AI Stock Analyst Chat</span>
+            <span>🗄️ Natural Language DB Query</span>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 5: TAM & MARKET ===== -->
+    <div class="slide bg-dark" data-slide="4">
+        <p class="badge"><span class="dot"></span> Market Opportunity</p>
+        <h2 class="section-title font-display">TAM: <span class="accent">A Massive Opportunity</span></h2>
+        <div class="tam-visual">
+            <div class="tam-funnel">
+                <div class="tam-bar tam">
+                    <div>
+                        <div class="tam-label">TAM — Indian Retail Trading Market</div>
+                        <div style="font-size:0.8rem; color:#9ca3af; margin-top:4px;">All retail investors in equity, derivatives, mutual funds</div>
+                    </div>
+                    <div class="tam-value">₹80,000+ Cr</div>
+                </div>
+                <div class="tam-bar sam">
+                    <div>
+                        <div class="tam-label">SAM — Tech-Savvy Active Traders</div>
+                        <div style="font-size:0.8rem; color:#9ca3af; margin-top:4px;">Users open to AI tools, algo trading, SaaS platforms</div>
+                    </div>
+                    <div class="tam-value">₹12,000+ Cr</div>
+                </div>
+                <div class="tam-bar som">
+                    <div>
+                        <div class="tam-label">SOM — Early Adopter NLP Traders</div>
+                        <div style="font-size:0.8rem; color:#9ca3af; margin-top:4px;">First 500K users in Year 1 via freemium + referral</div>
+                    </div>
+                    <div class="tam-value">₹500+ Cr</div>
+                </div>
+            </div>
+            <div class="tam-stats">
+                <div class="tam-stat">
+                    <div class="label">Demat Accounts in India</div>
+                    <div class="value green">15 Crore+</div>
+                </div>
+                <div class="tam-stat">
+                    <div class="label">Algo Trading Market (India, 2025)</div>
+                    <div class="value blue">$615M → $2.3B by 2030</div>
+                </div>
+                <div class="tam-stat">
+                    <div class="label">Retail Algo Penetration</div>
+                    <div class="value yellow">Only 5% (vs 70% in US)</div>
+                </div>
+                <div class="tam-stat">
+                    <div class="label">Growth Rate</div>
+                    <div class="value green">20% CAGR</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 6: WHO ARE WE BUILDING FOR ===== -->
+    <div class="slide bg-gradient" data-slide="5">
+        <p class="badge"><span class="dot"></span> Target Users</p>
+        <h2 class="section-title font-display">Building for <span class="accent">100M+ Indians</span></h2>
+        <div class="who-grid">
+            <div class="who-left">
+                <div class="who-stat">
+                    <div class="who-icon">🇮🇳</div>
+                    <div>
+                        <div class="who-value">15 Cr+ Demat Account Holders</div>
+                        <div class="who-label">3x growth in just 5 years — fastest in the world</div>
+                    </div>
+                </div>
+                <div class="who-stat">
+                    <div class="who-icon">🗣️</div>
+                    <div>
+                        <div class="who-value">90% prefer regional language</div>
+                        <div class="who-label">Hindi, Tamil, Telugu, Marathi, Bengali…</div>
+                    </div>
+                </div>
+                <div class="who-stat">
+                    <div class="who-icon">📱</div>
+                    <div>
+                        <div class="who-value">Mobile-first internet users</div>
+                        <div class="who-label">750M+ smartphone users across Tier 1, 2, 3 cities</div>
+                    </div>
+                </div>
+                <div class="who-stat">
+                    <div class="who-icon">🎓</div>
+                    <div>
+                        <div class="who-value">50% are new investors (< 2 years)</div>
+                        <div class="who-label">Post-COVID wave — hungry for guidance, not complexity</div>
+                    </div>
+                </div>
+            </div>
+            <div class="who-right">
+                <div class="persona-card">
+                    <div class="persona-emoji">👨‍💼</div>
+                    <div>
+                        <div class="persona-name">Rahul, 24 — Tier 2 City Salaried Employee</div>
+                        <div class="persona-desc">Started investing on Groww, doesn't understand RSI or MACD. Wants AI to tell him "should I buy or hold?"</div>
+                    </div>
+                </div>
+                <div class="persona-card">
+                    <div class="persona-emoji">👩‍🏫</div>
+                    <div>
+                        <div class="persona-name">Priya, 30 — Teacher in Jaipur</div>
+                        <div class="persona-desc">Uses Hindi for everything. Wants to invest ₹5K/month but every platform is in English with complex UI.</div>
+                    </div>
+                </div>
+                <div class="persona-card">
+                    <div class="persona-emoji">👨‍💻</div>
+                    <div>
+                        <div class="persona-name">Vikram, 28 — Active Day Trader</div>
+                        <div class="persona-desc">Uses TradingView for charting. Wants to build algo strategies but can't code. Needs a no-code bot builder.</div>
+                    </div>
+                </div>
+                <div class="persona-card">
+                    <div class="persona-emoji">👴</div>
+                    <div>
+                        <div class="persona-name">Suresh, 55 — Retired Bank Manager</div>
+                        <div class="persona-desc">Wants to grow retirement corpus. Trusts data over brokers. Needs simple AI insights in his language.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 7: EASE OF ADOPTION ===== -->
+    <div class="slide bg-dark" data-slide="6">
+        <p class="badge"><span class="dot"></span> Adoption Strategy</p>
+        <h2 class="section-title font-display">Why <span class="accent">100M+</span> Will Adopt This</h2>
+        <div class="adoption-pillars">
+            <div class="adoption-card">
+                <div class="adoption-icon">💬</div>
+                <div class="adoption-title">Conversational AI</div>
+                <div class="adoption-desc">No learning curve. Just type "How is Reliance doing?" and get a professional analysis. Like chatting with a stock expert friend.</div>
+            </div>
+            <div class="adoption-card">
+                <div class="adoption-icon">🌍</div>
+                <div class="adoption-title">Regional Languages</div>
+                <div class="adoption-desc">Full NLP support in Hindi, Tamil, Telugu, Marathi & more. First platform to truly serve Bharat, not just India's English-speaking 10%.</div>
+            </div>
+            <div class="adoption-card">
+                <div class="adoption-icon">🆓</div>
+                <div class="adoption-title">Free to Start</div>
+                <div class="adoption-desc">Zero cost barrier to access AI analysis, charts & strategies. Freemium model lets anyone try before committing. No credit card needed.</div>
+            </div>
+            <div class="adoption-card">
+                <div class="adoption-icon">📱</div>
+                <div class="adoption-title">Mobile + Web + APK</div>
+                <div class="adoption-desc">Works on istocks.codes (web) and as an Android APK. No app store friction. Share via WhatsApp link. Works on low-end phones.</div>
+            </div>
+        </div>
+        <div style="margin-top:32px; display:flex; gap:24px; align-items:center;">
+            <div class="card" style="padding:16px 24px; text-align:center; max-width:280px;">
+                <div style="font-size:2rem; font-weight:800; color:#10b981; font-family:'Space Grotesk';">< 30 sec</div>
+                <div style="font-size:0.85rem; color:#9ca3af;">Time to first AI insight</div>
+            </div>
+            <div class="card" style="padding:16px 24px; text-align:center; max-width:280px;">
+                <div style="font-size:2rem; font-weight:800; color:#10b981; font-family:'Space Grotesk';">Zero</div>
+                <div style="font-size:0.85rem; color:#9ca3af;">Technical knowledge needed</div>
+            </div>
+            <div class="card" style="padding:16px 24px; text-align:center; max-width:280px;">
+                <div style="font-size:2rem; font-weight:800; color:#10b981; font-family:'Space Grotesk';">WhatsApp</div>
+                <div style="font-size:0.85rem; color:#9ca3af;">Viral sharing via link</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 8: COMPETITIVE LANDSCAPE ===== -->
+    <div class="slide bg-gradient" data-slide="7">
+        <p class="badge"><span class="dot"></span> Competitive Landscape</p>
+        <h2 class="section-title font-display" style="font-size:2.4rem;">No One Does What <span class="accent">iStocks</span> Does</h2>
+        <table class="comp-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Zerodha</th>
+                    <th>Groww</th>
+                    <th>Angel One</th>
+                    <th>TradingView</th>
+                    <th>Streak / Tradetron</th>
+                    <th style="color:#fff; background:rgba(16,185,129,0.3);">iStocks ✨</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>AI Chatbot Analyst</strong></td>
+                    <td class="tag-no">✗</td><td class="tag-no">✗</td><td class="tag-no">✗</td><td class="tag-no">✗</td><td class="tag-no">✗</td>
+                    <td class="tag-yes highlight-row">✓ Gemini 2.5 Pro</td>
+                </tr>
+                <tr>
+                    <td><strong>NLP in Regional Languages</strong></td>
+                    <td class="tag-no">✗</td><td class="tag-no">✗</td><td class="tag-no">✗</td><td class="tag-no">✗</td><td class="tag-no">✗</td>
+                    <td class="tag-yes highlight-row">✓ All Indian Languages</td>
+                </tr>
+                <tr>
+                    <td><strong>No-Code Bot Builder</strong></td>
+                    <td class="tag-no">✗</td><td class="tag-no">✗</td><td class="tag-no">✗</td><td class="tag-no">✗</td><td>Partial</td>
+                    <td class="tag-yes highlight-row">✓ NLP-based</td>
+                </tr>
+                <tr>
+                    <td><strong>Strategy Repository</strong></td>
+                    <td class="tag-no">✗</td><td class="tag-no">✗</td><td class="tag-no">✗</td><td>Ideas only</td><td>Partial</td>
+                    <td class="tag-yes highlight-row">✓ Sangraha</td>
+                </tr>
+                <tr>
+                    <td><strong>Natural Language DB Query</strong></td>
+                    <td class="tag-no">✗</td><td class="tag-no">✗</td><td class="tag-no">✗</td><td class="tag-no">✗</td><td class="tag-no">✗</td>
+                    <td class="tag-yes highlight-row">✓ Text → SQL</td>
+                </tr>
+                <tr>
+                    <td><strong>20+ Technical Indicators</strong></td>
+                    <td>Via Kite</td><td class="tag-no">✗</td><td>Basic</td><td class="tag-yes">✓</td><td>Basic</td>
+                    <td class="tag-yes highlight-row">✓ Real-time</td>
+                </tr>
+                <tr>
+                    <td><strong>Revenue (FY24)</strong></td>
+                    <td>₹8,320 Cr</td><td>₹3,145 Cr</td><td>₹4,275 Cr</td><td>$250M</td><td>₹50-100 Cr</td>
+                    <td class="highlight-row" style="color:#fbbf24;">Pre-Revenue 🚀</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== SLIDE 9: MOAT ===== -->
+    <div class="slide bg-moat" data-slide="8">
+        <p class="badge" style="background:rgba(139,92,246,0.15); border-color:rgba(139,92,246,0.3); color:#a78bfa;"><span class="dot" style="background:#a78bfa;"></span> Defensibility</p>
+        <h2 class="section-title font-display">5 Pillars of Our <span style="color:#a78bfa;">Moat</span></h2>
+        <div class="moat-grid">
+            <div class="moat-card">
+                <div class="moat-num">01</div>
+                <div class="moat-title">First Mover in NLP Trading</div>
+                <div class="moat-desc">No Indian platform combines NLP + AI trading agents + regional language support. We define the category.</div>
+            </div>
+            <div class="moat-card">
+                <div class="moat-num">02</div>
+                <div class="moat-title">Data Network Effects</div>
+                <div class="moat-desc">Every query makes our AI smarter. More users = better strategy recommendations = more users. Flywheel effect.</div>
+            </div>
+            <div class="moat-card">
+                <div class="moat-num">03</div>
+                <div class="moat-title">Community Strategy Repo</div>
+                <div class="moat-desc">Sangraha creates user-generated content lock-in. Fork, backtest, deploy — a GitHub for trading strategies.</div>
+            </div>
+            <div class="moat-card">
+                <div class="moat-num">04</div>
+                <div class="moat-title">Regional Language Lock-in</div>
+                <div class="moat-desc">90% of India doesn't use English daily. Once they use iStocks in Hindi/Tamil, switching to English-only platforms is painful.</div>
+            </div>
+            <div class="moat-card">
+                <div class="moat-num">05</div>
+                <div class="moat-title">AI Agent Ecosystem</div>
+                <div class="moat-desc">Expert Network + Bot Marketplace creates two-sided marketplace dynamics. Experts earn, users profit — everyone stays.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 10: MONETIZATION ===== -->
+    <div class="slide bg-money" data-slide="9">
+        <p class="badge"><span class="dot"></span> Business Model</p>
+        <h2 class="section-title font-display">How We <span class="accent">Make Money</span></h2>
+        <div class="money-flow">
+            <div class="money-card primary">
+                <div class="money-icon">👑</div>
+                <div class="money-title">Subscription Plans</div>
+                <div class="money-desc">
+                    <strong>Free Tier:</strong> Basic AI chat, limited queries<br><br>
+                    <strong>Pro (₹299/mo):</strong> Unlimited AI, 20+ indicators, priority support<br><br>
+                    <strong>Elite (₹999/mo):</strong> Algo deployment, backtesting, expert network access
+                </div>
+                <div class="money-price">₹299 – ₹999/mo</div>
+            </div>
+            <div class="money-card">
+                <div class="money-icon">💹</div>
+                <div class="money-title">Brokerage Commission</div>
+                <div class="money-desc">
+                    Revenue share on every trade executed via iStocks through integrated broker APIs.<br><br>
+                    Industry standard: ₹20/trade or 0.03% of turnover — at scale this is massive.
+                </div>
+                <div class="money-price">₹20 / trade</div>
+            </div>
+            <div class="money-card">
+                <div class="money-icon">🏪</div>
+                <div class="money-title">Strategy Marketplace</div>
+                <div class="money-desc">
+                    Premium strategies on Sangraha — creators earn, platform takes 15-20% cut.<br><br>
+                    Expert Network profit-sharing model for managed portfolios.
+                </div>
+                <div class="money-price">15-20% take rate</div>
+            </div>
+        </div>
+        <div style="margin-top:28px; text-align:center;">
+            <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:16px 32px; display:inline-flex; gap:40px;">
+                <div><span style="color:#10b981; font-weight:700; font-size:1.1rem;">500K users</span><br><span style="font-size:0.8rem; color:#9ca3af;">Year 1 target</span></div>
+                <div><span style="color:#10b981; font-weight:700; font-size:1.1rem;">5% conversion</span><br><span style="font-size:0.8rem; color:#9ca3af;">Free → Paid</span></div>
+                <div><span style="color:#10b981; font-weight:700; font-size:1.1rem;">₹15 Cr ARR</span><br><span style="font-size:0.8rem; color:#9ca3af;">Year 1 revenue potential</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 11: RISKS ===== -->
+    <div class="slide bg-problem" data-slide="10">
+        <p class="badge" style="background:rgba(251,191,36,0.15); border-color:rgba(251,191,36,0.3); color:#fbbf24;"><span class="dot" style="background:#fbbf24;"></span> Risk Analysis</p>
+        <h2 class="section-title font-display">What Could Go <span style="color:#ef4444;">Wrong</span> & How We <span class="accent">Fix It</span></h2>
+        <div class="risk-grid">
+            <div class="risk-card">
+                <div class="risk-title">⚡ Execution Risk</div>
+                <div class="risk-threat">Threat: Not iterating fast enough, losing momentum against well-funded incumbents.</div>
+                <div class="risk-fix">Mitigation: Relentless execution cadence. Ship weekly. Stay lean and founder-led. Hard work is the only answer.</div>
+            </div>
+            <div class="risk-card">
+                <div class="risk-title">📜 Regulatory Risk</div>
+                <div class="risk-threat">Threat: SEBI tightens algo trading rules or bans retail algo APIs.</div>
+                <div class="risk-fix">Mitigation: Compliance-first approach from Day 1. Partner with SEBI-registered brokers. Stay within sandbox guidelines.</div>
+            </div>
+            <div class="risk-card">
+                <div class="risk-title">🏢 Big Player Entry</div>
+                <div class="risk-threat">Threat: Zerodha or Groww launches their own AI chatbot feature.</div>
+                <div class="risk-fix">Mitigation: Speed of innovation. NLP in regional languages + community repo is hard to replicate quickly. First-mover data advantage.</div>
+            </div>
+            <div class="risk-card">
+                <div class="risk-title">🤖 AI Hallucination</div>
+                <div class="risk-threat">Threat: AI gives incorrect stock advice leading to user losses and trust erosion.</div>
+                <div class="risk-fix">Mitigation: Ground AI in real data (20+ indicators, live prices). Mandatory disclaimers. RAG pipeline with verified data sources.</div>
+            </div>
+            <div class="risk-card">
+                <div class="risk-title">📉 Market Downturn</div>
+                <div class="risk-threat">Threat: Bear market reduces retail trading volumes and user interest.</div>
+                <div class="risk-fix">Mitigation: Expand to mutual funds, FDs, and gold investments — short & intermediate term products beyond equities.</div>
+            </div>
+            <div class="risk-card">
+                <div class="risk-title">💰 Funding Gap</div>
+                <div class="risk-threat">Threat: Unable to raise capital before runway runs out.</div>
+                <div class="risk-fix">Mitigation: Bootstrap-friendly model. Low infra costs (Vercel + Neon). Revenue from Day 1 via brokerage commissions.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 12: REFERENCES ===== -->
+    <div class="slide bg-dark" data-slide="11">
+        <p class="badge"><span class="dot"></span> Research References</p>
+        <h2 class="section-title font-display" style="font-size:2.4rem;">Sources & <span class="accent">References</span></h2>
+        <div class="ref-list">
+            <div class="ref-item">
+                <span class="ref-num">01</span>
+                <span class="ref-text"><strong>SEBI Annual Report 2024-25</strong> — Demat account growth statistics, retail investor participation data, algo trading regulations.</span>
+            </div>
+            <div class="ref-item">
+                <span class="ref-num">02</span>
+                <span class="ref-text"><strong>IMARC Group Research</strong> — India Algorithmic Trading Market: USD 615.61M (2025) → USD 2.3B projected by 2030.</span>
+            </div>
+            <div class="ref-item">
+                <span class="ref-num">03</span>
+                <span class="ref-text"><strong>Grand View Research</strong> — Global & India algorithmic trading market size, growth trends, and segment analysis.</span>
+            </div>
+            <div class="ref-item">
+                <span class="ref-num">04</span>
+                <span class="ref-text"><strong>NSE/BSE Market Data</strong> — Real-time and historical stock data. Active trading accounts crossed 15 Crore in 2025.</span>
+            </div>
+            <div class="ref-item">
+                <span class="ref-num">05</span>
+                <span class="ref-text"><strong>KPMG India Fintech Report 2024</strong> — Retail investment trends, digital adoption in Tier 2/3 cities, language preferences.</span>
+            </div>
+            <div class="ref-item">
+                <span class="ref-num">06</span>
+                <span class="ref-text"><strong>Zerodha, Groww, Angel One Annual Reports (FY24)</strong> — Revenue benchmarks, user growth, feature comparison for competitive analysis.</span>
+            </div>
+            <div class="ref-item">
+                <span class="ref-num">07</span>
+                <span class="ref-text"><strong>Google India — Language Diversity Report</strong> — 90% of Indian internet users prefer regional language content; massive gap in fintech.</span>
+            </div>
+            <div class="ref-item">
+                <span class="ref-num">08</span>
+                <span class="ref-text"><strong>Republic World / ScanX / QuantInsti</strong> — Algo trading penetration analysis: 67% in F&O, only 5% in retail equity.</span>
+            </div>
+            <div class="ref-item">
+                <span class="ref-num">09</span>
+                <span class="ref-text"><strong>iStocks Platform Documentation</strong> — Technical architecture, feature specs, and product documentation. Available at istocks.codes.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 13: THANK YOU ===== -->
+    <div class="slide bg-hero" data-slide="12">
+        <div class="particles">
+            <div class="particle" style="left:10%; animation-delay:0s;"></div>
+            <div class="particle" style="left:30%; animation-delay:2s;"></div>
+            <div class="particle" style="left:50%; animation-delay:4s;"></div>
+            <div class="particle" style="left:70%; animation-delay:6s;"></div>
+            <div class="particle" style="left:90%; animation-delay:8s;"></div>
+        </div>
+        <div class="logo-mark font-display" style="width:80px; height:80px; font-size:2.4rem; border-radius:20px;">iS</div>
+        <h2 class="hero-title font-display text-center" style="font-size:3.5rem; margin-top:16px;">
+            Thank You.
+        </h2>
+        <p class="subtitle text-center" style="max-width:500px; margin-top:16px;">
+            iStocks — Making every Indian an informed investor, in their own language.
+        </p>
+        <div style="margin-top:40px; display:flex; flex-direction:column; align-items:center; gap:12px;">
+            <div style="display:flex; gap:24px; align-items:center;">
+                <span style="padding:10px 24px; background:linear-gradient(135deg,#10b981,#059669); border-radius:50px; font-weight:600; font-size:0.9rem;">🌐 istocks.codes</span>
+                <span style="padding:10px 24px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:50px; font-weight:500; font-size:0.9rem;">📱 Android APK Available</span>
+            </div>
+            <p style="color:#6b7280; font-size:0.9rem; margin-top:16px;">Built by <strong style="color:#fff;">Priyanshu</strong></p>
+        </div>
+    </div>
+
+</div>
+
+<!-- ===== NAVIGATION ===== -->
+<div class="slide-nav" id="slideNav"></div>
+<div class="slide-counter" id="slideCounter">1 / 13</div>
+<div class="nav-arrows left"><button class="nav-btn" onclick="changeSlide(-1)">‹</button></div>
+<div class="nav-arrows right"><button class="nav-btn" onclick="changeSlide(1)">›</button></div>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    const nav = document.getElementById('slideNav');
+    const counter = document.getElementById('slideCounter');
+    let current = 0;
+    const total = slides.length;
+
+    // Build nav dots
+    for (let i = 0; i < total; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => goToSlide(i);
+        nav.appendChild(dot);
+    }
+
+    function goToSlide(n) {
+        slides[current].classList.remove('active');
+        nav.children[current].classList.remove('active');
+        current = n;
+        slides[current].classList.add('active');
+        nav.children[current].classList.add('active');
+        counter.textContent = `${current + 1} / ${total}`;
+    }
+
+    function changeSlide(dir) {
+        let next = current + dir;
+        if (next < 0) next = total - 1;
+        if (next >= total) next = 0;
+        goToSlide(next);
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
+        if (e.key === 'Home') goToSlide(0);
+        if (e.key === 'End') goToSlide(total - 1);
+    });
+
+    // Touch support
+    let touchStartX = 0;
+    document.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX);
+    document.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+    });
+</script>
+</body>
+</html>

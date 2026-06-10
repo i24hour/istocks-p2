@@ -1,0 +1,14 @@
+---
+description: Default git workflow — push completed work to main without extra confirmation prompts
+alwaysApply: true
+---
+
+# Git: push to `main` by default
+
+For this repository, when the user asks to save work, push changes, ship, or complete a task that includes git:
+
+1. Commit any pending changes on the current branch with a clear message.
+2. Ensure **`main`** includes the work (merge or commit directly on `main` as appropriate).
+3. Run **`git push origin main`** without asking for separate confirmation, unless the user explicitly wants a feature branch, draft PR only, or no push.
+
+If the user says they do not want to be asked about pushing next time, treat that as this policy until they say otherwise.

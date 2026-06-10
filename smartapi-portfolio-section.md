@@ -1,0 +1,410 @@
+- generic [ref=e6]:
+  - banner [ref=e7]:
+    - link "SmartAPI logo" [ref=e9] [cursor=pointer]:
+      - /url: "#"
+      - img "SmartAPI logo" [ref=e10]
+    - text: 
+    - navigation [ref=e11]:
+      - list [ref=e13]:
+        - listitem [ref=e14]:
+          - link "API Documentation" [ref=e15] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e16]:
+          - link "Enable TOTP" [ref=e17] [cursor=pointer]:
+            - /url: /enable-totp
+        - listitem [ref=e18]:
+          - link "Forum" [ref=e19] [cursor=pointer]:
+            - /url: https://smartapi.angelbroking.com/smartapi/forum
+        - listitem [ref=e20]:
+          - link "FAQ" [ref=e21] [cursor=pointer]:
+            - /url: /faq
+        - listitem [ref=e22]:
+          - link "Login" [ref=e23] [cursor=pointer]:
+            - /url: https://smartapi.angelone.in/publisher-login/v2/login
+  - generic [ref=e24]:
+    - list [ref=e26]:
+      - listitem [ref=e27]:
+        - link "API Documentation" [ref=e28] [cursor=pointer]:
+          - /url: "#"
+      - listitem [ref=e29]:
+        - link "Introduction" [ref=e30] [cursor=pointer]:
+          - /url: /docs/Introduction
+      - listitem [ref=e31]:
+        - link "Response structure" [ref=e32] [cursor=pointer]:
+          - /url: /docs/ResponseStructure
+      - listitem [ref=e33]:
+        - link "Error Codes" [ref=e34] [cursor=pointer]:
+          - /url: /docs/Exceptions
+      - listitem [ref=e35]:
+        - link "User" [ref=e36] [cursor=pointer]:
+          - /url: /docs/User
+        - list:
+          - listitem [ref=e37]:
+            - link "Login Flow" [ref=e38] [cursor=pointer]:
+              - /url: "#flow"
+          - listitem [ref=e39]:
+            - link "Authentication with Angel" [ref=e40] [cursor=pointer]:
+              - /url: "#Authenticate"
+          - listitem [ref=e41]:
+            - link "Generate Token" [ref=e42] [cursor=pointer]:
+              - /url: "#Generate"
+          - listitem [ref=e43]:
+            - link "Get Profile" [ref=e44] [cursor=pointer]:
+              - /url: "#Profile"
+          - listitem [ref=e45]:
+            - link "Funds and Margins" [ref=e46] [cursor=pointer]:
+              - /url: "#Funds"
+          - listitem [ref=e47]:
+            - link "Logout" [ref=e48] [cursor=pointer]:
+              - /url: "#logout"
+      - listitem [ref=e49]:
+        - link "GTT" [ref=e50] [cursor=pointer]:
+          - /url: /docs/Gtt
+        - list:
+          - listitem [ref=e51]:
+            - link "Create Rule" [ref=e52] [cursor=pointer]:
+              - /url: "#gttcreate"
+          - listitem [ref=e53]:
+            - link "Modify Rule" [ref=e54] [cursor=pointer]:
+              - /url: "#gttmodify"
+          - listitem [ref=e55]:
+            - link "Cancel Rule" [ref=e56] [cursor=pointer]:
+              - /url: "#gttcancel"
+          - listitem [ref=e57]:
+            - link "Rule Details" [ref=e58] [cursor=pointer]:
+              - /url: "#gttruledetails"
+          - listitem [ref=e59]:
+            - link "Rule List" [ref=e60] [cursor=pointer]:
+              - /url: "#gttrulelist"
+      - listitem [ref=e61]:
+        - link "Orders" [ref=e62] [cursor=pointer]:
+          - /url: /docs/Orders
+        - list:
+          - listitem [ref=e63]:
+            - link "Place Order" [ref=e64] [cursor=pointer]:
+              - /url: "#place"
+          - listitem [ref=e65]:
+            - link "Modify Order" [ref=e66] [cursor=pointer]:
+              - /url: "#modifyorder"
+          - listitem [ref=e67]:
+            - link "Cancel Order" [ref=e68] [cursor=pointer]:
+              - /url: "#cancelorder"
+          - listitem [ref=e69]:
+            - link "Get Order Book" [ref=e70] [cursor=pointer]:
+              - /url: "#orderbook"
+          - listitem [ref=e71]:
+            - link "Get Trade Book" [ref=e72] [cursor=pointer]:
+              - /url: "#trade"
+          - listitem [ref=e73]:
+            - link "Get LTP Data" [ref=e74] [cursor=pointer]:
+              - /url: "#ltp"
+          - listitem [ref=e75]:
+            - link "Individual Order Status" [ref=e76] [cursor=pointer]:
+              - /url: "#indorder"
+      - listitem [ref=e77]:
+        - link "Brokerage Calculator API" [ref=e78] [cursor=pointer]:
+          - /url: /docs/BrokerageCalculator
+      - listitem [ref=e79]:
+        - link "Portfolio" [ref=e80] [cursor=pointer]:
+          - /url: /docs/Portfolio
+        - list [ref=e81]:
+          - listitem [ref=e82]:
+            - link "Get Holding" [ref=e83] [cursor=pointer]:
+              - /url: "#holding"
+          - listitem [ref=e84]:
+            - link "Get All Holding" [ref=e85] [cursor=pointer]:
+              - /url: "#allholding"
+          - listitem [ref=e86]:
+            - link "Get Position" [ref=e87] [cursor=pointer]:
+              - /url: "#position"
+          - listitem [ref=e88]:
+            - link "Convert Position" [ref=e89] [cursor=pointer]:
+              - /url: "#convert"
+      - listitem [ref=e90]:
+        - link "EDIS API" [ref=e91] [cursor=pointer]:
+          - /url: /docs/Edis
+      - listitem [ref=e92]:
+        - link "Postback" [ref=e93] [cursor=pointer]:
+          - /url: /docs/Postback
+      - listitem [ref=e94]:
+        - link "Margin Calculator" [ref=e95] [cursor=pointer]:
+          - /url: /docs/MarginCalculator
+      - listitem [ref=e96]:
+        - link "Market Data API" [ref=e97] [cursor=pointer]:
+          - /url: /docs/MarketData
+      - listitem [ref=e98]:
+        - link "Option Greeks" [ref=e99] [cursor=pointer]:
+          - /url: /docs/OptionGreeks
+      - listitem [ref=e100]:
+        - link "Top Gainers / Losers" [ref=e101] [cursor=pointer]:
+          - /url: /docs/TopGainers
+      - listitem [ref=e102]:
+        - link "Historical API" [ref=e103] [cursor=pointer]:
+          - /url: /docs/Historical
+      - listitem [ref=e104]:
+        - link "WebSocket Streaming 2.0" [ref=e105] [cursor=pointer]:
+          - /url: /docs/WebSocket2
+      - listitem [ref=e106]:
+        - link "WebSocket Order Status" [ref=e107] [cursor=pointer]:
+          - /url: /docs/WebSocketOrderStatus
+      - listitem [ref=e108]:
+        - link "Instruments" [ref=e109] [cursor=pointer]:
+          - /url: /docs/Instruments
+      - listitem [ref=e110]:
+        - link "RateLimit" [ref=e111] [cursor=pointer]:
+          - /url: /docs/RateLimit
+    - generic [ref=e114]:
+      - generic [ref=e116]:
+        - heading "Portfolio" [level=1] [ref=e117]
+        - paragraph [ref=e118]: A portfolio is a collection of financial investments like stocks, bonds, commodities, cash, and cash equivalents, including long-term equity holdings and short-term positions. The portfolio APIs return instruments in a portfolio with updated profit and loss computations.
+        - table [ref=e120]:
+          - rowgroup [ref=e121]:
+            - row "Request Type APIs Endpoint Description" [ref=e122]:
+              - columnheader "Request Type" [ref=e123]
+              - columnheader "APIs" [ref=e124]
+              - columnheader "Endpoint" [ref=e125]
+              - columnheader "Description" [ref=e126]
+          - rowgroup [ref=e127]:
+            - row "GET Get Holding https://apiconnect.angelone.in/rest/secure/angelbroking/portfolio/v1/getHolding To retrieve holding" [ref=e128]:
+              - cell "GET" [ref=e129]
+              - cell "Get Holding" [ref=e130]
+              - cell "https://apiconnect.angelone.in/rest/secure/angelbroking/portfolio/v1/getHolding" [ref=e131]
+              - cell "To retrieve holding" [ref=e132]
+            - row "GET Get All Holding https://apiconnect.angelone.in/rest/secure/angelbroking/portfolio/v1/getAllHolding To retrieve all holding" [ref=e133]:
+              - cell "GET" [ref=e134]
+              - cell "Get All Holding" [ref=e135]
+              - cell "https://apiconnect.angelone.in/rest/secure/angelbroking/portfolio/v1/getAllHolding" [ref=e136]
+              - cell "To retrieve all holding" [ref=e137]
+            - row "GET Get Position https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/getPosition To retrieve positIon" [ref=e138]:
+              - cell "GET" [ref=e139]
+              - cell "Get Position" [ref=e140]
+              - cell "https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/getPosition" [ref=e141]
+              - cell "To retrieve positIon" [ref=e142]
+            - row "POST Convert Position https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/convertPosition To convert position" [ref=e143]:
+              - cell "POST" [ref=e144]
+              - cell "Convert Position" [ref=e145]
+              - cell "https://apiconnect.angelone.in/rest/secure/angelbroking/order/v1/convertPosition" [ref=e146]
+              - cell "To convert position" [ref=e147]
+      - generic [ref=e149]:
+        - generic [ref=e150]:
+          - heading "Get Holdings" [level=2] [ref=e151]
+          - paragraph [ref=e152]: Holdings comprises of the user's portfolio of long-term equity delivery stocks. An instrument in a holding's portfolio remains there indefinitely until its sold or is delisted or changed by the exchanges. Underneath it all, instruments in the holdings reside in the user's DEMAT account, as settled by exchanges and clearing institutions.
+          - heading "Get Holding Response" [level=4] [ref=e153]
+          - generic [ref=e154]:
+            - text: "{"
+            - text: "\"tradingsymbol\": \"TATASTEEL-EQ\","
+            - text: "\"exchange\": \"NSE\","
+            - text: "\"isin\": \"INE081A01020\","
+            - text: "\"t1quantity\": 0,"
+            - text: "\"realisedquantity\": 2,"
+            - text: "\"quantity\": 2,"
+            - text: "\"authorisedquantity\": 0,"
+            - text: "\"product\": \"DELIVERY\","
+            - text: "\"collateralquantity\": null,"
+            - text: "\"collateraltype\": null,"
+            - text: "\"haircut\": 0,"
+            - text: "\"averageprice\": 111.87,"
+            - text: "\"ltp\": 130.15,"
+            - text: "\"symboltoken\": \"3499\","
+            - text: "\"close\": 129.6,"
+            - text: "\"profitandloss\": 37,"
+            - text: "\"pnlpercentage\": 16.34"
+            - text: "}"
+        - code [ref=e158]: "var axios = require('axios'); var data = ''; var config = { method: 'get', url: 'https://apiconnect.angelone.in/ rest/secure/angelbroking/portfolio/ v1/getHolding', headers: { 'Authorization': 'Bearer AUTHORIZATION_TOKEN', 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-UserType': 'USER', 'X-SourceID': 'WEB', 'X-ClientLocalIP': 'CLIENT_LOCAL_IP', 'X-ClientPublicIP': 'CLIENT_PUBLIC_IP', 'X-MACAddress': 'MAC_ADDRESS', 'X-PrivateKey': 'API_KEY' }, data : data }; axios(config) .then(function (response) { console.log(JSON.stringify(response.data)); }) .catch(function (error) { console.log(error); });"
+      - generic [ref=e159]:
+        - generic [ref=e160]:
+          - heading "Get All Holdings" [level=2] [ref=e161]
+          - paragraph [ref=e162]: "This endpoint offers a more comprehensive view of your entire investments, including individual stock holdings and a summary of your total investments. In addition to the updates for individual stock holdings, we have introduced a new section in the response called \"totalholding,\" which provides a summary of your entire investments, including:"
+          - list [ref=e163]:
+            - listitem [ref=e164]: "totalholdingvalue: The total value of all your holdings."
+            - listitem [ref=e165]: "totalinvvalue: The total investment value."
+            - listitem [ref=e166]: "totalprofitandloss: The total profit and loss across all holdings."
+            - listitem [ref=e167]: "totalpnlpercentage: The total profit and loss percentage for your entire portfolio."
+          - heading "Get Holding Response" [level=4] [ref=e168]
+          - generic [ref=e169]:
+            - text: "{"
+            - text: "\"status\": true,"
+            - text: "\"message\": \"SUCCESS\","
+            - text: "\"errorcode\": \"\","
+            - text: "\"data\": {"
+            - text: "\"holdings\": ["
+            - text: "{"
+            - text: "\"tradingsymbol\": \"TATASTEEL-EQ\","
+            - text: "\"exchange\": \"NSE\","
+            - text: "\"isin\": \"INE081A01020\","
+            - text: "\"t1quantity\": 0,"
+            - text: "\"realisedquantity\": 2,"
+            - text: "\"quantity\": 2,"
+            - text: "\"authorisedquantity\": 0,"
+            - text: "\"product\": \"DELIVERY\","
+            - text: "\"collateralquantity\": null,"
+            - text: "\"collateraltype\": null,"
+            - text: "\"haircut\": 0,"
+            - text: "\"averageprice\": 111.87,"
+            - text: "\"ltp\": 130.15,"
+            - text: "\"symboltoken\": \"3499\","
+            - text: "\"close\": 129.6,"
+            - text: "\"profitandloss\": 37,"
+            - text: "\"pnlpercentage\": 16.34"
+            - text: "},"
+            - text: "{"
+            - text: "\"tradingsymbol\": \"PARAGMILK-EQ\","
+            - text: "\"exchange\": \"NSE\","
+            - text: "\"isin\": \"INE883N01014\","
+            - text: "\"t1quantity\": 0,"
+            - text: "\"realisedquantity\": 2,"
+            - text: "\"quantity\": 2,"
+            - text: "\"authorisedquantity\": 0,"
+            - text: "\"product\": \"DELIVERY\","
+            - text: "\"collateralquantity\": null,"
+            - text: "\"collateraltype\": null,"
+            - text: "\"haircut\": 0,"
+            - text: "\"averageprice\": 154.03,"
+            - text: "\"ltp\": 201,"
+            - text: "\"symboltoken\": \"17130\","
+            - text: "\"close\": 192.1,"
+            - text: "\"profitandloss\": 94,"
+            - text: "\"pnlpercentage\": 30.49"
+            - text: "},"
+            - text: "{"
+            - text: "\"tradingsymbol\": \"SBIN-EQ\","
+            - text: "\"exchange\": \"NSE\","
+            - text: "\"isin\": \"INE062A01020\","
+            - text: "\"t1quantity\": 0,"
+            - text: "\"realisedquantity\": 8,"
+            - text: "\"quantity\": 8,"
+            - text: "\"authorisedquantity\": 0,"
+            - text: "\"product\": \"DELIVERY\","
+            - text: "\"collateralquantity\": null,"
+            - text: "\"collateraltype\": null,"
+            - text: "\"haircut\": 0,"
+            - text: "\"averageprice\": 573.1,"
+            - text: "\"ltp\": 579.05,"
+            - text: "\"symboltoken\": \"3045\","
+            - text: "\"close\": 570.5,"
+            - text: "\"profitandloss\": 48,"
+            - text: "\"pnlpercentage\": 1.04"
+            - text: "}"
+            - text: "],"
+            - text: "\"totalholding\": {"
+            - text: "\"totalholdingvalue\": 5294,"
+            - text: "\"totalinvvalue\": 5116,"
+            - text: "\"totalprofitandloss\": 178.14,"
+            - text: "\"totalpnlpercentage\": 3.48"
+            - text: "}"
+            - text: "}"
+            - text: "}"
+        - code [ref=e173]: "var axios = require('axios'); var data = ''; var config = { method: 'get', url: 'https://apiconnect.angelone.in/ rest/secure/angelbroking/portfolio/v1/getAllHolding', headers: { 'Authorization': 'Bearer AUTHORIZATION_TOKEN', 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-UserType': 'USER', 'X-SourceID': 'WEB', 'X-ClientLocalIP': 'CLIENT_LOCAL_IP', 'X-ClientPublicIP': 'CLIENT_PUBLIC_IP', 'X-MACAddress': 'MAC_ADDRESS', 'X-PrivateKey': 'API_KEY' }, data : data }; axios(config) .then(function (response) { console.log(JSON.stringify(response.data)); }) .catch(function (error) { console.log(error); });"
+      - generic [ref=e174]:
+        - generic [ref=e175]:
+          - heading "Get Position" [level=2] [ref=e176]
+          - paragraph [ref=e177]: This API returns two sets of positions, net and day. net is the actual, current net position portfolio, while day is a snapshot of the buying and selling activity for that particular day.
+          - heading "Get Position Response" [level=4] [ref=e178]
+          - generic [ref=e179]:
+            - text: "{"
+            - text: "\"status\": true,"
+            - text: "\"message\": \"SUCCESS\","
+            - text: "\"errorcode\": \"\","
+            - text: "\"data\":["
+            - text: "{"
+            - text: "\"exchange\": \"NSE\","
+            - text: "\"symboltoken\": \"2885\","
+            - text: "\"producttype\": \"DELIVERY\","
+            - text: "\"tradingsymbol\": \"RELIANCE-EQ\","
+            - text: "\"symbolname\": \"RELIANCE\","
+            - text: "\"instrumenttype\": \"\","
+            - text: "\"priceden\": \"1\","
+            - text: "\"pricenum\": \"1\","
+            - text: "\"genden\": \"1\","
+            - text: "\"gennum\": \"1\","
+            - text: "\"precision\": \"2\","
+            - text: "\"multiplier\": \"-1\","
+            - text: "\"boardlotsize\": \"1\","
+            - text: "\"buyqty\": \"1\","
+            - text: "\"sellqty\": \"0\","
+            - text: "\"buyamount\": \"2235.80\","
+            - text: "\"sellamount\": \"0\","
+            - text: "\"symbolgroup\": \"EQ\","
+            - text: "\"strikeprice\": \"-1\","
+            - text: "\"optiontype\": \"\","
+            - text: "\"expirydate\": \"\","
+            - text: "\"lotsize\": \"1\","
+            - text: "\"cfbuyqty\": \"0\","
+            - text: "\"cfsellqty\": \"0\","
+            - text: "\"cfbuyamount\": \"0\","
+            - text: "\"cfsellamount\": \"0\","
+            - text: "\"buyavgprice\": \"2235.80\","
+            - text: "\"sellavgprice\": \"0\","
+            - text: "\"avgnetprice\": \"2235.80\","
+            - text: "\"netvalue\": \"- 2235.80\","
+            - text: "\"netqty\": \"1\","
+            - text: "\"totalbuyvalue\": \"2235.80\","
+            - text: "\"totalsellvalue\": \"0\","
+            - text: "\"cfbuyavgprice\": \"0\","
+            - text: "\"cfsellavgprice\": \"0\","
+            - text: "\"totalbuyavgprice\": \"2235.80\","
+            - text: "\"totalsellavgprice\": \"0\","
+            - text: "\"netprice\": \"2235.80\""
+            - text: "}"
+            - text: "]"
+            - text: "}"
+        - code [ref=e183]: "var axios = require('axios'); var data = ''; var config = { method: 'get', url: 'https://apiconnect.angelone.in/ rest/secure/angelbroking/order/ v1/getPosition', headers: { 'Authorization': 'Bearer AUTHORIZATION_TOKEN', 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-UserType': 'USER', 'X-SourceID': 'WEB', 'X-ClientLocalIP': 'CLIENT_LOCAL_IP', 'X-ClientPublicIP': 'CLIENT_PUBLIC_IP', 'X-MACAddress': 'MAC_ADDRESS', 'X-PrivateKey': 'API_KEY' }, data : data }; axios(config) .then(function (response) { console.log(JSON.stringify(response.data)); }) .catch(function (error) { console.log(error); });"
+      - generic [ref=e184]:
+        - generic [ref=e185]:
+          - heading "Convert Position" [level=2] [ref=e186]
+          - paragraph [ref=e187]: Each position has one margin product. These products affect how the user's margin usage and free cash values are computed, and a user may wish to convert or change a position's margin product on timely basis.
+          - heading "Position Conversion Request" [level=4] [ref=e188]
+          - generic [ref=e189]:
+            - text: "{"
+            - text: "\"exchange\": \"NSE\","
+            - text: "\"symboltoken\": \"2885\","
+            - text: "\"oldproducttype\": \"DELIVERY\","
+            - text: "\"newproducttype\": \"INTRADAY\","
+            - text: "\"tradingsymbol\": \"RELIANCE-EQ\","
+            - text: "\"symbolname\": \"RELIANCE\","
+            - text: "\"instrumenttype\": \"\","
+            - text: "\"priceden\": \"1\","
+            - text: "\"pricenum\": \"1\","
+            - text: "\"genden\": \"1\","
+            - text: "\"gennum\": \"1\","
+            - text: "\"precision\": \"2\","
+            - text: "\"multiplier\": \"-1\","
+            - text: "\"boardlotsize\": \"1\","
+            - text: "\"buyqty\": \"1\","
+            - text: "\"sellqty\": \"0\","
+            - text: "\"buyamount\": \"2235.80\","
+            - text: "\"sellamount\": \"0\","
+            - text: "\"transactiontype\": \"BUY\","
+            - text: "\"quantity\": 1,"
+            - text: "\"type\": \"DAY\""
+            - text: "}"
+          - heading "Position Conversion Response" [level=4] [ref=e190]
+          - generic [ref=e191]:
+            - text: "{"
+            - text: "\"status\": true,"
+            - text: "\"message\": \"SUCCESS\","
+            - text: "\"errorcode\": \"\","
+            - text: "\"data\": null"
+            - text: "}"
+          - generic:
+            - generic "Previous" [ref=e192] [cursor=pointer]: 
+            - generic "Next" [ref=e193] [cursor=pointer]: 
+        - generic [ref=e194]:
+          - list [ref=e196]:
+            - listitem [ref=e197]:
+              - button "Python" [ref=e198] [cursor=pointer]
+            - listitem [ref=e199]:
+              - button "NodeJs" [ref=e200] [cursor=pointer]
+            - listitem [ref=e201]:
+              - button "Java" [ref=e202] [cursor=pointer]
+            - listitem [ref=e203]:
+              - button "R" [ref=e204] [cursor=pointer]
+            - listitem [ref=e205]:
+              - button "GO" [ref=e206] [cursor=pointer]
+          - code [ref=e209]: "var axios = require('axios'); var data = JSON.stringify({ \"exchange\":\"NSE\", \"symboltoken\":\"2885\", \"oldproducttype\":\"DELIVERY\", \"newproducttype\":\"INTRADAY\", \"tradingsymbol\":\"RELIANCE-EQ\", \"symbolname\":\"RELIANCE\", \"instrumenttype\":\"\", \"priceden\":\"1\", \"pricenum\":\"1\", \"genden\":\"1\", \"gennum\":\"1\", \"precision\":\"2\", \"multiplier\":\"-1\", \"boardlotsize\":\"1\", \"buyqty\":\"1\", \"sellqty\":\"0\", \"buyamount\":\"2235.80\", \"sellamount\":\"0\", \"transactiontype\":\"BUY\", \"quantity\":1, \"type\":\"DAY\" }); var config = { method: 'post', url: 'https://apiconnect.angelone.in/ rest/secure/angelbroking/order/ v1/convertPosition', headers: { 'Authorization': 'Bearer AUTHORIZATION_TOKEN', 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-UserType': 'USER', 'X-SourceID': 'WEB', 'X-ClientLocalIP': 'CLIENT_LOCAL_IP', 'X-ClientPublicIP': 'CLIENT_PUBLIC_IP', 'X-MACAddress': 'MAC_ADDRESS', 'X-PrivateKey': 'API_KEY' }, data : data }; axios(config) .then(function (response) { console.log(JSON.stringify(response.data)); }) .catch(function (error) { console.log(error); });"
+  - contentinfo [ref=e210]:
+    - generic [ref=e211]:
+      - generic [ref=e212]:
+        - generic [ref=e213]: Powered By
+        - img "AngelOne" [ref=e214]
+      - generic [ref=e216]: Copyright @ 2026-2027

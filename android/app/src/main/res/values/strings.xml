@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">iStocks</string>
+    <string name="title_activity_main">iStocks</string>
+    <string name="package_name">com.istocks.app</string>
+    <string name="custom_url_scheme">com.istocks.app</string>
+</resources>
